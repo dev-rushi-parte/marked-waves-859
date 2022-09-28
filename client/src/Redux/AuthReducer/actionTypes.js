@@ -1,0 +1,12 @@
+
+
+
+
+export const SINGUP_REQUEST = 'SINGUP_REQUEST';
+export const SINGUP_SUCCESS = 'SINGUP_SUCCESS';
+export const SINGUP_FAILURE = 'SINGUP_FAILURE';
+
+
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
