@@ -20,6 +20,8 @@ MemberRouter.post("/", async (req, res) => {
         }
         // res.send(payload)
 
+        const update = await user.updateOne({ $set: payload })
+
         const newMember = new MemberSchema(payload);
         const member = await newMember.save();
 
