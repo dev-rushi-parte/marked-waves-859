@@ -78,8 +78,16 @@ function Login() {
                     else {
 
                         console.log("error in Login axios requres", err)
+                        toast({
+                            position: 'top',
+                            marginTop: '150px',
+                            description: err,
+                            status: 'error',
+                            duration: 3000,
+                            isClosable: true,
+                        })
                     }
-                    console.log(err)
+                
                 })
 
 
