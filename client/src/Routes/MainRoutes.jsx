@@ -18,7 +18,10 @@ function MainRoutes() {
                 <Route path='/login' element={<Login />} />
                 <Route path='/singup' element={<Singup />} />
 
+
+
                 <Route path='/' element={<Homepage/>} />
+
 
                 <Route path='/sidebar' element={<SideBar />} />
                 <Route path='/member' element={<Member />} />

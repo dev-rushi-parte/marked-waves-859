@@ -69,7 +69,7 @@ export const UserLogin = (payload) => async (dispatch) => {
         headers: headers,
     })
         .then((res) => {
-            // console.log(res.data, "login")
+            console.log(res.data.token, "login")
            return dispatch(loginSuccess(res));
 
         })
