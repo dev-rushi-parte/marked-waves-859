@@ -6,10 +6,12 @@ import {
 
 import Login from '../Pages/Account/Login'
 import Singup from '../Pages/Account/Singup'
-import SideBar from '../Pages/TMETRIC_Pages/SideBar';
+
 import Member from '../Pages/TMETRIC_Pages/Member';
 import { Homepage } from '../Pages/HomePage/Homepage';
 import RequiredAuth from '../Pages/RequiredAuth/RequiredAuth';
+import SideBar from '../component/SideBar';
+import Time from '../Pages/TMETRIC_Pages/Time';
 
 function MainRoutes() {
     return (
@@ -23,16 +25,17 @@ function MainRoutes() {
 
                 <Route path='/' element={<Homepage />} />
 
-
+{/* 
                 <Route
                     path='/sidebar'
                     element={
-                        // <RequiredAuth>
-                            <SideBar />
-                        // </RequiredAuth>
+                        <RequiredAuth>
+                        <SideBar />
+                        </RequiredAuth>
                     }
-                />
+                /> */}
                 <Route path='/member' element={<Member />} />
+                <Route path='/time' element={<Time />} />
 
             </Routes>
 

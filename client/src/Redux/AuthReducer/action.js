@@ -78,3 +78,17 @@ export const UserLogin = (payload) => async (dispatch) => {
 
         })
 }
+
+
+
+export const sidebar = (payload) => ({
+    type: types.SIDE_BAR,
+    payload
+
+})
+
+
+export const Side_Bar_Size = (payload) => async (dispatch) => {
+
+    dispatch(sidebar(payload))
+}

@@ -6,7 +6,8 @@ const inState = {
     isAuth: getLocalData("TMRTRICTOKEN") ? true : false,
     token: getLocalData("token") || false,
     isLoading: false,
-    isError: false
+    isError: false,
+    sideSize: '',
 
 }
 
@@ -63,6 +64,13 @@ export const authReducer = (state = inState, action) => {
                 ...state,
                 isLoading: false,
                 isError: true
+            }
+        }
+        case types.SIDE_BAR: {
+            console.log(payload, "reducer Payload")
+            return {
+                ...state,
+                sideSize: payload
             }
         }
         default:
