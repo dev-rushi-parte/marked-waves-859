@@ -32,7 +32,7 @@ export const SingupUser = (payload) => async (dispatch) => {
 
     return axios.post("http://localhost:8080/user/singup", payload)
         .then((res) => {
-console.log(res)
+            console.log(res)
             return dispatch(singupSuccess(res))
 
         })
@@ -69,12 +69,12 @@ export const UserLogin = (payload) => async (dispatch) => {
         headers: headers,
     })
         .then((res) => {
-            console.log(res.data.token, "login")
-           return dispatch(loginSuccess(res));
+            // console.log(res.data.token, "login")
+            return dispatch(loginSuccess(res));
 
         })
         .catch((err) => {
-           return dispatch(loginFailure(err));
+            return dispatch(loginFailure(err));
 
         })
 }

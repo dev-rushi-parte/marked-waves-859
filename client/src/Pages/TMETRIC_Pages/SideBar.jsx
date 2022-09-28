@@ -12,9 +12,12 @@ import {
 import { Link } from 'react-router-dom'
 import { BiChevronLeft } from "react-icons/bi";
 import Member from './Member';
+import { useSelector } from 'react-redux';
 
 function SideBar() {
     const [navSize, changeNavSize] = useState("large")
+
+    
 
     return (
 
