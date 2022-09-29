@@ -27,34 +27,77 @@ const Task = () => {
             {  /* Filter Section */}
             <div className={styles.taskFilter}>
                 <div className={styles.filterDiv}>
-                    <div>Client:All</div>
-                    <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                    <select>
+                        <option>
+                            <div>Client:All</div>
+                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                        </option>
+                        <option>Raviranjan</option>
+                        <option>Shakti</option>
+                        <option>Akshay</option>
+                        <option>Rushi</option>
+                        <option>Aadil</option>
+                    </select>
                 </div>
 
                 <div className={styles.filterDiv}>
-                    <div>Project</div>
-                    <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                    <select>
+                        <option>
+                            <div>Project</div>
+                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                        </option>
+                        <option>Project1</option>
+                        <option>Project2</option>
+                        <option>Project3</option>
+                        <option>Project4</option>
+                        <option>Project5</option>
+                    </select>
                 </div>
 
                 <div className={styles.filterDiv}>
-                    <div>Tag:All</div>
-                    <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                    <select>
+                        <option>
+                            <div>Tag:All</div>
+                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                        </option>
+                        <option>No work type</option>
+                        <option>No tag</option>
+                    </select>
                 </div>
 
                 <div className={styles.filterDiv}>
-                    <div>Status:Open</div>
-                    <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                    <select>
+                        <option>
+                            <div>Status:All</div>
+                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                        </option>
+                        <option>Status:Open</option>
+                        <option>Status:Completed</option>
+                    </select>
                 </div>
 
                 <div className={styles.filterDiv}>
-                    <div>Creator:Any</div>
-                    <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                    <select>
+                        <option>
+                            <div>Creator:Any</div>
+                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                        </option>
+                        <option>Creator:Ravi</option>
+                        <option>Creator:Akshay</option>
+                        <option>Creator:Shakti</option>
+                    </select>
                 </div>
 
 
                 <div className={styles.filterDiv}>
-                    <div>Source:Internal</div>
-                    <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                    <select>
+                        <option>
+                            <div>Source:Internal</div>
+                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                        </option>
+                        <option>External</option>
+                        <option>All</option>
+                    </select>
                 </div>
 
                 <div className={styles.filterDiv}>
@@ -73,13 +116,22 @@ const Task = () => {
                     </div>
 
                     <div className={styles.taskDiv}>
-                        <div>Sort: Project</div>
-                        <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                        <select>
+                            <option>
+                                <div>Sort: Project</div>
+                                <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                            </option>
+                            <option>Estimate</option>
+                            <option>Due Date</option>
+                            <option>Last Updated</option>
+                            <option>Newer First</option>
+                            <option>Older First</option>
+                        </select>
                     </div>
 
                 </div>
                 <div className={styles.taskInput}>
-                    <div><BiSearchAlt2 className={styles.filterDivIcon}/></div>
+                    <div><BiSearchAlt2 className={styles.filterDivIcon} /></div>
                     <div>
                         <input type="text" placeholder='Search' />
                     </div>
@@ -96,6 +148,8 @@ const Task = () => {
                         <div><h3>Project Name</h3></div>
                     </div>
                 </div>
+
+                { /* ProjectRight Section */}
                 <div className={styles.taskProjectRight}>
                     <h1>Project Name</h1>
                     <div className={styles.projectRightDiv}>
