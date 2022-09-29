@@ -148,8 +148,8 @@ const Time = () => {
           w="90%"
           rounded='md' 
           boxShadow='xs'
-        //   p={"1rem"}
-        //   pt="3rem"
+          p={"1rem"}
+          pt="3rem"
           
         >
           
@@ -204,7 +204,7 @@ const Time = () => {
 
 </Box>
 
-    </Box>
+</Box>
   )
 }
 
