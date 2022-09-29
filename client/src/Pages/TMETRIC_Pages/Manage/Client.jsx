@@ -14,7 +14,7 @@ function Client() {
                 <SideBar />
             </Box>
 
-            <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '180px' : "310px"} border='1px solid red' w='50%' h='2000px'>
+            <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '180px' : "310px"} border='1px solid red' w='75%' h='2000px'>
 
                 <h1>Client</h1>
             </Box>
