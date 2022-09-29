@@ -10,8 +10,12 @@ import Singup from '../Pages/Account/Singup'
 import Member from '../Pages/TMETRIC_Pages/Member';
 import { Homepage } from '../Pages/HomePage/Homepage';
 import RequiredAuth from '../Pages/RequiredAuth/RequiredAuth';
-import SideBar from '../component/SideBar';
 import Time from '../Pages/TMETRIC_Pages/Time';
+import MyWork from '../Pages/TMETRIC_Pages/MyWork';
+import Task from '../Pages/TMETRIC_Pages/Task';
+import Team from '../Pages/TMETRIC_Pages/Team';
+import Project from '../Pages/TMETRIC_Pages/Manage/Project';
+import Client from '../Pages/TMETRIC_Pages/Manage/Client';
 
 function MainRoutes() {
     return (
@@ -25,7 +29,7 @@ function MainRoutes() {
 
                 <Route path='/' element={<Homepage />} />
 
-{/* 
+                {/* 
                 <Route
                     path='/sidebar'
                     element={
@@ -34,11 +38,21 @@ function MainRoutes() {
                         </RequiredAuth>
                     }
                 /> */}
-                <Route path='/member' element={<Member />} />
                 <Route path='/time' element={<Time />} />
+                <Route path='/mywork' element={<MyWork />} />
+                <Route path='/member' element={<Member />} />
+                <Route path='/task' element={<Task />} />
+                <Route path='/team' element={<Team />} />
+
+
+                {/* manage Routes */}
+
+                <Route path='/project' element={<Project />} />
+                <Route path='/client' element={<Client />} />
+
+                <Route path='*' element={"Page Not Found"} />
 
             </Routes>
-
         </>
 
     )

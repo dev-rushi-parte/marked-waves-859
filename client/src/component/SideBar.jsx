@@ -7,16 +7,26 @@ import {
     Divider,
     Avatar,
     Heading,
-    Box
+    Box,
+    Img,
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionIcon,
+    AccordionPanel
 } from '@chakra-ui/react'
 
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { BiChevronLeft } from "react-icons/bi";
+import { AiOutlineAlignLeft } from "react-icons/ai";
+import { BsStopwatchFill } from "react-icons/bs";
 import { useDispatch } from 'react-redux';
 import { Side_Bar_Size } from '../Redux/AuthReducer/action';
+import styled from './SideBar.module.css'
 // import Member from './Member';
 // import { useSelector } from 'react-redux';
 
+import "./activeSide.css"
 function SideBar() {
     const [navSize, changeNavSize] = useState("large");
     const [load, setLoad] = useState(false);
@@ -53,12 +63,12 @@ function SideBar() {
                 bg='rgb(246,247,248)'
                 boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
                 transition={' 0.5s ease-in-out'}
-                w={navSize == "small" ? "0" : "250px"}
+                w={navSize == "small" ? "0" : "240px"}
                 flexDir="column"
                 justifyContent="space-between"
             >
                 <Flex
-                    p="5%"
+                    // p="5%"
 
                     zIndex='-10px'
                     flexDir="column"
@@ -68,27 +78,113 @@ function SideBar() {
 
                 >
 
+                    {navSize === 'large' ? load ? "" : <Img p="5%" w='130px' ml='55px' mt='15px' src='/Imges/tmetric_logo_and_text.svg' alt='side bar tmrtric' /> : ""}
 
-                    {navSize === 'large' ? <Link to='/member'><Box mt='100px'>{load ? "" : "Member"}</Box> </Link> : ""}
-                    {navSize === 'large' ? <Link to='/time'>   {load ? "" : "Time"}   </Link> : ""}
-                    {navSize === 'large' ? <Link to='/mywork'>   {load ? "" : "My Work"}  </Link> : ""}
-                    {navSize === 'large' ? <Link to='/task'> {load ? "" : "Task"}  </Link> : ""}
-                    {/* {navSize === 'large' ? <Box>Hi i'm just checking</Box> : ""} */}
+                    {/* Time */}
+                    {navSize === 'large' ? <NavLink to='/time'>
 
+                        <Flex pl="5%" mt='20px'>  <Box><BsStopwatchFill /></Box>  {load ? "" : "Time"}  </Flex>
+
+                    </NavLink> : ""}
+
+                    {/* My Work */}
+                    {navSize === 'large' ? <NavLink to='/mywork'>
+                        <Flex pl="5%" >  <Box><BsStopwatchFill /></Box> {load ? "" : "My Work"} </Flex>
+
+                    </NavLink> : ""}
+
+
+                    {/* Taks */}
+                    {navSize === 'large' ? <NavLink to='/task'>
+                        <Flex pl="5%" >  <Box><BsStopwatchFill /></Box>  {load ? "" : "Task"}  </Flex>
+                    </NavLink> : ""}
+
+                    {/* Team */}
+
+                    {navSize === 'large' ? <NavLink to='/team'>
+                        <Flex pl="5%" >  <Box><BsStopwatchFill /></Box>  <Box>{load ? "" : "Team"}</Box></Flex>
+
+                    </NavLink> : ""}
 
                     <IconButton
                         background="none"
-
+                        className={styled.IconChange}
                         position='fixed'
                         top='10px'
                         left='20px'
                         zIndex='100px'
                         mt={5}
-                        border='1px solid black'
                         _hover={{ background: 'none' }}
-                        icon={<BiChevronLeft />}
+                        icon={navSize === 'large' ? <BiChevronLeft /> : <AiOutlineAlignLeft />}
                         onClick={IconBtn}
                     />
+
+
+                    {/* Accodina=================================================== */}
+
+
+                    {navSize === 'large' ? <Accordion  defaultIndex={[0]}  allowMultiple>
+                        {load ? "" : <AccordionItem>
+                            <h2>
+                                <AccordionButton>
+                                    <Box flex='1' textAlign='left'>
+                                        ANALYZE
+                                    </Box>
+                                    <AccordionIcon />
+                                </AccordionButton>
+                            </h2>
+                            <AccordionPanel pb={4}>
+                                Report
+                            </AccordionPanel>
+                        </AccordionItem>}
+
+                        <AccordionItem>
+                            <h2>
+                                <AccordionButton>
+                                    <Box flex='1' textAlign='left'>
+                                        MANAGE
+                                    </Box>
+                                    <AccordionIcon />
+                                </AccordionButton>
+                            </h2>
+                            <AccordionPanel pb={4}>
+                                <NavLink to='/project'> <Box>Project</Box></NavLink>
+                                <NavLink to='/client'> <Box>Client</Box></NavLink>
+                            </AccordionPanel>
+                        </AccordionItem>
+
+
+                        {/* Work Space */}
+
+                        <AccordionItem>
+                            <h2>
+                                <AccordionButton>
+                                    <Box flex='1' textAlign='left'>
+                                        WORKSPACE
+                                    </Box>
+                                    <AccordionIcon />
+                                </AccordionButton>
+                            </h2>
+                            <AccordionPanel pb={4}>
+                                <NavLink to='/member'>members</NavLink>
+                            </AccordionPanel>
+                        </AccordionItem>
+                    </Accordion> : ""}
+
+
+
+
+
+
+
+                    {/* {navSize === 'large' ? <Link to='/task'> {load ? "" : "Task"}  </Link> : ""} */}
+
+                    {/* Member */}
+                    {/* {navSize === 'large' ? <Link to='/member'>
+                        <Box>{load ? "" : "Member"}</Box>
+                    </Link> : ""} */}
+
+
                 </Flex>
 
                 {navSize === 'large' ? load ? "" : <Flex

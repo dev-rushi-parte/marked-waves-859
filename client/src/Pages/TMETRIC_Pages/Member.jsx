@@ -20,7 +20,7 @@ function Member() {
                     <SideBar />
                 </Box>
 
-                <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '0px' : "250px"} border='1px solid red' w='50%' h='2000px'>
+                <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '180px' : "310px"} border='1px solid red' w='50%' h='2000px'>
                     <h1>Member</h1>
                 </Box>
 
