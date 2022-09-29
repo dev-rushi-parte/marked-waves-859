@@ -77,8 +77,8 @@ function SideBar() {
                     as="nav"
 
                 >
-
-                    {navSize === 'large' ? load ? "" : <Img p="5%" w='130px' ml='55px' mt='15px' src='/Imges/tmetric_logo_and_text.svg' alt='side bar tmrtric' /> : ""}
+                    {/* TMRTIC LOGO */}
+                    {navSize === 'large' ? load ? "" : <Img p="5%" w='150px' ml='55px' mt='15px' src='/Imges/tmetric_logo_and_text.svg' alt='side bar tmrtric' /> : ""}
 
                     {/* Time */}
                     {navSize === 'large' ? <NavLink to='/time'>
@@ -110,7 +110,7 @@ function SideBar() {
                         background="none"
                         className={styled.IconChange}
                         position='fixed'
-                        top='10px'
+                        top='5px'
                         left='20px'
                         zIndex='100px'
                         mt={5}
@@ -123,7 +123,7 @@ function SideBar() {
                     {/* Accodina=================================================== */}
 
 
-                    {navSize === 'large' ? <Accordion  defaultIndex={[0]}  allowMultiple>
+                    {navSize === 'large' ? <Accordion defaultIndex={[0]} allowMultiple>
                         {load ? "" : <AccordionItem>
                             <h2>
                                 <AccordionButton>

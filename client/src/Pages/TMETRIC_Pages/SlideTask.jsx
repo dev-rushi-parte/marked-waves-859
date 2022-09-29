@@ -15,8 +15,10 @@ function SlideTask() {
                 <SideBar />
             </Box>
 
-            <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '180px' : "310px"} border='1px solid red' w='80%' h='2000px'>
-            <Task />
+            <Box transition={' 0.5s ease-in-out'}
+                ml={sideSize == 'large' ? '180px' : "300px"}
+                border='1px solid red' w='78%' mt='20px' h='auto'>
+                <Task />
             </Box>
 
         </Flex>
