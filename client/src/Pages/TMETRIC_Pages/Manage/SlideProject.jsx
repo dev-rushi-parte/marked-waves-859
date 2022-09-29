@@ -3,7 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import SideBar from '../../../component/SideBar';
 
-function Project() {
+function SlideProject() {
     const sideSize = useSelector((state) => state.auth.sideSize);
 
     console.log(sideSize, "in Timer")
@@ -14,7 +14,9 @@ function Project() {
                 <SideBar />
             </Box>
 
-            <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '180px' : "310px"} border='1px solid red' w='50%' h='2000px'>
+            <Box transition={' 0.5s ease-in-out'}
+                ml={sideSize == 'large' ? '180px' : "300px"}
+                border='1px solid red' w='78%' mt='20px' h='auto'>
 
                 <h1>Project</h1>
             </Box>
@@ -23,4 +25,4 @@ function Project() {
     )
 }
 
-export default Project
+export default SlideProject

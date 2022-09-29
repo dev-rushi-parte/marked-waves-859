@@ -7,15 +7,15 @@ import {
 import Login from '../Pages/Account/Login'
 import Singup from '../Pages/Account/Singup'
 
-import Member from '../Pages/TMETRIC_Pages/Member';
 import { Homepage } from '../Pages/HomePage/Homepage';
 import RequiredAuth from '../Pages/RequiredAuth/RequiredAuth';
-import Time from '../Pages/TMETRIC_Pages/Time';
-import MyWork from '../Pages/TMETRIC_Pages/MyWork';
 import SlideTask from '../Pages/TMETRIC_Pages/SlideTask';
-import Team from '../Pages/TMETRIC_Pages/Team';
-import Project from '../Pages/TMETRIC_Pages/Manage/Project';
-import Client from '../Pages/TMETRIC_Pages/Manage/Client';
+import SlideTime from '../Pages/TMETRIC_Pages/SlideTime';
+import SlideMyWork from '../Pages/TMETRIC_Pages/SlideMyWork';
+import SlideMember from '../Pages/TMETRIC_Pages/SlideMember';
+import SlideTeam from '../Pages/TMETRIC_Pages/SlideTeam';
+import SlideProject from '../Pages/TMETRIC_Pages/Manage/SlideProject';
+import SlideClient from '../Pages/TMETRIC_Pages/Manage/SlideClient';
 
 function MainRoutes() {
     return (
@@ -38,17 +38,17 @@ function MainRoutes() {
                         </RequiredAuth>
                     }
                 /> */}
-                <Route path='/time' element={<Time />} />
-                <Route path='/mywork' element={<MyWork />} />
-                <Route path='/member' element={<Member />} />
+                <Route path='/time' element={<SlideTime />} />
+                <Route path='/mywork' element={<SlideMyWork />} />
+                <Route path='/member' element={<SlideMember />} />
                 <Route path='/task' element={<SlideTask />} />
-                <Route path='/team' element={<Team />} />
+                <Route path='/team' element={<SlideTeam />} />
 
 
                 {/* manage Routes */}
 
-                <Route path='/project' element={<Project />} />
-                <Route path='/client' element={<Client />} />
+                <Route path='/project' element={<SlideProject />} />
+                <Route path='/client' element={<SlideClient />} />
 
                 <Route path='*' element={"Page Not Found"} />
 
