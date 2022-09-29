@@ -12,7 +12,7 @@ import { Homepage } from '../Pages/HomePage/Homepage';
 import RequiredAuth from '../Pages/RequiredAuth/RequiredAuth';
 import Time from '../Pages/TMETRIC_Pages/Time';
 import MyWork from '../Pages/TMETRIC_Pages/MyWork';
-import Task from '../Pages/TMETRIC_Pages/SlideTask';
+import SlideTask from '../Pages/TMETRIC_Pages/SlideTask';
 import Team from '../Pages/TMETRIC_Pages/Team';
 import Project from '../Pages/TMETRIC_Pages/Manage/Project';
 import Client from '../Pages/TMETRIC_Pages/Manage/Client';
@@ -41,7 +41,7 @@ function MainRoutes() {
                 <Route path='/time' element={<Time />} />
                 <Route path='/mywork' element={<MyWork />} />
                 <Route path='/member' element={<Member />} />
-                <Route path='/task' element={<Task />} />
+                <Route path='/task' element={<SlideTask />} />
                 <Route path='/team' element={<Team />} />
 
 
