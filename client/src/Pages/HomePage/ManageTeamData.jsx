@@ -11,7 +11,7 @@ export const ManageTeamData = () => {
     >
         {data.manageTeamData.map((element,index) => {
             return <Box
-                key={index}
+                        key={element}
                         display={"flex"}
                         gap={'30px'}
                         py={"40px"}
@@ -51,15 +51,25 @@ export const ManageTeamData = () => {
                         //    mb={'20px'}
                         >
                             <Text
-                                fontSize={{base:"30px",
-                                sm: "34px",
-                                md: "36px",
-                                lg: "40px",
-                                xl: "44px",
-                                '2xl': '48px'}}
+                                fontSize={{
+                                    base:"30px",
+                                    sm: "34px",
+                                    md: "36px",
+                                    lg: "40px",
+                                    xl: "44px",
+                                    '2xl': '48px'
+                                }}
                                 fontWeight={'700'} 
                                 fontFamily={"sans-serif"}
                                 color={"#292e33"}
+                                textAlign={{
+                                    base:"left",
+                                    sm: "left",
+                                    md: "left",
+                                    lg: "left",
+                                    xl: "left",
+                                    '2xl': 'left'
+                                }}
                             >
                                 {data.manageTeamDataHeading[index]}
                             </Text>
