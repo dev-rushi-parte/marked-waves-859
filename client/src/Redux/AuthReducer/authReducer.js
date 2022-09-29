@@ -1,12 +1,13 @@
-import { getLocalData } from "../../Utils/localStorage";
+import { getLocalData, SaveTheToken } from "../../Utils/localStorage";
 import * as types from './actionTypes'
 
 const inState = {
 
-    isAuth: getLocalData("InstaToken") ? true : false,
-    InstaToken: getLocalData("InstaToken"),
+    isAuth: getLocalData("TMRTRICTOKEN") ? true : false,
+    token: getLocalData("token") || false,
     isLoading: false,
-    isError: false
+    isError: false,
+    sideSize: '',
 
 }
 
@@ -23,11 +24,12 @@ export const authReducer = (state = inState, action) => {
             }
         }
         case types.SINGUP_SUCCESS: {
-            console.log(payload, "Response in reducer")
+
             return {
                 ...state,
                 isLoading: false,
-                
+                isAuth: true
+
             }
         }
 
@@ -45,11 +47,15 @@ export const authReducer = (state = inState, action) => {
             }
         }
         case types.LOGIN_SUCCESS: {
-            console.log(payload, "Response in reducer")
+            SaveTheToken("TMRTRICTOKEN", payload.data.token)
+            SaveTheToken("token", payload.data.token)
+            console.log(payload.data.token)
             return {
                 ...state,
                 isLoading: false,
-                payload
+                payload,
+                token: payload.data.token
+
             }
         }
 
@@ -58,6 +64,13 @@ export const authReducer = (state = inState, action) => {
                 ...state,
                 isLoading: false,
                 isError: true
+            }
+        }
+        case types.SIDE_BAR: {
+            console.log(payload, "reducer Payload")
+            return {
+                ...state,
+                sideSize: payload
             }
         }
         default:
