@@ -11,7 +11,7 @@ import {
     Popover,
     PopoverTrigger,
     PopoverContent,
-    useColorModeValue,
+    useColorModeValue,  
     useBreakpointValue,
     useDisclosure,
     Spacer,
@@ -23,16 +23,31 @@ import {
     ChevronRightIcon,
   } from '@chakra-ui/icons';
 import SvgComponent from './SvgComponent';
+import { useState } from 'react';
   
   export default function Navbar() {
     const { isOpen, onToggle } = useDisclosure();
-  
+
+    const [updateNavbar,setUpdateNavbar] = useState(false)
+
+    // this function will change the navbar color
+    const scrollBarHandler = () => {
+      if(window.scrollY>=1) {
+        setUpdateNavbar(true)
+      }
+      else {
+        setUpdateNavbar(false)
+      }
+    }
+
+    window.addEventListener("scroll",scrollBarHandler)
+
     return (
       <Box 
         position={"sticky"}
         top={'0px'} zIndex={"999"} >
         <Flex 
-          bg={useColorModeValue("rgb(255,240,184)")}
+          bg={ updateNavbar ? "white" : "rgb(255,240,184)"}
           color={useColorModeValue('gray.600', 'white')}
           minH={'60px'}
           py={{ base: 2 }}
@@ -41,7 +56,6 @@ import SvgComponent from './SvgComponent';
           borderStyle={'solid'}
           borderColor={useColorModeValue('gray.200', 'gray.900')}
           align={'center'}
-          
           >
 
           <Flex 
@@ -63,7 +77,7 @@ import SvgComponent from './SvgComponent';
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               fontFamily={'heading'}
               color={useColorModeValue('gray.800', 'white')}>
-              <SvgComponent/>
+              <SvgComponent  />
             </Text>
 
             <Spacer/>
@@ -90,11 +104,10 @@ import SvgComponent from './SvgComponent';
               variant={'link'}
               href={'#'}>
               Log In
-              
             </Button>
 
             <Button
-              display={{ base: 'none', md: 'inline-flex' }}
+              display={{ md: 'inline-flex' }}
               border={'1px solid black'}
               fontSize={'sm'}
               fontWeight={600}
