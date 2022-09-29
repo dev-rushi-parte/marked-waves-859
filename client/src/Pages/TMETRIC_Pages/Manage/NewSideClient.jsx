@@ -3,8 +3,9 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import SideBar from '../../../component/SideBar';
 import AkayClient from '../../Client/AkayClient';
+import AkayNewClient from '../../Client/AkayNewClient';
 
-function SlideClient() {
+function NewSideClient() {
     const sideSize = useSelector((state) => state.auth.sideSize);
 
     console.log(sideSize, "in Timer")
@@ -19,11 +20,11 @@ function SlideClient() {
                 ml={sideSize == 'large' ? '180px' : "300px"}
                  w='80%' mt='20px' h='auto'>
 
-                 <AkayClient/>
+                 <AkayNewClient/>
             </Box>
 
         </Flex>
     )
 }
 
-export default SlideClient
+export default NewSideClient

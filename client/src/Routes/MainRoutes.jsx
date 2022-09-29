@@ -16,6 +16,7 @@ import SlideMember from '../Pages/TMETRIC_Pages/SlideMember';
 import SlideTeam from '../Pages/TMETRIC_Pages/SlideTeam';
 import SlideProject from '../Pages/TMETRIC_Pages/Manage/SlideProject';
 import SlideClient from '../Pages/TMETRIC_Pages/Manage/SlideClient';
+import NewSideClient from '../Pages/TMETRIC_Pages/Manage/NewSideClient';
 
 function MainRoutes() {
     return (
@@ -49,6 +50,7 @@ function MainRoutes() {
 
                 <Route path='/project' element={<SlideProject />} />
                 <Route path='/client' element={<SlideClient />} />
+                <Route path='/client/new' element={<NewSideClient />} />
 
                 <Route path='*' element={"Page Not Found"} />
 
