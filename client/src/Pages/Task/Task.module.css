@@ -1,0 +1,114 @@
+.top{
+    width: 90%;
+    margin: auto;
+}
+.taskHeading {
+
+    font-size: 25px;
+    display: flex;
+    gap: 15px;
+
+    /* width: 95%; */
+    /* margin: auto; */
+}
+.taskHeading > h1{
+    border-right: 1px solid black;
+    padding-right: 9px;
+}
+
+.taskHeadingDiv{
+    display: flex;
+    gap: 6px;
+    font-size: 23.5px;
+}
+.headingDivIcon{
+    font-size: 1.4em;
+}
+.taskFilter{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    gap: 10px;
+    margin-top: 9px;
+    width: 85%;
+}
+.taskFilter > div{
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 5px;
+}
+.filterDiv{
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+
+}
+.filterDivIcon{
+    font-size: 1.5em;
+}
+.newTask{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    padding: 10px;
+    margin-top: 13px;
+}
+
+.taskDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
+}
+.newTaskInside{
+    display: flex;
+    gap: 10px;
+}
+.newTaskInside > div{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.taskInput{
+    border: 1px solid black;
+    border-radius: 5px;
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
+    height: 38px;
+}
+.taskInputDiv{
+    height: 100%;
+    width: 100%;
+}
+.taskProject{
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.taskProject > div{
+    border: 1px solid black;
+}
+.taskProjectLeft{
+    /* width: 100%; */
+}
+.taskProjectRight{
+    /* width: 50%; */
+}
+.taskProjectRight > div{
+    border-bottom: 1px solid black;
+    padding: 5px;
+
+}
+.projectRightDiv{
+    display:  grid;
+    grid-template-columns: 1.5fr 3fr;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.projectRightDivIcon{
+    color: #b4b8cc;
+    font-size: 2em;
+}
+.projectRightDivBelow{
+    display: flex;
+    gap: 12px;
+}
