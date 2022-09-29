@@ -12,7 +12,7 @@ import { Homepage } from '../Pages/HomePage/Homepage';
 import RequiredAuth from '../Pages/RequiredAuth/RequiredAuth';
 import Time from '../Pages/TMETRIC_Pages/Time';
 import MyWork from '../Pages/TMETRIC_Pages/MyWork';
-import Task from '../Pages/TMETRIC_Pages/Task';
+import Task from '../Pages/TMETRIC_Pages/SlideTask';
 import Team from '../Pages/TMETRIC_Pages/Team';
 import Project from '../Pages/TMETRIC_Pages/Manage/Project';
 import Client from '../Pages/TMETRIC_Pages/Manage/Client';
