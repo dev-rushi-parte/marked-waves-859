@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import SideBar from '../../component/SideBar'
+import Time from '../Time/Time';
 
 function SlideTime() {
 
@@ -19,7 +20,7 @@ function SlideTime() {
                 ml={sideSize == 'large' ? '180px' : "300px"}
                 border='1px solid red' w='78%' mt='20px' h='auto'>
 
-                <h1>Time</h1>
+                <Time />
             </Box>
 
         </Flex>
