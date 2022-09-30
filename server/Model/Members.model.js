@@ -7,7 +7,8 @@ const MemberSchema = new mongoose.Schema({
     email: { type: String, require: true, max: 50 },
     name: { type: String, require },
     profilePicture: { type: String, default: "" },
-    role: { type: String }
+    role: { type: String },
+    userId: { type: String }
 
 },
     {
