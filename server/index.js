@@ -13,6 +13,10 @@ const MemberRouter = require("./Routes/Members.routes.js")
 // const PostRouter = require("./Routes/Post.routes");
 const userAuthentication = require("./Controller/Auth.middleware");
 const { ClientRouter } = require("./Routes/Client.routes");
+const {timeController} = require("./Routes/time.routes")
+
+const {ProjectRouter} = require("./Routes/Project.routes")
+
 
 
 require('dotenv').config()
@@ -21,13 +25,16 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("common"));
 
-
+app.use("/time", timeController)
 // Login Singup routes
 app.use("/user", AuthRouter)
 app.use("/clients" , ClientRouter)
+app.use("/project" , ProjectRouter)
 
 // login user authentication middleware
 app.use(userAuthentication)
+
+
 
 app.use("/member", MemberRouter);
 //  User Routes
