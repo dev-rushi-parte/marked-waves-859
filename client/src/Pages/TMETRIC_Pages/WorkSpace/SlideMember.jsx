@@ -1,7 +1,7 @@
 import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import SideBar from '../../component/SideBar'
+import SideBar from '../../../component/SideBar'
 
 
 function SlideMember() {

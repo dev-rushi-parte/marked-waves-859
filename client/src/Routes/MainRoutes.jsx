@@ -12,11 +12,14 @@ import RequiredAuth from '../Pages/RequiredAuth/RequiredAuth';
 import SlideTask from '../Pages/TMETRIC_Pages/SlideTask';
 import SlideTime from '../Pages/TMETRIC_Pages/SlideTime';
 import SlideMyWork from '../Pages/TMETRIC_Pages/SlideMyWork';
-import SlideMember from '../Pages/TMETRIC_Pages/SlideMember';
+
 import SlideTeam from '../Pages/TMETRIC_Pages/SlideTeam';
 import SlideProject from '../Pages/TMETRIC_Pages/Manage/SlideProject';
 import SlideClient from '../Pages/TMETRIC_Pages/Manage/SlideClient';
 import NewSideClient from '../Pages/TMETRIC_Pages/Manage/NewSideClient';
+import SlideMember from '../Pages/TMETRIC_Pages/WorkSpace/SlideMember';
+import SlideSubscription from '../Pages/TMETRIC_Pages/WorkSpace/SlideSubscription';
+import SlideReports from '../Pages/TMETRIC_Pages/Analyze/SlideReports';
 
 function MainRoutes() {
     return (
@@ -41,9 +44,11 @@ function MainRoutes() {
                 /> */}
                 <Route path='/time' element={<SlideTime />} />
                 <Route path='/mywork' element={<SlideMyWork />} />
-                <Route path='/member' element={<SlideMember />} />
                 <Route path='/task' element={<SlideTask />} />
                 <Route path='/team' element={<SlideTeam />} />
+
+                {/* analyze roues */}
+                <Route path='reports' element={<SlideReports />} />
 
 
                 {/* manage Routes */}
@@ -51,6 +56,10 @@ function MainRoutes() {
                 <Route path='/project' element={<SlideProject />} />
                 <Route path='/client' element={<SlideClient />} />
                 <Route path='/client/new' element={<NewSideClient />} />
+
+                {/* WorkSpace routes */}
+                <Route path='/member' element={<SlideMember />} />
+                <Route path='/subscribtion' element={<SlideSubscription />} />
 
                 <Route path='*' element={"Page Not Found"} />
 
