@@ -28,7 +28,9 @@ function SlideMember() {
                 borderRadius={"20px"}
                 w='78%' mt='20px' h='auto'
                 >
+
                     <Member />
+
                 </Box>
             </Flex>
         </div>
