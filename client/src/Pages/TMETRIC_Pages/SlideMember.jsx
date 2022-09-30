@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import SideBar from '../../component/SideBar'
 
 
+
 function SlideMember() {
 
     const token = useSelector((state) => state.auth.token)
@@ -22,10 +23,13 @@ function SlideMember() {
 
                 <Box transition={' 0.5s ease-in-out'}
                 ml={sideSize == 'large' ? '180px' : "300px"}
-                border='1px solid red' w='78%' mt='20px' h='auto'>
-                    <h1>Member</h1>
+                border='0.5px solid lightgray' 
+                borderRadius={"20px"}
+                w='78%' mt='20px' h='auto'
+                >
+                   
+                   
                 </Box>
-
             </Flex>
         </div>
     )
