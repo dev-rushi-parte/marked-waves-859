@@ -7,6 +7,7 @@ import TimePicker from 'react-time-picker'
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import ActiveProject from "./ActiveProject";
 import Menus from "./Menus";
+import axios from 'axios'
 const Time = () => {
     const { isOpen, onOpen, onClose} = useDisclosure()
     const[play, setPlay]=useState(0)
@@ -59,6 +60,20 @@ const Time = () => {
       setData([...data,form])
       set();
       onClose();
+
+      axios.post('http://localhost:8080/time/addTime', {
+        description :form.description,
+        project : form.project,
+        startTime: value,
+        endTime: value1,
+        duration: `${ehour[0]-shour[0]}:${ehour[1]-shour[1]}`
+        })
+      .then(function (res) {
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     }
    
     
@@ -73,7 +88,7 @@ const Time = () => {
       
      
   return (
-<Box  w="80%" p="0.5rem">
+<Box  w="100%" p="0.5rem">
 
 {/* Upper Part */}
 
@@ -82,8 +97,8 @@ const Time = () => {
   <Box display={"flex"} gap="10px" border={""}>
       {/*button*/}
       <Flex gap="5px">
-      <Button bg="#17c22e" disabled={play>0}  colorScheme='#17c22e' borderRadius="49%"><FaPlay color='white'/></Button>
-      <Button bg="red" disabled={play<=0}  colorScheme='red' borderRadius="49%"><FaStop color='white'/></Button>
+      <Button bg="#17c22e" disabled={play>0}  colorScheme='#17c22e' borderRadius="50%"><FaPlay color='white'/></Button>
+      <Button bg="red" disabled={play<=0}  colorScheme='red' borderRadius="50%"><FaStop color='white'/></Button>
       </Flex>
 
       {/*select Team*/}
@@ -96,7 +111,7 @@ const Time = () => {
   </Box>
   
   
-  <Box display={"flex"} gap="10px" >
+  <Box display={"flex"} gap="15px" >
       <Input type="date" ></Input>
       <Text fontSize={"2xl"}>Today</Text>
       <Flex mt="14px" gap="10px">

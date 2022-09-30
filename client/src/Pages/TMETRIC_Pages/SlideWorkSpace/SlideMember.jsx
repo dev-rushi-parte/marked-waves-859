@@ -5,6 +5,7 @@ import SideBar from '../../../component/SideBar'
 import Member from '../../WorkSpace/Member'
 
 
+
 function SlideMember() {
 
     const token = useSelector((state) => state.auth.token)
@@ -23,10 +24,13 @@ function SlideMember() {
 
                 <Box transition={' 0.5s ease-in-out'}
                     ml={sideSize == 'large' ? '180px' : "300px"}
-                    w='78%' mt='20px' h='auto'>
-                    <Member />
-                </Box>
+                borderRadius={"20px"}
+                w='78%' mt='20px' h='auto'
+                >
 
+                    <Member />
+
+                </Box>
             </Flex>
         </div>
     )
