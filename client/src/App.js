@@ -1,11 +1,14 @@
-import SlideClient from './Pages/TMETRIC_Pages/Manage/SlideClient';
-import MainRoutes from './Routes/MainRoutes';
+
+import SlideNewProject from './Pages/TMETRIC_Pages/Manage/SlideNewProject';
+// import MainRoutes from './Routes/MainRoutes';
 
 function App() {
   return (
     <div className="App">
-      {/* <MainRoutes /> */}.
-      <SlideClient/>
+      {/* <MainRoutes /> */}
+      <SlideNewProject/>
+      {/* <SlideClient/> */}
+      {/* <NewSideClient/> */}
     </div>
   );
 }
