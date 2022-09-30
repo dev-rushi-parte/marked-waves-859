@@ -162,8 +162,7 @@ function SideBar() {
                             </h2>
                             <AccordionPanel pb={4}>
 
-                                <NavLink to='/report'> <Flex alignItems='center' gap='10px' h='40px'><IoBarChartOutline /> Reports</Flex></NavLink>
-                                <NavLink to='/activity'> <Flex alignItems='center' gap='10px' h='40px'><SiCircle /> Activity</Flex></NavLink>
+                                <NavLink to='/reports'> <Flex alignItems='center' gap='10px' h='40px'><IoBarChartOutline /> Reports</Flex></NavLink>
                             </AccordionPanel>
                         </AccordionItem>}
 
