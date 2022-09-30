@@ -22,6 +22,7 @@ import SlideSubscription from '../Pages/TMETRIC_Pages/SlideWorkSpace/SlideSubscr
 import SlideMember from '../Pages/TMETRIC_Pages/SlideWorkSpace/SlideMember';
 
 
+
 function MainRoutes() {
     return (
         <>
@@ -63,7 +64,7 @@ function MainRoutes() {
                 <Route path='/subscribtion' element={<SlideSubscription />} />
 
                 <Route path='*' element={"Page Not Found"} />
-
+                
             </Routes>
         </>
 

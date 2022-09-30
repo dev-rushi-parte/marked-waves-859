@@ -25,7 +25,7 @@ export const SubscriptionCurrentFree = () => {
                 fontWeight={"700"}
                 color={"#34393d"}  
             >
-                Professional
+                Free
             </Text>
 
             <Text 
@@ -39,13 +39,13 @@ export const SubscriptionCurrentFree = () => {
                 <span 
                     style={{fontSize:'46px',fontWeight:'bold'}} 
                 >
-                    4
+                    0
                     <sup 
                         style={{fontSize:'24px',fontWeight:'500'}} >
-                            17
+                            00
                     </sup>
                 </span>
-                / user / month
+                <Text ml={"10px"} p={"6px"} borderRadius={"16px"} bg={'lightgray'} >Up to 5 users</Text>
             </Text>
 
             <Button
@@ -62,7 +62,7 @@ export const SubscriptionCurrentFree = () => {
                 fontWeight={"500"}
                 // onClick={savingtheEmail} 
             >
-                Choose Professional Plan
+                Choose Free Plan
             </Button>
         </Box>
 
@@ -83,10 +83,10 @@ export const SubscriptionCurrentFree = () => {
                         fontWeight:'500'
                     }}
                     > 
-                        <CheckCircleIcon  color={`${i > 9  ? "white" : "rgb(23,194,46)"}` } /> 
+                        <CheckCircleIcon  color={`${i > 3  ? "white" : "rgb(23,194,46)"}` } /> 
                         <Text 
-                            textDecoration={`${i > 9  ? "line-through" : "none"}`  } 
-                            color={`${i > 9  ? "rgb(119, 126, 133)" : "#34393d"}` }
+                            textDecoration={`${i > 3  ? "line-through" : "none"}`  } 
+                            color={`${i > 3  ? "rgb(119, 126, 133)" : "#34393d"}` }
                         > 
                             {e} 
                         </Text>  
@@ -106,7 +106,7 @@ export const SubscriptionCurrentFree = () => {
                 fontWeight={"500"}
                 // onClick={savingtheEmail} 
             >
-                Choose Professional Plan
+                Choose Free Plan
             </Button>
         </Box>
 
