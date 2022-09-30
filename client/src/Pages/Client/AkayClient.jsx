@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Box , Text ,Button} from '@chakra-ui/react'
+import { Box , Text ,Button, Menu, MenuButton, MenuList, MenuItem} from '@chakra-ui/react'
 import styles from "../Client/Client.module.css"
 import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 import { useEffect } from 'react';
 import { IoMdAdd } from "react-icons/io";
+import { BsThreeDots } from 'react-icons/bs';
 
 
 
@@ -29,6 +30,18 @@ const AkayClient = () => {
   },[])
 
   console.log(data)
+
+
+  const handleDelete=(id)=>{
+    fetch(`http://localhost:8080/clients/${id}`,{
+     method:"DELETE",
+    })
+    .then((res)=>res.json())
+    .then(()=>getdata())
+    .catch((err)=>{
+     console.log(err)
+    })
+   }
 
   const handleClientSort=()=>{
   if(change==true)
@@ -102,7 +115,20 @@ const AkayClient = () => {
         <img src="https://services.tmetric.com/storage/Content/Avatars/client.svg" alt="" className={styles.image}/>
         <Text>{el.client}</Text>
         </Box>
-        <Box className={styles.MapRightBox}></Box>
+        <Box className={styles.MapRightBox}>
+        <Box className={styles.MapRightLeftBox}></Box>
+          <Box className={styles.MapRightRightBox}>
+          <Menu>
+  <MenuButton as={Button}>
+   <BsThreeDots/>
+  </MenuButton>
+  <MenuList>
+    <MenuItem>Edit</MenuItem>
+    <MenuItem onClick={()=>handleDelete(el._id)}>Delete</MenuItem>
+  </MenuList>
+</Menu>
+          </Box>
+        </Box>
       </Box>
       ))
 }
