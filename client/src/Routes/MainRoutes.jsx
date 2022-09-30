@@ -20,6 +20,7 @@ import NewSideClient from '../Pages/TMETRIC_Pages/SlideManage/NewSideClient';
 import SlideReports from '../Pages/TMETRIC_Pages/SlideAnalyze/SlideReports';
 import SlideSubscription from '../Pages/TMETRIC_Pages/SlideWorkSpace/SlideSubscription';
 import SlideMember from '../Pages/TMETRIC_Pages/SlideWorkSpace/SlideMember';
+import Price from '../Pages/Price/Price';
 
 
 
@@ -34,7 +35,7 @@ function MainRoutes() {
 
 
                 <Route path='/' element={<Homepage />} />
-
+                <Route path='/Pricing' element={<Price />} />
                 {/* 
                 <Route
                     path='/sidebar'
