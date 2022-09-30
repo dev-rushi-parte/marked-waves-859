@@ -35,7 +35,7 @@ function MainRoutes() {
 
 
                 <Route path='/' element={<Homepage />} />
-                <Route path='/Pricing' element={<Price />} />
+                <Route path='/Price' element={<Price />} />
                 {/* 
                 <Route
                     path='/sidebar'

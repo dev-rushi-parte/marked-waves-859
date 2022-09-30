@@ -314,7 +314,7 @@ import { useState } from 'react';
     },
     {
       label: 'Pricing',
-      href: '#',
+      href: '/Price',
     },
     {
       label: 'Support',
