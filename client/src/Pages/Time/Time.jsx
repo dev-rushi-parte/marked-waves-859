@@ -73,7 +73,7 @@ const Time = () => {
       
      
   return (
-<Box  w="80%" p="0.5rem">
+<Box  w="100%" p="0.5rem">
 
 {/* Upper Part */}
 
@@ -82,8 +82,8 @@ const Time = () => {
   <Box display={"flex"} gap="10px" border={""}>
       {/*button*/}
       <Flex gap="5px">
-      <Button bg="#17c22e" disabled={play>0}  colorScheme='#17c22e' borderRadius="49%"><FaPlay color='white'/></Button>
-      <Button bg="red" disabled={play<=0}  colorScheme='red' borderRadius="49%"><FaStop color='white'/></Button>
+      <Button bg="#17c22e" disabled={play>0}  colorScheme='#17c22e' borderRadius="50%"><FaPlay color='white'/></Button>
+      <Button bg="red" disabled={play<=0}  colorScheme='red' borderRadius="50%"><FaStop color='white'/></Button>
       </Flex>
 
       {/*select Team*/}
@@ -96,7 +96,7 @@ const Time = () => {
   </Box>
   
   
-  <Box display={"flex"} gap="10px" >
+  <Box display={"flex"} gap="15px" >
       <Input type="date" ></Input>
       <Text fontSize={"2xl"}>Today</Text>
       <Flex mt="14px" gap="10px">
