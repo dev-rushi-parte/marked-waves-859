@@ -11,7 +11,7 @@ const { checkAllFields, checkLoginFields } = require("../Controller/AuthFields")
 AuthRouter.post("/singup", checkAllFields, async (req, res) => {
 
     const { name, email, password } = req.body
-    console.log(email)
+    // console.log(email)
     const checkUserEmail = await User.findOne({ email }).exec();
     const checkName = await User.findOne({ name }).exec();
 
@@ -44,7 +44,7 @@ AuthRouter.post("/singup", checkAllFields, async (req, res) => {
         }
         catch (err) {
             console.log(err);
-            res.status(500).send(err)
+            res.status(500).send(err, "catch err")
         }
     }
 
@@ -56,18 +56,35 @@ AuthRouter.post("/singup", checkAllFields, async (req, res) => {
 AuthRouter.post("/login", checkLoginFields, async (req, res) => {
 
     try {
-        const { email, password } = req.body;
+        const { email, name, password } = req.body;
 
         const user = await User.findOne({ email });
-        console.log("user  " + user)
+        // console.log("user  " + user)
+        const hash = user.password;
+        const userId = user._id;
+        console.log(userId)
+
+        const payload = {
+            email,
+            name,
+            userId: userId
+        }
+        // res.send(payload)
+
+        const update = await user.updateOne({ $set: payload })
+
+
+
+        // res.send(update)
+
+
+
         if (user == null) {
             return res.status(401).send({ "message": "Invalid user Credentials " })
 
         }
 
-        const hash = user.password;
-        const userId = user._id;
-        console.log(userId)
+
         bcrypt.compare(password, hash, (err, result) => {
             if (result) {
                 var token = jwt.sign({ email, userId }, process.env.KEY);
