@@ -23,8 +23,7 @@ function SlideMember() {
                 </Box>
 
                 <Box transition={' 0.5s ease-in-out'}
-                ml={sideSize == 'large' ? '180px' : "300px"}
-                border='0.5px solid lightgray' 
+                    ml={sideSize == 'large' ? '180px' : "300px"}
                 borderRadius={"20px"}
                 w='78%' mt='20px' h='auto'
                 >
