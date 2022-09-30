@@ -13,6 +13,7 @@ const MemberRouter = require("./Routes/Members.routes.js")
 // const PostRouter = require("./Routes/Post.routes");
 const userAuthentication = require("./Controller/Auth.middleware");
 const { ClientRouter } = require("./Routes/Client.routes");
+const {timeController} = require("./Routes/time.routes")
 
 const {ProjectRouter} = require("./Routes/Project.routes")
 
