@@ -14,9 +14,9 @@ import SlideTime from '../Pages/TMETRIC_Pages/SlideTime';
 import SlideMyWork from '../Pages/TMETRIC_Pages/SlideMyWork';
 
 import SlideTeam from '../Pages/TMETRIC_Pages/SlideTeam';
-import SlideProject from '../Pages/TMETRIC_Pages/Manage/SlideProject';
-import SlideClient from '../Pages/TMETRIC_Pages/Manage/SlideClient';
-import NewSideClient from '../Pages/TMETRIC_Pages/Manage/NewSideClient';
+import SlideProject from '../Pages/TMETRIC_Pages/SlideManage/SlideProject';
+import SlideClient from '../Pages/TMETRIC_Pages/SlideManage/SlideClient';
+import NewSideClient from '../Pages/TMETRIC_Pages/SlideManage/NewSideClient';
 import SlideReports from '../Pages/TMETRIC_Pages/SlideAnalyze/SlideReports';
 import SlideSubscription from '../Pages/TMETRIC_Pages/SlideWorkSpace/SlideSubscription';
 import SlideMember from '../Pages/TMETRIC_Pages/SlideWorkSpace/SlideMember';
