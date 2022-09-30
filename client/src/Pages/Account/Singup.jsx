@@ -13,17 +13,19 @@ function Singup() {
   const navigate = useNavigate();
   const toast = useToast()
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [name, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+
+  console.log(email)
 
   // Singup Submit Button
   const SingUpForm = async (e) => {
     e.preventDefault();
 
 
-    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
     // checking email formmat
     if (email.match(pattern)) {
       let payload = {
@@ -33,7 +35,7 @@ function Singup() {
 
       }
 
-      console.log(payload)
+      // console.log(payload)
       // Dispatch for sending the data to action.js getting response
       dispatch(SingupUser(payload))
         .then((res) => {

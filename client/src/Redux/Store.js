@@ -2,10 +2,12 @@ import { applyMiddleware, combineReducers, compose, legacy_createStore } from "r
 import thunk from "redux-thunk";
 import { authReducer } from "./AuthReducer/authReducer";
 import { homeReducer } from "./HomeReducer/homeReducer";
+import { memberReducer } from "./MemberReducer/memberReducer";
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    home: homeReducer
+    home: homeReducer,
+    member: memberReducer
 })
 
 
