@@ -5,6 +5,7 @@ const MemberSchema = require("../Model/Members.model");
 const UserModle = require("../Model/User.model");
 
 
+// get all the users from user collection
 
 MemberRouter.get("/user", async (req, res) => {
     try {
@@ -17,6 +18,9 @@ MemberRouter.get("/user", async (req, res) => {
         res.status(500).send(err)
     }
 })
+
+
+//  post the user in member collection and change the role in user collection as well as member collction
 
 MemberRouter.post("/:Id", async (req, res) => {
     try {
@@ -51,7 +55,7 @@ MemberRouter.post("/:Id", async (req, res) => {
 
 })
 
-
+// get alll memeber in member collection
 MemberRouter.get("/", async (req, res) => {
     try {
 
@@ -64,10 +68,8 @@ MemberRouter.get("/", async (req, res) => {
     }
 
 })
-// const user = await UserModle.findOneAndUpdate({ userId: id }, { $set: { role: role } }, { new: true }, function (err, doc) {
-//     if (err) { throw err; }
-//     else { console.log("Updated"); }
-// })
+
+// edit or update the member role in member collection as well as user collection
 
 MemberRouter.patch("/:id", async (req, res) => {
 
