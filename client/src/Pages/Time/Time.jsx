@@ -7,6 +7,7 @@ import TimePicker from 'react-time-picker'
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import ActiveProject from "./ActiveProject";
 import Menus from "./Menus";
+import axios from 'axios'
 const Time = () => {
     const { isOpen, onOpen, onClose} = useDisclosure()
     const[play, setPlay]=useState(0)
@@ -59,6 +60,20 @@ const Time = () => {
       setData([...data,form])
       set();
       onClose();
+
+      axios.post('http://localhost:8080/time/addTime', {
+        description :form.description,
+        project : form.project,
+        startTime: value,
+        endTime: value1,
+        duration: `${ehour[0]-shour[0]}:${ehour[1]-shour[1]}`
+        })
+      .then(function (res) {
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     }
    
     
