@@ -1,7 +1,8 @@
 import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import SideBar from '../../component/SideBar'
+import SideBar from '../../../component/SideBar'
+import Member from '../../WorkSpace/Member'
 
 
 
@@ -22,6 +23,7 @@ function SlideMember() {
                 </Box>
 
                 <Box transition={' 0.5s ease-in-out'}
+<<<<<<< HEAD:client/src/Pages/TMETRIC_Pages/SlideMember.jsx
                 ml={sideSize == 'large' ? '180px' : "300px"}
                 border='0.5px solid lightgray' 
                 borderRadius={"20px"}
@@ -29,6 +31,11 @@ function SlideMember() {
                 >
                    
                    
+=======
+                    ml={sideSize == 'large' ? '180px' : "300px"}
+                    border='1px solid red' w='78%' mt='20px' h='auto'>
+                    <Member />
+>>>>>>> main:client/src/Pages/TMETRIC_Pages/SlideWorkSpace/SlideMember.jsx
                 </Box>
             </Flex>
         </div>

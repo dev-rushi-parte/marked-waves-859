@@ -11,7 +11,8 @@ const cors = require("cors")
 const AuthRouter = require("./Routes/Auth.routes");
 const MemberRouter = require("./Routes/Members.routes.js")
 // const PostRouter = require("./Routes/Post.routes");
-const userAuthentication = require("./Controller/Auth.middleware")
+const userAuthentication = require("./Controller/Auth.middleware");
+const { ClientRouter } = require("./Routes/Client.routes");
 
 
 require('dotenv').config()
@@ -23,6 +24,7 @@ app.use(morgan("common"));
 
 // Login Singup routes
 app.use("/user", AuthRouter)
+app.use("/clients" , ClientRouter)
 
 // login user authentication middleware
 app.use(userAuthentication)
