@@ -16,6 +16,8 @@ import SlideTask from '../Pages/TMETRIC_Pages/SlideTask';
 import Team from '../Pages/TMETRIC_Pages/Team';
 import Project from '../Pages/TMETRIC_Pages/Manage/Project';
 import Client from '../Pages/TMETRIC_Pages/Manage/Client';
+import FullTask from '../Pages/Task/FullTask';
+import TaskHeading from '../Pages/Task/TaskHeading';
 
 function MainRoutes() {
     return (
@@ -43,6 +45,7 @@ function MainRoutes() {
                 <Route path='/member' element={<Member />} />
                 <Route path='/task' element={<SlideTask />} />
                 <Route path='/team' element={<Team />} />
+                
 
 
                 {/* manage Routes */}

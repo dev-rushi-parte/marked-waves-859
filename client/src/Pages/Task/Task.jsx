@@ -1,178 +1,153 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styles from "./Task.module.css";
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuItemOption,
+    MenuGroup,
+    MenuOptionGroup,
+    MenuDivider,
+    Select,
+} from '@chakra-ui/react';
+
+import {
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon,
+} from '@chakra-ui/react'
+
 import { SiHeadspace } from "react-icons/si"
+import { BsFillTrashFill } from "react-icons/bs";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { BsFillCalendarDateFill } from "react-icons/bs";
 import { TbAlarm } from "react-icons/tb";
 import { AiFillTag } from "react-icons/ai";
 import { AiFillSignal } from "react-icons/ai";
-import { BiChevronDown } from "react-icons/bi";
-import { BiX } from "react-icons/bi";
-import { BiSearchAlt2 } from "react-icons/bi";
-import { Button } from '@chakra-ui/react';
+import { AiTwotonePlayCircle } from "react-icons/ai";
+import { AiOutlineCheck } from "react-icons/ai";
+import { FiMoreHorizontal } from "react-icons/fi";
+import { FiArrowRight } from "react-icons/fi";
+import FullTask from './FullTask';
+import { Box } from "@chakra-ui/react";
 
-const Task = () => {
+
+const Task = ({ state, setState }) => {
+
+    const taskChangeState = () => {
+        setState(!state);
+    }
+
+    const assigne = ['Ravi', "Shakti", "Akshay", "Aadil"];
+    const project = ["project1" , "project2" , "project3" , "project4" , "project5"];
+
+    const [taskData , setTaskData] = useState({
+        taskName : "" ,
+        projectName : "",
+        assigneName : "",
+        dueDate: "",
+        taskDescription : "",
+        estimateTime : "",
+        tag: ""
+    })
+
+
+    const addData = (e) => {
+        console.log(e.target.value)
+    }
+
     return (
+
         <div className={styles.top}>
-
-            {    /* heading  */}
-            <div className={styles.taskHeading}>
-                <h1>My Tasks</h1>
-                <div className={styles.taskHeadingDiv}>
-                    <div>Assigne Task</div>
-                    <div><BiChevronDown className={styles.headingDivIcon} /></div>
-                </div>
-            </div>
-
-            {  /* Filter Section */}
-            <div className={styles.taskFilter}>
-                <div className={styles.filterDiv}>
-                    <select>
-                        <option>
-                            <div>Client:All</div>
-                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
-                        </option>
-                        <option>Raviranjan</option>
-                        <option>Shakti</option>
-                        <option>Akshay</option>
-                        <option>Rushi</option>
-                        <option>Aadil</option>
-                    </select>
-                </div>
-
-                <div className={styles.filterDiv}>
-                    <select>
-                        <option>
-                            <div>Project</div>
-                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
-                        </option>
-                        <option>Project1</option>
-                        <option>Project2</option>
-                        <option>Project3</option>
-                        <option>Project4</option>
-                        <option>Project5</option>
-                    </select>
-                </div>
-
-                <div className={styles.filterDiv}>
-                    <select>
-                        <option>
-                            <div>Tag:All</div>
-                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
-                        </option>
-                        <option>No work type</option>
-                        <option>No tag</option>
-                    </select>
-                </div>
-
-                <div className={styles.filterDiv}>
-                    <select>
-                        <option>
-                            <div>Status:All</div>
-                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
-                        </option>
-                        <option>Status:Open</option>
-                        <option>Status:Completed</option>
-                    </select>
-                </div>
-
-                <div className={styles.filterDiv}>
-                    <select>
-                        <option>
-                            <div>Creator:Any</div>
-                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
-                        </option>
-                        <option>Creator:Ravi</option>
-                        <option>Creator:Akshay</option>
-                        <option>Creator:Shakti</option>
-                    </select>
-                </div>
-
-
-                <div className={styles.filterDiv}>
-                    <select>
-                        <option>
-                            <div>Source:Internal</div>
-                            <div><BiChevronDown className={styles.filterDivIcon} /></div>
-                        </option>
-                        <option>External</option>
-                        <option>All</option>
-                    </select>
-                </div>
-
-                <div className={styles.filterDiv}>
-                    <div><BiX className={styles.filterDivIcon} /></div>
-                    <div>Clear Filter</div>
-                </div>
-            </div>
-
-            { /* New Task Section  */}
-            <div className={styles.newTask}>
-                <div className={styles.newTaskInside}>
-
-                    <div className={styles.taskDiv}>
-                        <div><Button>New Task</Button></div>
-                        <div><BiChevronDown className={styles.filterDivIcon} /></div>
-                    </div>
-
-                    <div className={styles.taskDiv}>
-                        <select>
-                            <option>
-                                <div>Sort: Project</div>
-                                <div><BiChevronDown className={styles.filterDivIcon} /></div>
-                            </option>
-                            <option>Estimate</option>
-                            <option>Due Date</option>
-                            <option>Last Updated</option>
-                            <option>Newer First</option>
-                            <option>Older First</option>
-                        </select>
-                    </div>
-
-                </div>
-                <div className={styles.taskInput}>
-                    <div><BiSearchAlt2 className={styles.filterDivIcon} /></div>
-                    <div>
-                        <input type="text" placeholder='Search' />
-                    </div>
-                </div>
-            </div>
-
             {  /* Project Section  */}
             <div className={styles.taskProject}>
 
                 {  /* ProjectLeft Section    */}
                 <div className={styles.taskProjectLeft}>
-                    <div>
-                        <div ><img /></div>
-                        <div><h3>Project Name</h3></div>
-                    </div>
+                    <FullTask />
                 </div>
 
                 { /* ProjectRight Section */}
                 <div className={styles.taskProjectRight}>
-                    <h1>Project Name</h1>
+                    <div className={styles.taskUp}>
+                        <div className={styles.taskUpLeft}>
+                            <div><AiTwotonePlayCircle /></div>
+                            <div className={styles.taskMarkComplete}>
+                                <div><AiOutlineCheck /></div>
+                                <div>Mark Complete</div>
+                            </div>
+                        </div>
+                        <div className={styles.taskUpRight}>
+
+                            <Menu>
+                                <MenuButton >
+                                    <FiMoreHorizontal />
+                                </MenuButton>
+                                <MenuList>
+                                    <MenuItem> <BsFillTrashFill className={styles.deleteicon} /> Delete</MenuItem>
+                                </MenuList>
+                            </Menu>
+
+                            <div><button onClick={taskChangeState}><FiArrowRight /></button></div>
+                        </div>
+                    </div>
+
+
+
+                        { /* Map Project Data */ }
+                    <div><input placeholder='Write Task Here' type='text' /></div>
                     <div className={styles.projectRightDiv}>
                         <div><p>Project</p></div>
                         <div className={styles.projectRightDivBelow}>
                             <div><SiHeadspace className={styles.projectRightDivIcon} /></div>
-                            <div>project Name</div>
+                            
+                            <div>
+                                <Select onChange={addData}>
+
+                                    {
+                                        project.map((val) => {
+                                            return <option value={val} >{val}</option>
+                                        })
+                                    }
+
+                                </Select>
+                            </div>
+
                         </div>
                     </div>
 
+
+                    { /* Map Assign Data */ }
                     <div className={styles.projectRightDiv}>
                         <div><p>Assigne</p></div>
                         <div className={styles.projectRightDivBelow}>
-                            <div><BsFillPersonPlusFill className={styles.projectRightDivIcon} /></div>
-                            <div>Ravi</div>
+                            <div><BsFillPersonPlusFill className={styles.projectRightDivIcon} />
+
+                            </div>
+                            <div>
+                                <Select onChange={addData}>
+
+                                    {
+                                        assigne.map((val) => {
+                                            return <option value={val}>{val}</option>
+                                        })
+                                    }
+
+                                </Select>
+                            </div>
                         </div>
                     </div>
 
                     <div className={styles.projectRightDiv}>
                         <div>Due Date</div>
                         <div className={styles.projectRightDivBelow}>
-                            <div><BsFillCalendarDateFill className={styles.projectRightDivIcon} /></div>
-                            <div>project Name</div>
+                            <div><BsFillCalendarDateFill className={styles.projectRightDivIcon} />
+                            
+                            </div>
+                            <div><input type="date" placeholder='Choose Date' name='dueDate'/></div>
                         </div>
                     </div>
 
@@ -185,27 +160,35 @@ const Task = () => {
                         <div>Estimate</div>
                         <div className={styles.projectRightDivBelow}>
                             <div><TbAlarm className={styles.projectRightDivIcon} /></div>
-                            <div>project Name</div>
+                            <div><input type='text' /></div>
                         </div>
                     </div>
 
                     <div>
                         <div className={styles.projectRightDivBelow}>
                             <div><AiFillTag className={styles.projectRightDivIcon} /></div>
-                            <div><input type='text' placeholder='Add Tags' /></div>
+                            <div>
+                                <select >
+                                    <option value='Add-Tags'>Add-Tags</option>
+                                    <option value='Design'>Design</option>
+                                    <option value='Development'>Development</option>
+                                    <option value='Testing'>Testing</option>
+                                    <option value='Implementation'>Implementation</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
                     <div>
                         <div className={styles.projectRightDivBelow}>
                             <div><AiFillSignal className={styles.projectRightDivIcon} /></div>
-                            <div>project Name</div>
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
+
     )
 }
 
