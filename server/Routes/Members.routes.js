@@ -22,37 +22,48 @@ MemberRouter.get("/user", async (req, res) => {
 
 //  post the user in member collection and change the role in user collection as well as member collction
 
-MemberRouter.post("/:Id", async (req, res) => {
-    try {
+MemberRouter.post("/", async (req, res) => {
+    const { id } = req.body;
 
-        const { Id } = req.params;
+    const check = await UserModle.findById(id).exec();
+    const checkUserId = await MemberSchema.findOne({ userId: check.userId }).exec();
+    console.log(!checkUserId);
+    if (!checkUserId) {
+        try {
 
-        const user = await UserModle.findById(Id);
-        // res.send(user)
 
-        const { email, name, role, userId } = user;
-        const payload = {
-            email,
-            name,
-            userId,
-            role: "TeamMember"
+
+
+            const user = await UserModle.findById(id);
+            // res.send(user)
+
+            const { email, name, role, userId } = user;
+            const payload = {
+                email,
+                name,
+                userId,
+                role: "TeamMember"
+            }
+            // res.send(payload)
+
+            const update = await user.updateOne({ $set: payload })
+
+            const newMember = new MemberSchema(payload);
+            const member = await newMember.save();
+
+            res.status(201).json({ "data": member });
+
+
+
+
         }
-        // res.send(payload)
-
-        const update = await user.updateOne({ $set: payload })
-
-        const newMember = new MemberSchema(payload);
-        const member = await newMember.save();
-
-        res.status(201).json({ "data": member });
-
-
-
+        catch (err) {
+            res.status(500).send(err)
+        }
     }
-    catch (err) {
-        res.status(500).send(err)
+    else {
+        res.status(406).send("User already Exist")
     }
-
 })
 
 // get alll memeber in member collection
