@@ -117,8 +117,8 @@ export const UpdateMember = (payload) => async (dispatch) => {
     })
         .then((res) => {
 
-            // return dispatch(postMember(res));
-            console.log(res)
+            return dispatch(updateMember(res));
+            // console.log(res)
 
         })
         .catch((err) => {
