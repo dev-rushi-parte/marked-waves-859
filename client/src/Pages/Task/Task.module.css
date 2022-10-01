@@ -3,6 +3,10 @@
     margin: auto;
     /* border: 1px solid black; */
 }
+.taskheadingtop{
+    width: 95%;
+    margin: 20px auto;
+}
 .taskHeading {
 
     font-size: 25px;
@@ -28,18 +32,20 @@
 .taskFilter{
     display: grid;
     grid-template-columns: repeat(7,1fr);
-    gap: 10px;
+    gap: 6px;
     margin-top: 9px;
     width: 85%;
 }
 .taskFilter > div{
     border: 1px solid black;
     border-radius: 6px;
-    padding: 2px;
+    font-size: 14.5px;
+    padding: 1px;
 }
 .filterDiv{
     display: flex;
-    gap: 15px;
+    gap: 17px;
+    padding: 1px;
     justify-content: space-between;
 
 }
@@ -57,7 +63,8 @@
 .taskDiv{
     display: flex;
     justify-content: space-between;
-    padding: 7px;
+    padding: 4px;
+
 }
 .newTaskInside{
     display: flex;
@@ -93,6 +100,39 @@
 .taskProjectRight{
     /* width: 50%; */
 }
+.taskUp{
+    display: flex;
+    justify-content: space-between;
+}
+.taskUpLeft{
+    display: flex;
+    gap: 15px;
+    padding: 2px;
+}
+.taskUpRight{
+    display: flex;
+    gap: 15px;
+    font-size: 1.5rem;
+}
+.taskMarkComplete{
+    display: flex;
+    gap: 10px;
+    height: 34px;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-top: -2px;
+    padding: 1px;
+    padding: 5px;
+    background-color: #17c22e;
+    color: white;
+}
+.taskMarkComplete > div{
+    font-size: 1em;
+    margin-bottom: 6px;
+}
+.deleteicon{
+    margin-right: 20px;
+}
 .taskProjectRight > div{
     border-bottom: 1px solid black;
     padding: 5px;
@@ -107,9 +147,24 @@
 
 .projectRightDivIcon{
     color: #b4b8cc;
-    font-size: 2em;
+    font-size: 1.8em;
 }
 .projectRightDivBelow{
     display: flex;
     gap: 12px;
+}
+
+
+
+        /* Task Heading */
+
+.headerDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
+    background-color: #3070f0;
+}
+
+.taskDiv{
+    background-color: #ebedf0;
 }
