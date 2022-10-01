@@ -107,9 +107,9 @@ const updateMember = (payload) => {
 
 export const UpdateMember = (payload) => async (dispatch) => {
 
-    console.log("patload", payload.id)
-    console.log(getLocalData("token"))
-    return await axios.post(`http://localhost:8080/member/`, payload, {
+    console.log("payload", payload.role)
+    // console.log(getLocalData("token"))
+    return await axios.patch(`http://localhost:8080/member/${payload.userId}`, payload, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${payload.token}`
@@ -117,13 +117,13 @@ export const UpdateMember = (payload) => async (dispatch) => {
     })
         .then((res) => {
 
-            return dispatch(postMember(res));
-            // console.log(res)
+            // return dispatch(postMember(res));
+            console.log(res)
 
         })
         .catch((err) => {
             console.log(err, "errrrr2222222")
-            return dispatch(postMemberError(err))
+            // return dispatch(postMemberError(err))
         });
 
 

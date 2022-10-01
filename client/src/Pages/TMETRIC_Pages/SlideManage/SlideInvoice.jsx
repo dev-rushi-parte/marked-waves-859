@@ -2,9 +2,10 @@ import { Box, Flex } from '@chakra-ui/react';
 import React from 'react'
 import { useSelector } from 'react-redux';
 import SideBar from '../../../component/SideBar';
-import NewProject from '../../Projects/NewProject';
+import AkayClient from '../../Client/AkayClient';
+import { Invoice } from '../../Invoice/Invoice';
 
-function SlideProject() {
+function SlideInvoice() {
     const sideSize = useSelector((state) => state.auth.sideSize);
 
     console.log(sideSize, "in Timer")
@@ -19,11 +20,11 @@ function SlideProject() {
                 ml={sideSize == 'large' ? '180px' : "300px"}
                 w='80%' mt='20px' h='auto'>
 
-                <NewProject />
+                <Invoice />
             </Box>
 
         </Flex>
     )
 }
 
-export default SlideProject
+export default SlideInvoice

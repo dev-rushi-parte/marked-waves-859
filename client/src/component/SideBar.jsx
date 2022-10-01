@@ -13,10 +13,19 @@ import {
     AccordionItem,
     AccordionButton,
     AccordionIcon,
-    AccordionPanel
+    AccordionPanel,
+    AlertDialog,
+    AlertDialogOverlay,
+    AlertDialogContent,
+    AlertDialogHeader,
+    AlertDialogCloseButton,
+    AlertDialogFooter,
+    Button,
+    useDisclosure,
+    AlertDialogBody
 } from '@chakra-ui/react'
 
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { BiChevronLeft } from "react-icons/bi";
 import { AiOutlineAlignLeft } from "react-icons/ai";
 import { MdOutlineWorkOutline } from "react-icons/md";
@@ -25,28 +34,49 @@ import { IoBarChartOutline } from "react-icons/io5";
 import { BsStopwatchFill } from "react-icons/bs";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 import { AiFillFolder } from "react-icons/ai";
+import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineTeam } from "react-icons/ai";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { RiBuildingLine } from "react-icons/ri";
-import { SiCircle } from "react-icons/si";
-import { useDispatch } from 'react-redux';
-import { Side_Bar_Size } from '../Redux/AuthReducer/action';
+import { IoIosPaper } from "react-icons/io";
+import { useDispatch, useSelector } from 'react-redux';
+import { LoginUserData, Side_Bar_Size } from '../Redux/AuthReducer/action';
 import styled from './SideBar.module.css'
 // import Member from './Member';
 // import { useSelector } from 'react-redux';
 
 import "./activeSide.css"
+import { useEffect } from 'react';
 function SideBar() {
+
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const cancelRef = React.useRef()
     const [navSize, changeNavSize] = useState("large");
     const [load, setLoad] = useState(false);
     const [value, setValue] = useState();
+    const [userName, setUserName] = useState();
 
-    const [check, setCheck] = useState(false);
+    const token = useSelector((state) => state.auth.token)
 
-    console.log(value)
-    const dispatch = useDispatch();
+    console.log(userName?.name)
+    const dispatch = useDispatch()
 
+    const naviagte = useNavigate();
 
+    const Logout = () => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("TMRTRICTOKEN");
+        naviagte("/")
+    }
+
+    useEffect(() => {
+        dispatch(LoginUserData(token))
+            .then((res) => {
+                // console.log(res.payload.name, "page")
+                setUserName(res.payload)
+            })
+    }, [])
 
     const IconBtn = () => {
         if (navSize === "small") {
@@ -178,6 +208,7 @@ function SideBar() {
                             <AccordionPanel pb={4}>
                                 <NavLink to='/project'>  <Flex alignItems='center' gap='10px' h='40px'><AiFillFolder /> Project</Flex></NavLink>
                                 <NavLink to='/client'>  <Flex alignItems='center' gap='10px' h='40px'><RiBuildingLine /> Client</Flex></NavLink>
+                                <NavLink to='/invoice'>  <Flex alignItems='center' gap='10px' h='40px'><IoIosPaper /> invoice</Flex></NavLink>
                             </AccordionPanel>
                         </AccordionItem>}
 
@@ -206,12 +237,6 @@ function SideBar() {
 
 
 
-                    {/* {navSize === 'large' ? <Link to='/task'> {load ? "" : "Task"}  </Link> : ""} */}
-
-                    {/* Member */}
-                    {/* {navSize === 'large' ? <Link to='/member'>
-                        <Box>{load ? "" : "Member"}</Box>
-                    </Link> : ""} */}
 
 
                 </Flex>
@@ -224,22 +249,50 @@ function SideBar() {
                     mb={4}>
                     <Divider display={navSize == "small" ? "none" : "flex"} />
 
-                    <Flex mt={4} >
+                    <Flex onClick={onOpen} mt={4} className={styled.UserName}>
                         <Avatar size="sm" src="avatar-1.jpg" />
-                        <Flex flexDir="column" ml={4}
+                        <Flex flexDir="column" ml={4}>
 
-                        // display={navSize == "small" ? "none" : "flex"}
-                        >
-
-                            <Heading as="h3" size="sm">Sylwia Weller</Heading>
-
-                            <Text color="gray">Admin</Text>
+                            <Text color="gray" fontSize={12}>{userName?.role}</Text>
+                            <Box>   <Heading as="h3" size="sm">{userName?.name}</Heading></Box>
                         </Flex>
+                        <Box mt='15px' ml='22px'> <AiOutlineRight /></Box>
                     </Flex>
                 </Flex> : ""}
 
 
             </Flex>
+
+
+
+            {/* Logout Pop up */}
+
+
+            <AlertDialog
+                motionPreset='slideInBottom'
+                leastDestructiveRef={cancelRef}
+                onClose={onClose}
+                isOpen={isOpen}
+                isCentered
+            >
+                <AlertDialogOverlay />
+
+                <AlertDialogContent>
+                    <AlertDialogHeader>LogOut</AlertDialogHeader>
+                    <AlertDialogCloseButton />
+                    <AlertDialogBody>
+                        Are you sure? You want to LogOut.
+                    </AlertDialogBody>
+                    <AlertDialogFooter>
+                        <Button ref={cancelRef} onClick={onClose}>
+                            No
+                        </Button>
+                        <Button onClick={Logout} colorScheme='red' ml={3}>
+                            Yes
+                        </Button>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+            </AlertDialog>
 
         </>
     )

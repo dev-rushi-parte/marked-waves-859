@@ -80,7 +80,7 @@ export const UserLogin = (payload) => async (dispatch) => {
 }
 
 
-
+// for small and large functionality
 export const sidebar = (payload) => ({
     type: types.SIDE_BAR,
     payload
@@ -91,4 +91,32 @@ export const sidebar = (payload) => ({
 export const Side_Bar_Size = (payload) => async (dispatch) => {
 
     dispatch(sidebar(payload))
+}
+
+
+// for login user
+
+export const loginUser = (payload) => {
+    return {
+        type: types.GET_LOGIN_USER,
+        payload
+    }
+}
+
+export const LoginUserData = (token) => async (dispatch) => {
+
+    return await axios.get("http://localhost:8080/member/loginuser", {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+        .then((res) => {
+            return (dispatch(loginUser(res.data)))
+            // console.log(res.data.name)
+
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 }

@@ -8,6 +8,7 @@ const inState = {
     isLoading: false,
     isError: false,
     sideSize: '',
+    LoginUser: []
 
 }
 
@@ -71,6 +72,13 @@ export const authReducer = (state = inState, action) => {
             return {
                 ...state,
                 sideSize: payload
+            }
+        }
+        case types.GET_LOGIN_USER: {
+            console.log(payload, "reducer Payload")
+            return {
+                ...state,
+                LoginUser: payload
             }
         }
         default:
