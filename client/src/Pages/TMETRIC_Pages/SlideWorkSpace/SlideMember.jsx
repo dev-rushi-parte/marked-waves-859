@@ -1,10 +1,12 @@
 import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import SideBar from '../../component/SideBar'
+import SideBar from '../../../component/SideBar'
+import Member from '../../WorkSpace/Member'
 
 
-function Member() {
+
+function SlideMember() {
 
     const token = useSelector((state) => state.auth.token)
     const isAuth = useSelector((state) => state.auth.isAuth)
@@ -20,13 +22,18 @@ function Member() {
                     <SideBar />
                 </Box>
 
-                <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '180px' : "310px"} border='1px solid red' w='50%' h='2000px'>
-                    <h1>Member</h1>
-                </Box>
+                <Box transition={' 0.5s ease-in-out'}
+                    ml={sideSize == 'large' ? '180px' : "300px"}
+                borderRadius={"20px"}
+                w='78%' mt='20px' h='auto'
+                >
 
+                    <Member />
+
+                </Box>
             </Flex>
         </div>
     )
 }
 
-export default Member
+export default SlideMember

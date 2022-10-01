@@ -24,6 +24,10 @@ function SlideTask() {
             {
                 state ?  <FullTask setState={setState } state={state} setTaskD={setTaskD}/> : <Task taskD={taskD}   setState={setState } state={state}/>
             }
+            <Box transition={' 0.5s ease-in-out'}
+                ml={sideSize == 'large' ? '180px' : "300px"}
+                border='1px solid red' w='78%' mt='20px' h='auto'>
+                <Task />
             </Box>
 
         </Flex>

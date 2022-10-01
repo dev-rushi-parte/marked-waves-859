@@ -19,7 +19,16 @@ import {
 import { Link, NavLink } from 'react-router-dom'
 import { BiChevronLeft } from "react-icons/bi";
 import { AiOutlineAlignLeft } from "react-icons/ai";
+import { MdOutlineWorkOutline } from "react-icons/md";
+import { IoReaderOutline } from "react-icons/io5";
+import { IoBarChartOutline } from "react-icons/io5";
 import { BsStopwatchFill } from "react-icons/bs";
+import { BsJournalBookmarkFill } from "react-icons/bs";
+import { AiFillFolder } from "react-icons/ai";
+import { AiOutlineTeam } from "react-icons/ai";
+import { MdOutlineAccountCircle } from "react-icons/md";
+import { RiBuildingLine } from "react-icons/ri";
+import { SiCircle } from "react-icons/si";
 import { useDispatch } from 'react-redux';
 import { Side_Bar_Size } from '../Redux/AuthReducer/action';
 import styled from './SideBar.module.css'
@@ -30,7 +39,11 @@ import "./activeSide.css"
 function SideBar() {
     const [navSize, changeNavSize] = useState("large");
     const [load, setLoad] = useState(false);
+    const [value, setValue] = useState();
 
+    const [check, setCheck] = useState(false);
+
+    console.log(value)
     const dispatch = useDispatch();
 
 
@@ -52,6 +65,18 @@ function SideBar() {
         }
     }
 
+    const AcCheck1 = () => {
+        // console.log("No1")
+        setValue(1)
+    }
+    const AcCheck2 = () => {
+        // console.log("No1")
+        setValue(2)
+    }
+    const AcCheck3 = () => {
+        // console.log("No1")
+        setValue(3)
+    }
     return (
 
         <>
@@ -77,32 +102,32 @@ function SideBar() {
                     as="nav"
 
                 >
-
-                    {navSize === 'large' ? load ? "" : <Img p="5%" w='130px' ml='55px' mt='15px' src='/Imges/tmetric_logo_and_text.svg' alt='side bar tmrtric' /> : ""}
+                    {/* TMRTIC LOGO */}
+                    {navSize === 'large' ? load ? "" : <Img p="5%" w='150px' ml='55px' mt='15px' src='/Imges/tmetric_logo_and_text.svg' alt='side bar tmrtric' /> : ""}
 
                     {/* Time */}
                     {navSize === 'large' ? <NavLink to='/time'>
 
-                        <Flex pl="5%" mt='20px'>  <Box><BsStopwatchFill /></Box>  {load ? "" : "Time"}  </Flex>
+                        <Flex pl="5%"  > {load ? "" : <Flex alignItems='center' justifyContent='center' gap='10px' h='40px'><BsStopwatchFill /> Time</Flex>}  </Flex>
 
                     </NavLink> : ""}
 
                     {/* My Work */}
                     {navSize === 'large' ? <NavLink to='/mywork'>
-                        <Flex pl="5%" >  <Box><BsStopwatchFill /></Box> {load ? "" : "My Work"} </Flex>
+                        <Flex pl="5%" > {load ? "" : <Flex alignItems='center' justifyContent='center' gap='10px' h='40px'><MdOutlineWorkOutline /> My Work</Flex>} </Flex>
 
                     </NavLink> : ""}
 
 
                     {/* Taks */}
                     {navSize === 'large' ? <NavLink to='/task'>
-                        <Flex pl="5%" >  <Box><BsStopwatchFill /></Box>  {load ? "" : "Task"}  </Flex>
+                        <Flex pl="5%" > {load ? "" : <Flex alignItems='center' justifyContent='center' gap='10px' h='40px'><IoReaderOutline /> Task</Flex>}  </Flex>
                     </NavLink> : ""}
 
                     {/* Team */}
 
                     {navSize === 'large' ? <NavLink to='/team'>
-                        <Flex pl="5%" >  <Box><BsStopwatchFill /></Box>  <Box>{load ? "" : "Team"}</Box></Flex>
+                        <Flex pl="5%" > {load ? "" : <Flex alignItems='center' justifyContent='center' gap='10px' h='40px'><AiOutlineTeam /> Team</Flex>}</Flex>
 
                     </NavLink> : ""}
 
@@ -110,7 +135,7 @@ function SideBar() {
                         background="none"
                         className={styled.IconChange}
                         position='fixed'
-                        top='10px'
+                        top='5px'
                         left='20px'
                         zIndex='100px'
                         mt={5}
@@ -123,10 +148,12 @@ function SideBar() {
                     {/* Accodina=================================================== */}
 
 
-                    {navSize === 'large' ? <Accordion  defaultIndex={[0]}  allowMultiple>
-                        {load ? "" : <AccordionItem>
+
+
+                    {navSize === 'large' ? <Accordion defaultIndex={value} allowMultiple>
+                        {load ? "" : <AccordionItem >
                             <h2>
-                                <AccordionButton>
+                                <AccordionButton onClick={AcCheck1} >
                                     <Box flex='1' textAlign='left'>
                                         ANALYZE
                                     </Box>
@@ -134,13 +161,14 @@ function SideBar() {
                                 </AccordionButton>
                             </h2>
                             <AccordionPanel pb={4}>
-                                Report
+
+                                <NavLink to='/reports'> <Flex alignItems='center' gap='10px' h='40px'><IoBarChartOutline /> Reports</Flex></NavLink>
                             </AccordionPanel>
                         </AccordionItem>}
 
-                        <AccordionItem>
+                        {load ? "" : <AccordionItem onClick={console.log("No2")}>
                             <h2>
-                                <AccordionButton>
+                                <AccordionButton onClick={AcCheck2}>
                                     <Box flex='1' textAlign='left'>
                                         MANAGE
                                     </Box>
@@ -148,17 +176,17 @@ function SideBar() {
                                 </AccordionButton>
                             </h2>
                             <AccordionPanel pb={4}>
-                                <NavLink to='/project'> <Box>Project</Box></NavLink>
-                                <NavLink to='/client'> <Box>Client</Box></NavLink>
+                                <NavLink to='/project'>  <Flex alignItems='center' gap='10px' h='40px'><AiFillFolder /> Project</Flex></NavLink>
+                                <NavLink to='/client'>  <Flex alignItems='center' gap='10px' h='40px'><RiBuildingLine /> Client</Flex></NavLink>
                             </AccordionPanel>
-                        </AccordionItem>
+                        </AccordionItem>}
 
 
                         {/* Work Space */}
 
-                        <AccordionItem>
+                        {load ? "" : <AccordionItem>
                             <h2>
-                                <AccordionButton>
+                                <AccordionButton onClick={AcCheck3}>
                                     <Box flex='1' textAlign='left'>
                                         WORKSPACE
                                     </Box>
@@ -166,9 +194,10 @@ function SideBar() {
                                 </AccordionButton>
                             </h2>
                             <AccordionPanel pb={4}>
-                                <NavLink to='/member'>members</NavLink>
+                                <NavLink to='/member'> <Flex alignItems='center' gap='10px' h='40px'><MdOutlineAccountCircle /> Members</Flex></NavLink>
+                                <NavLink to='/subscribtion'> <Flex alignItems='center' gap='10px' h='40px'><BsJournalBookmarkFill /> Subcription</Flex></NavLink>
                             </AccordionPanel>
-                        </AccordionItem>
+                        </AccordionItem>}
                     </Accordion> : ""}
 
 

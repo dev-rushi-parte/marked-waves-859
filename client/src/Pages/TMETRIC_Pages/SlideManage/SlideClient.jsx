@@ -1,9 +1,10 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react'
 import { useSelector } from 'react-redux';
-import SideBar from '../../component/SideBar';
+import SideBar from '../../../component/SideBar';
+import AkayClient from '../../Client/AkayClient';
 
-function MyWork() {
+function SlideClient() {
     const sideSize = useSelector((state) => state.auth.sideSize);
 
     console.log(sideSize, "in Timer")
@@ -14,13 +15,15 @@ function MyWork() {
                 <SideBar />
             </Box>
 
-            <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '180px' : "310px"} border='1px solid red' w='50%' h='2000px'>
+            <Box transition={' 0.5s ease-in-out'}
+                ml={sideSize == 'large' ? '180px' : "300px"}
+                 w='80%' mt='20px' h='auto'>
 
-                <h1>My Work</h1>
+                 <AkayClient/>
             </Box>
 
         </Flex>
     )
 }
 
-export default MyWork
+export default SlideClient

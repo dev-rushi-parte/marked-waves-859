@@ -1,8 +1,8 @@
-.active {
-    background-color: red;
-}
+
 
 .active div {
-    background-color: red;
+    background-color: rgb(222, 231, 247);
+    color: rgb(89, 122, 240);
+
 
 }

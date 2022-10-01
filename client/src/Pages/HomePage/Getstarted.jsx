@@ -1,23 +1,34 @@
 import { EmailIcon } from '@chakra-ui/icons'
 import { Box, Button, Input, InputGroup, InputLeftAddon, Text, useDisclosure } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import style from "../css-adil/getstarted.css"
 import { FaPlay } from "react-icons/fa";
 
 import {
     Modal,
     ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalFooter,
-    ModalBody,
-    ModalCloseButton,
+    ModalContent
   } from '@chakra-ui/react'
+
 import { Vedio } from './Vedio'
+import { useDispatch } from 'react-redux';
+import { gettingTheEmailData } from '../../Redux/HomeReducer/action';
 
 export const Getstarted = () => {
 
+    const [email,setEmail] = useState('')
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+
+
+    const dispatch = useDispatch()
+
+    const savingtheEmail = () => {
+
+        dispatch(gettingTheEmailData(email))
+    }
+
+    console.log(email);
 
   return (
     //parent box
@@ -47,7 +58,14 @@ export const Getstarted = () => {
             display={'flex'} 
             flexDirection={'column'} 
             gap={'20px'} 
-            paddingX={'60px'} 
+            paddingX={{
+                base:"26px",
+                sm: "30px",
+                md: "40px",
+                lg: "50px",
+                xl: "60px",
+                '2xl': '60px'
+            }} 
             paddingY={'30px'} 
             >
                 <Text 
@@ -79,7 +97,10 @@ export const Getstarted = () => {
                         height={'50px'} 
                         bg={"white"} 
                         type='email' 
-                        placeholder='Enter your email address' 
+                        placeholder='Enter your email address'
+                        value={email}
+                        onChange={(e)=> { setEmail(e.target.value) }}
+                        
                     />
                 </InputGroup>
 
@@ -105,6 +126,7 @@ export const Getstarted = () => {
                             color={"white"} 
                             size='lg' 
                             paddingX={"60px"}
+                            onClick={savingtheEmail} 
                         >
                             Get Started
                         </Button>
