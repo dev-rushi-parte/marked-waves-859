@@ -26,6 +26,7 @@ import SlideReports from '../Pages/TMETRIC_Pages/SlideAnalyze/SlideReports';
 import SlideSubscription from '../Pages/TMETRIC_Pages/SlideWorkSpace/SlideSubscription';
 import SlideMember from '../Pages/TMETRIC_Pages/SlideWorkSpace/SlideMember';
 import Price from '../Pages/Price/Price';
+import SlideInvoice from '../Pages/TMETRIC_Pages/SlideManage/SlideInvoice';
 
 
 
@@ -35,7 +36,7 @@ function MainRoutes() {
             <Routes>
 
                 <Route path='/login' element={<Login />} />
-                <Route path='/singup' element={<Singup />} />
+                <Route path='/signup' element={<Singup />} />
 
 
 
@@ -66,6 +67,7 @@ function MainRoutes() {
                 <Route path='/project' element={<SlideProject />} />
                 <Route path='/client' element={<SlideClient />} />
                 <Route path='/client/new' element={<NewSideClient />} />
+                <Route path='/invoice' element={<SlideInvoice />} />
 
                 {/* WorkSpace routes */}
                 <Route path='/member' element={<SlideMember />} />

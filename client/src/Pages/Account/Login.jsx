@@ -23,7 +23,6 @@ function Login() {
     const LoginCheck = (e) => {
         e.preventDefault();
 
-        navigate("/time")
 
 
         var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -34,6 +33,7 @@ function Login() {
                 password
 
             }
+            console.log(payload)
 
             // Dispatch function to send the login function to axios and the the response
             dispatch(UserLogin(payload))
@@ -51,7 +51,8 @@ function Login() {
                             duration: 2000,
                             isClosable: true,
                         })
-                        // navigate("/login")
+                        navigate("/time")
+
                     }
 
                     else if (res.type === "LOGIN_FAILURE") {
@@ -83,7 +84,7 @@ function Login() {
                         toast({
                             position: 'top',
                             marginTop: '150px',
-                            description: err,
+                            description: "axios",
                             status: 'error',
                             duration: 3000,
                             isClosable: true,
@@ -218,7 +219,7 @@ function Login() {
 
                 <Box bg='white' borderTop='1px solid rgb(178, 174, 165)' w='65%' h='50px' m='auto' mt='20px'>
                     <Text className={style.end}>
-                        Already have an account? <span ><Link to='/singup'>SingUp</Link></span>
+                        Already have an account? <span ><Link to='/signup'>SingUp</Link></span>
                     </Text>
 
 
