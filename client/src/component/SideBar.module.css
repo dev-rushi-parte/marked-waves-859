@@ -3,3 +3,13 @@
 
 }
 
+.UserName {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.UserName:hover {
+    background-color: rgb(217, 217, 217);
+
+}

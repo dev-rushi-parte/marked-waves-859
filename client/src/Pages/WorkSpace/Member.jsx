@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from './Member.module.css'
 import { FiPlus } from "react-icons/fi";
-import { Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, useDisclosure, useToast } from '@chakra-ui/react';
+import { BsThreeDots } from "react-icons/bs";
+import { Input, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, useDisclosure, useToast } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetMemberData, GetMemberUserData, PostMemberSignup } from '../../Redux/MemberReducer/action';
+import { GetMemberData, GetMemberUserData, PostMemberSignup, UpdateMember } from '../../Redux/MemberReducer/action';
+import { useNavigate } from 'react-router-dom';
 
 
 function Member() {
@@ -12,26 +14,39 @@ function Member() {
     const [memberData, setMemberData] = useState();
     const [suggestion, setSuggestion] = useState(false);
     const [memeber, setMember] = useState()
+    const [editMember, setEditMember] = useState();
     const autoComepeleteRef = useRef();
     const dispatch = useDispatch();
     const toast = useToast()
+    const navigate = useNavigate();
 
 
     // getting the data from redux store
     const token = useSelector((state) => state.auth.token);
+    const UserOwner = useSelector((state) => state.auth.LoginUser);
+
+    console.log(UserOwner.name, "owner")
 
 
-    // const memberAllData = useSelector((state) => state.member.memberData);
-    // console.log(memberAllData.length)
 
     // post the data to member schema
-    dispatch(GetMemberData(token))
-        .then((res) => {
-            // console.log(res.payload, "datattatat")
-            setMember(res.payload)
-        })
-        .catch((err) => console.log(err))
 
+    const showMemberData = () => {
+        dispatch(GetMemberData(token))
+            .then((res) => {
+                // console.log(res.payload, "datattatat")
+                setMember(res.payload)
+
+            })
+            .catch((err) => console.log(err))
+    }
+
+    useEffect(() => {
+        showMemberData();
+    }, [])
+
+
+    // get the data for edit
     const handelAddMember = (item) => {
 
 
@@ -39,10 +54,13 @@ function Member() {
             id: item._id,
             token
         }
+
         dispatch(PostMemberSignup(payload))
             .then((res) => {
                 if (res.type == 'POST_MEMBER_DATA_EEEOR') {
                     console.log("res", res.payload.response.data)
+
+
                     toast({
                         position: 'top',
                         marginTop: '150px',
@@ -54,6 +72,7 @@ function Member() {
                 }
                 else if (res.type == 'POST_MEMBER_DATA') {
                     console.log(res.payload)
+                    showMemberData();
                     toast({
                         position: 'top',
                         marginTop: '150px',
@@ -67,6 +86,8 @@ function Member() {
             .catch((err) => {
                 console.log(err)
             })
+
+
     }
 
 
@@ -74,6 +95,7 @@ function Member() {
 
     const handelChangeEmail = (e) => {
         console.log(e.target.value)
+
         setValue(e.target.value)
     }
 
@@ -114,9 +136,59 @@ function Member() {
 
     // Update the memeber
 
-    const handelEdit = (id) => {
-        console.log(id)
+    const handelEdit = (item) => {
+
+        setEditMember(item)
+
     }
+
+    // teamMember event
+    const TeamMemberclick = () => {
+        const { userId } = editMember
+        const payload = {
+            userId,
+            token,
+            role: "TeamMember"
+        }
+        dispatch(UpdateMember(payload))
+            .then((res) => {
+
+                showMemberData();
+            })
+
+    }
+
+    // Admin event
+    const Adminclick = () => {
+        const { userId } = editMember
+        const payload = {
+            userId,
+            token,
+            role: "admin"
+        }
+        dispatch(UpdateMember(payload))
+            .then((res) => {
+
+                showMemberData();
+            })
+
+
+    }
+
+    const Ownerclick = () => {
+        const { userId } = editMember
+        const payload = {
+            userId,
+            token,
+            role: "owner"
+        }
+        dispatch(UpdateMember(payload))
+            .then((res) => {
+
+                showMemberData();
+            })
+    }
+
 
     return (
         <>
@@ -139,14 +211,46 @@ function Member() {
                             <th>Role</th>
                             <th>Email</th>
                             <th>Status</th>
+                            <th></th>
                         </tr>
                     </thead>
+                    <tbody>
+                        <tr>
+                            <td>{UserOwner?.name}</td>
+                            <td><p className={style.roleA}>{UserOwner?.role}</p></td>
+                            <td>{UserOwner?.email}</td>
+                            <td><p className={style.active}>Active</p></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
                     {memeber?.map((item, i) => (<tbody key={i}>
-                        <tr onClick={() => handelEdit(item.userId)} >
+                        <tr onClick={() => handelEdit(item)} >
                             <td>{item.name}</td>
-                            <td > <p className={item.role == 'owner' ? style.role1 : style.role2} >{item.role}</p></td>
+                            <td > <p className={item.role == 'owner' ? style.roleA : item.role == 'admin' ? style.role1 : style.role2} >{item.role}</p></td>
                             <td>{item.email}</td>
                             <td><p className={style.active}>Active</p></td>
+                            <td>
+
+
+                                <Menu>
+                                    <MenuButton className={style.editButton}>    <BsThreeDots /> </MenuButton>
+                                    <MenuList id={style.roleBox}>
+
+                                        <MenuItem onClick={Adminclick}>
+                                            Admin
+                                        </MenuItem>
+                                        <MenuItem onClick={TeamMemberclick}>
+                                            TeamMember
+                                        </MenuItem>
+
+                                        <MenuItem onClick={Ownerclick}>
+                                            Owner
+                                        </MenuItem>
+                                    </MenuList>
+                                </Menu>
+
+
+                            </td>
                         </tr>
 
 
