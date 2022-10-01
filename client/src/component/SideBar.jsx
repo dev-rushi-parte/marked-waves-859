@@ -38,7 +38,7 @@ import { AiOutlineRight } from "react-icons/ai";
 import { AiOutlineTeam } from "react-icons/ai";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import { RiBuildingLine } from "react-icons/ri";
-import { SiCircle } from "react-icons/si";
+import { IoIosPaper } from "react-icons/io";
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginUserData, Side_Bar_Size } from '../Redux/AuthReducer/action';
 import styled from './SideBar.module.css'
@@ -208,6 +208,7 @@ function SideBar() {
                             <AccordionPanel pb={4}>
                                 <NavLink to='/project'>  <Flex alignItems='center' gap='10px' h='40px'><AiFillFolder /> Project</Flex></NavLink>
                                 <NavLink to='/client'>  <Flex alignItems='center' gap='10px' h='40px'><RiBuildingLine /> Client</Flex></NavLink>
+                                <NavLink to='/invoice'>  <Flex alignItems='center' gap='10px' h='40px'><IoIosPaper /> invoice</Flex></NavLink>
                             </AccordionPanel>
                         </AccordionItem>}
 
