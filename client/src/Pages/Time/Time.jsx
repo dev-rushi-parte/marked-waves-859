@@ -1,12 +1,11 @@
 import React,  { useEffect, useState } from "react";
-import {  Box, Button, Checkbox, Divider, Fade, Flex, Input, Text, useDisclosure } from '@chakra-ui/react';
+import {  Box, Button, Checkbox, Divider, Fade, Flex, Input, Progress, Text, useDisclosure } from '@chakra-ui/react';
 import { FaPlay, FaStop } from "react-icons/fa";
 import { TiMediaRecord } from "react-icons/ti";
 import { v4 as uuidv4 } from 'uuid'
 import TimePicker from 'react-time-picker'
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import ActiveProject from "./ActiveProject";
-import Menus from "./Menus";
 import axios from 'axios'
 const Time = () => {
     const { isOpen, onOpen, onClose} = useDisclosure()
@@ -98,14 +97,14 @@ const Time = () => {
       {/*button*/}
       <Flex gap="5px">
       <Button bg="#17c22e" disabled={play>0}  colorScheme='#17c22e' borderRadius="50%"><FaPlay color='white'/></Button>
-      <Button bg="red" disabled={play<=0}  colorScheme='red' borderRadius="50%"><FaStop color='white'/></Button>
+      <Button bg="red" disabled={play<=0}  colorScheme='grey' borderRadius="50%"><FaStop color='white'/></Button>
       </Flex>
 
       {/*select Team*/}
       <Flex ml={"10px"}>
           <Text fontSize='3xl'>My Time</Text>
-          <Box h="30px" mt={"10px"} ml={"13px"} borderLeft="1px solid"></Box>
-          <Menus />
+          <Box h="30px" mt={"10px"} ml={"13px"}></Box>
+          
         
       </Flex>
   </Box>
@@ -130,7 +129,9 @@ const Time = () => {
     <Flex mt="-2" justifyContent={"space-between"}>
         <Text fontSize={"3xl"} fontWeight="medium">{Math.abs(uptime[0])+"h"+":"+Math.abs(uptime[1])+"m" }</Text>
         <Text>...</Text>
+       
     </Flex>
+    <Progress hasStripe value={10} />
 </Box>
 </Box>
 
