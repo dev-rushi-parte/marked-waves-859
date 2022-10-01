@@ -30,6 +30,7 @@ import SlideInvoice from '../Pages/TMETRIC_Pages/SlideManage/SlideInvoice';
 
 
 
+
 function MainRoutes() {
     return (
         <>
@@ -41,7 +42,7 @@ function MainRoutes() {
 
 
                 <Route path='/' element={<Homepage />} />
-                <Route path='/Price' element={<Price />} />
+                <Route path='/price' element={<Price />} />
                 {/* 
                 <Route
                     path='/sidebar'
