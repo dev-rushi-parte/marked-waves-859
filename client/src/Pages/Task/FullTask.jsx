@@ -7,7 +7,6 @@ import {
   AccordionIcon,
   Box,
 } from '@chakra-ui/react';
-import style from "./Task.module.css";
 import { SiHeadspace } from "react-icons/si";
 import styles from "./FullTask.module.css";
 import { BsCheckCircle } from "react-icons/bs";
