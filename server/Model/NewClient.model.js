@@ -5,7 +5,8 @@ const clientSchema = new mongoose.Schema(
        client:{type:String ,require:true},
        address:{type:String},
        amount:{type:Number},
-       currency:String
+       currency:String,
+       project:{type:Array , default:[]}
     }
 )
 
