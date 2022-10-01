@@ -24,6 +24,7 @@ import Price from '../Pages/Price/Price';
 
 
 
+
 function MainRoutes() {
     return (
         <>
@@ -35,7 +36,7 @@ function MainRoutes() {
 
 
                 <Route path='/' element={<Homepage />} />
-                <Route path='/Price' element={<Price />} />
+                <Route path='/price' element={<Price />} />
                 {/* 
                 <Route
                     path='/sidebar'
