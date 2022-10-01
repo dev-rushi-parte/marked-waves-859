@@ -94,12 +94,7 @@
 .taskProject > div{
     border: 1px solid black;
 }
-.taskProjectLeft{
-    /* width: 100%; */
-}
-.taskProjectRight{
-    /* width: 50%; */
-}
+
 .taskUp{
     display: flex;
     justify-content: space-between;
