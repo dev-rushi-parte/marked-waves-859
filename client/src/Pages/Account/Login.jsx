@@ -23,6 +23,8 @@ function Login() {
     const LoginCheck = (e) => {
         e.preventDefault();
 
+        navigate("/time")
+
 
         var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
         // checking email formmat
@@ -87,7 +89,7 @@ function Login() {
                             isClosable: true,
                         })
                     }
-                
+
                 })
 
 
