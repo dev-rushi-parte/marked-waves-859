@@ -23,12 +23,13 @@ MemberRouter.get("/user", async (req, res) => {
 //  post the user in member collection and change the role in user collection as well as member collction
 
 MemberRouter.post("/", async (req, res) => {
-    const { id } = req.body;
+    const { id, userId } = req.body;
 
     const check = await UserModle.findById(id).exec();
     const checkUserId = await MemberSchema.findOne({ userId: check.userId }).exec();
     console.log(!checkUserId);
-    if (!checkUserId) {
+
+    if (!checkUserId && id != userId) {
         try {
 
 
@@ -80,6 +81,7 @@ MemberRouter.get("/", async (req, res) => {
 
 })
 
+
 // edit or update the member role in member collection as well as user collection
 
 MemberRouter.patch("/:id", async (req, res) => {
@@ -87,10 +89,22 @@ MemberRouter.patch("/:id", async (req, res) => {
     const { id } = req.params;
 
     const { role } = req.body;
+
+    
+    console.log(id, role)
     const member = await MemberSchema.findOneAndUpdate({ userId: id }, { $set: { role: role } }, { new: true })
     const user = await UserModle.findOneAndUpdate({ userId: id }, { $set: { role: role } }, { new: true })
-    console.log(role)
-    res.status(200).send(member)
+    res.status(200).send("user Updates")
 
+})
+
+
+// get the login in user
+MemberRouter.get("/loginuser", async (req, res) => {
+
+    const { userId } = req.body;
+
+    const user = await await UserModle.findById(userId);
+    res.send(user)
 })
 module.exports = MemberRouter;

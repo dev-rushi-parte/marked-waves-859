@@ -101,4 +101,7 @@ AuthRouter.post("/login", checkLoginFields, async (req, res) => {
     }
 })
 
+
+
+
 module.exports = AuthRouter
