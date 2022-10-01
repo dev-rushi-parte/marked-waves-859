@@ -2,6 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import React from 'react'
 import { useSelector } from 'react-redux';
 import SideBar from '../../component/SideBar';
+import { Mywork } from '../Mywork/Mywork';
 
 function SlideMyWork() {
     const sideSize = useSelector((state) => state.auth.sideSize);
@@ -16,9 +17,9 @@ function SlideMyWork() {
 
             <Box transition={' 0.5s ease-in-out'}
                 ml={sideSize == 'large' ? '180px' : "300px"}
-                border='1px solid red' w='78%' mt='20px' h='auto'>
+                 w='78%' mt='20px' h='auto'>
 
-                <h1>My Work</h1>
+                <Mywork/>
             </Box>
 
         </Flex>
