@@ -112,14 +112,23 @@
 .taskUpRight{
     display: flex;
     gap: 15px;
+    font-size: 1.5rem;
 }
 .taskMarkComplete{
     display: flex;
-    gap: 5px;
+    gap: 10px;
+    height: 34px;
+    font-size: 18px;
+    border-radius: 5px;
     margin-top: -2px;
     padding: 1px;
+    padding: 5px;
     background-color: #17c22e;
     color: white;
+}
+.taskMarkComplete > div{
+    font-size: 1em;
+    margin-bottom: 6px;
 }
 .deleteicon{
     margin-right: 20px;

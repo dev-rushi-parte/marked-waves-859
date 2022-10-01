@@ -2,7 +2,7 @@ const {Router} = require('express');
 const { TaskModel } = require('../Model/Task.model');
 const taskController = Router();
 
-taskController.post('/add' , async (req,res) => {
+taskController.post('/task' , async (req,res) => {
     const { taskName ,
         projectName ,
         assigneName ,
@@ -21,8 +21,8 @@ taskController.post('/add' , async (req,res) => {
     }
     const new_user = new TaskModel(payload);
     await new_user.save();
-    res.send("added successfully")
     console.log(payload)
+    res.send({"msg": "added successfully"})
 })
 
 module.exports = taskController

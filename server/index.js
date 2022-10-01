@@ -24,7 +24,7 @@ app.use(morgan("common"));
 
 // Login Singup routes
 app.use("/user", AuthRouter)
-app.use("/task" ,taskRoutes);
+app.use("/" ,taskRoutes);
 
 // login user authentication middleware
 app.use(userAuthentication)

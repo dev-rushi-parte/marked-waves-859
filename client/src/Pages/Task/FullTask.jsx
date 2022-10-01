@@ -13,13 +13,12 @@ import styles from "./FullTask.module.css";
 import { BsCheckCircle } from "react-icons/bs";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { BsCaretRight } from "react-icons/bs";
-import TaskHeading from './TaskHeading';
 
 
 
 
 
-const FullTask = () => {
+const FullTask = ({setTaskD}) => {
 
   const arr = ["Project1", "Project2", "Project3", "Project4", "Project5", "Project6", "Project7", "Project8"];
   const pro = ["p1", "p2", "p3", "p4", "p5"];
@@ -61,7 +60,10 @@ const FullTask = () => {
               </AccordionItem>
             })
           }
-          <div className={styles.accordonBottomDiv}> <input type='text'  placeholder='You can add anything'/> </div>
+          <div className={styles.accordonBottomDiv}> 
+          <input type='text'  placeholder='You can add anything' 
+          onChange={(e) => setTaskD(e.target.value)}/> 
+          </div>
         </Accordion>
         
       </div>

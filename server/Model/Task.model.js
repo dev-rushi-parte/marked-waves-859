@@ -4,9 +4,9 @@ const taskSchema = new mongoose.Schema({
     taskName : { type : String },
         projectName : { type : String },
         assigneName : { type : String },
-        dueDate:  { type : Number },
+        dueDate:  { type : String },
         taskDescription : { type : String },
-        estimateTime : {type : Number},
+        estimateTime : {type : String},
         tag : { type : String }
 })
 

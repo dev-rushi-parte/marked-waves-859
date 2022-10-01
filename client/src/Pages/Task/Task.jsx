@@ -1,24 +1,13 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import styles from "./Task.module.css";
 import {
     Menu,
     MenuButton,
     MenuList,
     MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
+    
     Select,
 } from '@chakra-ui/react';
-
-import {
-    Accordion,
-    AccordionItem,
-    AccordionButton,
-    AccordionPanel,
-    AccordionIcon,
-} from '@chakra-ui/react'
 
 import { SiHeadspace } from "react-icons/si"
 import { BsFillTrashFill } from "react-icons/bs";
@@ -32,36 +21,60 @@ import { AiOutlineCheck } from "react-icons/ai";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { FiArrowRight } from "react-icons/fi";
 import FullTask from './FullTask';
-import { Box } from "@chakra-ui/react";
+import { useSelector } from 'react-redux';
 
 
-const Task = ({ state, setState }) => {
+const Task = ({ state, setState, taskD }) => {
 
+    const token=useSelector((state)=>state.auth.token)
+    console.log(token)
     const taskChangeState = () => {
         setState(!state);
     }
-
     const assigne = ['Ravi', "Shakti", "Akshay", "Aadil"];
-    const project = ["project1" , "project2" , "project3" , "project4" , "project5"];
+    const project = ["project1", "project2", "project3", "project4", "project5"];
 
-    const [taskData , setTaskData] = useState({
-        taskName : "" ,
-        projectName : "",
-        assigneName : "",
+    const [taskData, setTaskData] = useState({
+        taskName: taskD,
+        projectName: "",
+        assigneName: "",
         dueDate: "",
-        taskDescription : "",
-        estimateTime : "",
+        taskDescription: "",
+        estimateTime: "",
         tag: ""
     })
 
-
     const addData = (e) => {
-        console.log(e.target.value)
+        setTaskData({ ...taskData, [e.target.name]: e.target.value })
     }
+
+    const addData11 = async (e) => {
+        if(e.key=="Enter"){
+            const {taskName , projectName , assigneName , dueDate , taskDescription , estimateTime , tag} = taskData;
+            console.log(taskName);
+            fetch('http://localhost:8080/task' , {
+                method: 'POST' , 
+                headers: {
+                    "Authorization" : `Bearer ${token}`,
+                    'Content-Type' : 'application/json'
+                },
+                body: JSON.stringify(
+                    {taskName , projectName , assigneName , dueDate , taskDescription , estimateTime , tag}
+                )
+                
+            })
+            .then((res) => res.json())
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err))
+        }
+    }
+    
+    console.log(taskData);
 
     return (
 
-        <div className={styles.top}>
+
+        <div className={styles.top} onKeyPress={addData11}>
             {  /* Project Section  */}
             <div className={styles.taskProject}>
 
@@ -97,87 +110,89 @@ const Task = ({ state, setState }) => {
 
 
 
-                        { /* Map Project Data */ }
-                    <div><input placeholder='Write Task Here' type='text' /></div>
-                    <div className={styles.projectRightDiv}>
-                        <div><p>Project</p></div>
-                        <div className={styles.projectRightDivBelow}>
-                            <div><SiHeadspace className={styles.projectRightDivIcon} /></div>
-                            
-                            <div>
-                                <Select onChange={addData}>
+                    { /* Map Project Data */}
+                    <form  >
+                        <div><input placeholder='Write Task Here' type='text' name='taskName' onChange={addData} /></div>
+                        <div className={styles.projectRightDiv}>
+                            <div><p>Project</p></div>
+                            <div className={styles.projectRightDivBelow}>
+                                <div><SiHeadspace className={styles.projectRightDivIcon} /></div>
 
-                                    {
-                                        project.map((val) => {
-                                            return <option value={val} >{val}</option>
-                                        })
-                                    }
+                                <div>
+                                    <Select onChange={addData} name="projectName">
 
-                                </Select>
-                            </div>
+                                        {
+                                            project.map((val) => {
+                                                return <option value={val} >{val}</option>
+                                            })
+                                        }
 
-                        </div>
-                    </div>
-
-
-                    { /* Map Assign Data */ }
-                    <div className={styles.projectRightDiv}>
-                        <div><p>Assigne</p></div>
-                        <div className={styles.projectRightDivBelow}>
-                            <div><BsFillPersonPlusFill className={styles.projectRightDivIcon} />
+                                    </Select>
+                                </div>
 
                             </div>
-                            <div>
-                                <Select onChange={addData}>
+                        </div>
 
-                                    {
-                                        assigne.map((val) => {
-                                            return <option value={val}>{val}</option>
-                                        })
-                                    }
 
-                                </Select>
+                        { /* Map Assign Data */}
+                        <div className={styles.projectRightDiv}>
+                            <div><p>Assigne</p></div>
+                            <div className={styles.projectRightDivBelow}>
+                                <div><BsFillPersonPlusFill className={styles.projectRightDivIcon} />
+
+                                </div>
+                                <div>
+                                    <Select  name='assigneName' onChange={addData}>
+
+                                        {
+                                            assigne.map((val) => {
+                                                return <option value={val}>{val}</option>
+                                            })
+                                        }
+
+                                    </Select>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className={styles.projectRightDiv}>
-                        <div>Due Date</div>
-                        <div className={styles.projectRightDivBelow}>
-                            <div><BsFillCalendarDateFill className={styles.projectRightDivIcon} />
-                            
-                            </div>
-                            <div><input type="date" placeholder='Choose Date' name='dueDate'/></div>
-                        </div>
-                    </div>
+                        <div className={styles.projectRightDiv}>
+                            <div>Due Date</div>
+                            <div className={styles.projectRightDivBelow}>
+                                <div><BsFillCalendarDateFill className={styles.projectRightDivIcon} />
 
-                    <div>
-                        <input placeholder='Enter task description' />
-                    </div>
-
-                    <div className={styles.projectRightDiv}>
-
-                        <div>Estimate</div>
-                        <div className={styles.projectRightDivBelow}>
-                            <div><TbAlarm className={styles.projectRightDivIcon} /></div>
-                            <div><input type='text' /></div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div className={styles.projectRightDivBelow}>
-                            <div><AiFillTag className={styles.projectRightDivIcon} /></div>
-                            <div>
-                                <select >
-                                    <option value='Add-Tags'>Add-Tags</option>
-                                    <option value='Design'>Design</option>
-                                    <option value='Development'>Development</option>
-                                    <option value='Testing'>Testing</option>
-                                    <option value='Implementation'>Implementation</option>
-                                </select>
+                                </div>
+                                <div><input type="date" placeholder='Choose Date' name='dueDate' onChange={addData} /></div>
                             </div>
                         </div>
-                    </div>
+
+                        <div>
+                            <input placeholder='Enter task description' name='taskDescription' onChange={addData} />
+                        </div>
+
+                        <div className={styles.projectRightDiv}>
+
+                            <div>Estimate</div>
+                            <div className={styles.projectRightDivBelow}>
+                                <div><TbAlarm className={styles.projectRightDivIcon} /></div>
+                                <div><input type='text' placeholder='' name='estimateTime' onChange={addData} /></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div className={styles.projectRightDivBelow}>
+                                <div><AiFillTag className={styles.projectRightDivIcon} /></div>
+                                <div>
+                                    <select name='tag' onChange={addData}>
+                                        <option value='Add-Tags'>Add-Tags</option>
+                                        <option value='Design'>Design</option>
+                                        <option value='Development'>Development</option>
+                                        <option value='Testing'>Testing</option>
+                                        <option value='Implementation'>Implementation</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
 
                     <div>
                         <div className={styles.projectRightDivBelow}>
