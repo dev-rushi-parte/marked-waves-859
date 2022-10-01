@@ -10,7 +10,7 @@ import Singup from '../Pages/Account/Singup'
 import { Homepage } from '../Pages/HomePage/Homepage';
 import RequiredAuth from '../Pages/RequiredAuth/RequiredAuth';
 import SlideTask from '../Pages/TMETRIC_Pages/SlideTask';
-import Team from '../Pages/TMETRIC_Pages/Team';
+
 import Project from '../Pages/TMETRIC_Pages/Manage/Project';
 import Client from '../Pages/TMETRIC_Pages/Manage/Client';
 import FullTask from '../Pages/Task/FullTask';
@@ -55,8 +55,8 @@ function MainRoutes() {
                 <Route path='/task' element={<SlideTask />} />
                 <Route path='/team' element={<Team />} />
                 
-                <Route path='/team' element={<SlideTeam />} />
-
+{                <Route path='/team' element={<SlideTeam />} />
+}
                 {/* analyze roues */}
                 <Route path='reports' element={<SlideReports />} />
 
