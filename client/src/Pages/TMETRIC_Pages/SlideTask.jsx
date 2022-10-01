@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import SideBar from '../../component/SideBar';
 import FullTask from '../Task/FullTask';
-import Task from "../Task/Task"
+import Task from '../Task/Task';
+
 import TaskHeading from '../Task/TaskHeading';
 
 function SlideTask() {
