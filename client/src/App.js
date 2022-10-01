@@ -1,5 +1,6 @@
+import MainRoutes from "./component/Routes/MainRoutes";
 
-import MainRoutes from './Routes/MainRoutes';
+
 
 
 function App() {
