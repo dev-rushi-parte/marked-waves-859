@@ -207,15 +207,15 @@ function Singup() {
           <Box className={style.store}>
             <Flex w='100%' h='39px' m='auto' mt='20px' borderRadius='8px' border='1px solid rgb(178, 174, 165)'>
               <img src='/Imges/google.png' alt='img' />
-              <Text>SingUp with Google</Text>
+              <Text>SignUp with Google</Text>
             </Flex>
             <Flex w='100%' h='39px' m='auto' mt='10px' borderRadius='8px' border='1px solid rgb(178, 174, 165)'>
               <img src='/Imges/microsoft.png' alt='img' />
-              <Text>SingUp with MicroSoft</Text>
+              <Text>SignUp with MicroSoft</Text>
             </Flex>
             <Flex w='100%' h='39px' m='auto' mt='10px' borderRadius='8px' border='1px solid rgb(178, 174, 165)'>
               <img src='/Imges/apple.png' alt='img' />
-              <Text>SingUp with Apple </Text>
+              <Text>SignUp with Apple </Text>
             </Flex>
           </Box>
 

@@ -1,12 +1,16 @@
 
-import MainRoutes from './Routes/MainRoutes';
+import RoleAuthrization from './component/RoleAuthrization/RoleAuthrization';
+import MainRoutes from './component/Routes/MainRoutes';
+import SideBar from './component/SideBar';
 
 
 function App() {
   return (
     <div className="App">
+      {/* <SideBar /> */}
+      <MainRoutes />
 
-       <MainRoutes />
+      {/* <RoleAuthrization /> */}
     </div>
   );
 }

@@ -191,7 +191,7 @@ function Login() {
                         </div>
 
 
-                        {/* singup submit button */}
+                        {/* SignUp submit button */}
 
                         <button type='submit' className={style.LoginBtn} >Log In</button>
 
@@ -204,22 +204,22 @@ function Login() {
                 <Box className={style.Loginstore}>
                     <Flex w='100%' h='39px' m='auto' mt='20px' borderRadius='8px' border='1px solid rgb(178, 174, 165)'>
                         <img src='/Imges/google.png' alt='img' />
-                        <Text>SingUp with Google</Text>
+                        <Text>SignUp with Google</Text>
                     </Flex>
                     <Flex w='100%' h='39px' m='auto' mt='10px' borderRadius='8px' border='1px solid rgb(178, 174, 165)'>
                         <img src='/Imges/microsoft.png' alt='img' />
-                        <Text>SingUp with MicroSoft</Text>
+                        <Text>SignUp with MicroSoft</Text>
                     </Flex>
                     <Flex w='100%' h='39px' m='auto' mt='10px' borderRadius='8px' border='1px solid rgb(178, 174, 165)'>
                         <img src='/Imges/apple.png' alt='img' />
-                        <Text>SingUp with Apple </Text>
+                        <Text>SignUp with Apple </Text>
                     </Flex>
                 </Box>
 
 
                 <Box bg='white' borderTop='1px solid rgb(178, 174, 165)' w='65%' h='50px' m='auto' mt='20px'>
                     <Text className={style.end}>
-                        Already have an account? <span ><Link to='/signup'>SingUp</Link></span>
+                        Already have an account? <span ><Link to='/signup'>SignUp</Link></span>
                     </Text>
 
 

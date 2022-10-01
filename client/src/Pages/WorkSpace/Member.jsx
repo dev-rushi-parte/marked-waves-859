@@ -102,7 +102,9 @@ function Member() {
 
     // fontend Throttling logic
 
-    const searching = memberData?.filter(option => option.email.toLowerCase().includes(value.toLowerCase()))
+
+    const searching = memberData ? memberData.filter(option => option.email.toLowerCase().includes(value.toLowerCase())) : "";
+
 
 
     // get the data function sending to action.js
