@@ -1,11 +1,12 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react';
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import Time from '../Time/Time';
+import SideBar from '../../../component/SideBar';
+import AkayClient from '../../Client/AkayClient';
+import { Invoice } from '../../Invoice/Invoice';
 
-function SlideTime() {
-
+function SlideInvoice() {
     const sideSize = useSelector((state) => state.auth.sideSize);
 
     console.log(sideSize, "in Timer")
@@ -19,7 +20,7 @@ function SlideTime() {
                 border='1px solid red' w='100%' mr='50px' mt='20px' h='auto'>
 
 
-                <Time />
+                <Invoice />
 
                 <Outlet />
             </Box>
@@ -28,4 +29,4 @@ function SlideTime() {
     )
 }
 
-export default SlideTime
+export default SlideInvoice

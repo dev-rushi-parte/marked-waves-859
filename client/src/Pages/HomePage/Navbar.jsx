@@ -96,33 +96,34 @@ export default function Navbar() {
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
-          <Link to='/login'>
-            <Button
-              color={'balck'}
-              as={'a'}
-              fontSize={'sm'}
-              fontWeight={400}
-              variant={'link'}
-            >
-              Log In
-            </Button>
-          </Link>
 
           <Button
-            display={{ md: 'inline-flex' }}
-            border={'1px solid black'}
+            color={'black'}
+            as={'a'}
             fontSize={'sm'}
-            fontWeight={600}
-            color={'balck'}
-            bg={'none'}
-            href="/singup"
-            _hover={{
-              bg: 'rgb(48,112,240)',
-              color: 'white'
-            }}>
-            Sign Up
+            fontWeight={400}
+            variant={'link'}
+            href='/login'
+          >
+            Log In
           </Button>
 
+          <Link href="/signup">
+            <Button
+              display={{ md: 'inline-flex' }}
+              border={'1px solid black'}
+              fontSize={'sm'}
+              fontWeight={600}
+              color={'balck'}
+              bg={'none'}
+              _hover={{
+                bg: 'rgb(48,112,240)',
+                color: 'white'
+              }}>
+
+              Sign Up
+            </Button>
+          </Link>
         </Stack>
       </Flex>
 

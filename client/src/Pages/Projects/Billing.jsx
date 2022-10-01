@@ -2,7 +2,7 @@ import { Box, Button, Flex, Input, Select, Stack, Switch, Text } from '@chakra-u
 import React, { useState } from 'react'
 import styles from "../Projects/Billing.module.css"
 
-const Billing = () => {
+const Billing = ({setamount , setcurrency, sethourly,  setfreetype, setfreeRecurr}) => {
     const[change,setChange] = useState(false)
     const[data,setData]=useState(false)
 
@@ -96,7 +96,7 @@ const Billing = () => {
          
         <Box className={styles.InBillCurr}>
     <Text fontSize={12} color="gray" fontWeight={500}>Project currency</Text>
-    <Select placeholder='Select option' marginTop={1} h="33px">
+    <Select placeholder='Select option' marginTop={1} h="33px" onChange={(e)=>setcurrency(e.target.value)}>
    <option value='USD'>USD</option>
    <option value='UYU'>UYU</option>
    <option value='INR'>INR</option>
@@ -109,7 +109,7 @@ const Billing = () => {
    
    <Box className={styles.BillInsLeft}>
     <Text fontSize={12} color="gray" fontWeight={500}>Hourly Rates</Text>
-    <Select placeholder='Project rate' marginTop={1} h="33px">
+    <Select placeholder='Project rate' marginTop={1} h="33px" onChange={(e)=>sethourly(e.target.value)}>
    <option value='Project rate'>Project rate</option>
    <option value='Person rate'>Person rate</option>
    <option value='Work Type rate'>Work Type rate</option>
@@ -119,7 +119,7 @@ const Billing = () => {
    <Box >
    <Text fontSize={12} color="gray" fontWeight={500}>Project Rate</Text>
    <Box style={{display:"flex" , alignItems:"center"}}>
-    <Input h="33px" borderRight="none" width="55%" marginTop={1} borderBottomRightRadius="none" borderTopRightRadius={0} placeholder='Amount'/>
+    <Input h="33px" borderRight="none" width="55%" marginTop={1} borderBottomRightRadius="none" borderTopRightRadius={0} placeholder='Amount' onChange={(e)=>setamount(e.target.value)}/>
     <Text fontSize={13} border="1px solid lightgray" padding="6px 13px 6px 13px" borderRadius={5} borderLeft="none" bg="rgb(248, 245, 245)" marginTop={1} borderBottomLeftRadius="none" borderTopLeftRadius={0}>USD / hour</Text>
    </Box>
    </Box>
@@ -139,7 +139,7 @@ const Billing = () => {
         <Box>
                 <Box className={styles.InBillCurr}>
     <Text fontSize={12} color="gray" fontWeight={500}>Project currency</Text>
-    <Select placeholder='Select option' marginTop={1} h="33px">
+    <Select placeholder='Select option' marginTop={1} h="33px" onChange={(e)=>setcurrency(e.target.value)}>
    <option value='USD'>USD</option>
    <option value='UYU'>UYU</option>
    <option value='INR'>INR</option>
@@ -151,7 +151,7 @@ const Billing = () => {
    
    <Box className={styles.FreeLeft}>
     <Text fontSize={12} color="gray" fontWeight={500}>Project fee type</Text>
-    <Select placeholder='Simple' marginTop={1} h="33px">
+    <Select placeholder='Simple' marginTop={1} h="33px" onChange={(e)=>setfreetype(e.target.value)}>
    <option value='Simple'>Simple</option>
    <option value='Compound'>Compound</option>
    </Select>
@@ -160,7 +160,7 @@ const Billing = () => {
 
    <Box className={styles.FreeLeft}>
     <Text fontSize={12} color="gray" fontWeight={500}>Recurrence </Text>
-    <Select placeholder='One-time' marginTop={1} h="33px">
+    <Select placeholder='One-time' marginTop={1} h="33px" onChange={(e)=>setfreeRecurr(e.target.value)}>
    <option value='One-time'>One-time</option>
    <option value='Daily'>Daily</option>
    <option value='Weekly'>Weekly</option>
@@ -171,7 +171,7 @@ const Billing = () => {
    <Box >
    <Text fontSize={12} color="gray" fontWeight={500}>Project Rate</Text>
    <Box style={{display:"flex" , alignItems:"center"}}>
-    <Input h="33px" borderRight="none" width="60%" marginTop={1} borderBottomRightRadius="none" borderTopRightRadius={0} placeholder='Amount'/>
+    <Input h="33px" borderRight="none" width="60%" marginTop={1} borderBottomRightRadius="none" borderTopRightRadius={0} placeholder='Amount' onChange={(e)=>setamount(e.target.value)}/>
     <Text fontSize={13} border="1px solid lightgray" padding="6px 13px 6px 13px" borderRadius={5} borderLeft="none" bg="rgb(248, 245, 245)" marginTop={1} borderBottomLeftRadius="none" borderTopLeftRadius={0}>USD / hour</Text>
    </Box>
    </Box>

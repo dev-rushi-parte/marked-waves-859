@@ -1,9 +1,10 @@
 import { Box, Flex } from '@chakra-ui/react';
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import SideBar from '../../component/SideBar';
+import { Outlet } from 'react-router-dom';
 import FullTask from '../Task/FullTask';
-import Task from "../Task/Task"
+import Task from '../Task/Task';
+
 import TaskHeading from '../Task/TaskHeading';
 
 function SlideTask() {
@@ -15,21 +16,21 @@ function SlideTask() {
 
     return (
         <Flex>
-            <Box>
-                <SideBar />
-            </Box>
 
-            <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '180px' : "310px"} border='1px solid red' w='80%' h='2000px'>
+
+            <Box transition={' 0.5s ease-in-out'}
+                ml={sideSize == 'large' ? '180px' : "300px"}
+                border='1px solid red' w='100%' mr='50px' mt='20px' h='auto'>
+
+
+
                 <TaskHeading setState={setState} state={state} />
                 {
                     state ? <FullTask setState={setState} state={state} setTaskD={setTaskD} /> : <Task taskD={taskD} setState={setState} state={state} />
                 }
-                <Box transition={' 0.5s ease-in-out'}
-                    ml={sideSize == 'large' ? '180px' : "300px"}
-                    border='1px solid red' w='78%' mt='20px' h='auto'>
-                    <Task />
-                </Box>
+                <Outlet />
             </Box>
+
         </Flex>
     )
 }
