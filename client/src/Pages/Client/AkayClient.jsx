@@ -109,7 +109,7 @@ const AkayClient = () => {
       {/* Filter Box End */}
 
 
-      {data.map((el,i)=>(
+      {data?.map((el,i)=>(
       <Box className={styles.mapBox}>
         <Box className={styles.MapleftBox}>
         <img src="https://services.tmetric.com/storage/Content/Avatars/client.svg" alt="" className={styles.image}/>
