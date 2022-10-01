@@ -8,7 +8,6 @@ import Login from '../../Pages/Account/Login'
 import Singup from '../../Pages/Account/Singup'
 
 import { Homepage } from '../../Pages/HomePage/Homepage';
-import RequiredAuth from '../RequiredAuth/RequiredAuth';
 import SlideTask from '../../Pages/TMETRIC_Pages/SlideTask';
 // import Team from '../Pages/TMETRIC_Pages/Team';
 // import Project from '../Pages/TMETRIC_Pages/Manage/Project';
