@@ -6,7 +6,7 @@ export const TrustedByCompany = () => {
     const image =[
         "https://tmetric.com/media/wlmpffzm/logo_business_endygo.png",
         "https://tmetric.com/media/0ddgehbk/logo_business_itsyndicate.png",
-        "https://tmetric.com/media/0ddgehbk/logo_business_itsyndicate.png",
+        "https://tmetric.com/media/eozchehq/logo_business_pulso.png",
         "https://tmetric.com/media/rmvok0xh/logo_business_050media.png",
         "https://tmetric.com/media/ccpn231z/logo-business-jot-digi-tal.svg",
         "https://tmetric.com/media/z0fhmi1j/logo-business-freshlab.svg",

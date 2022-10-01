@@ -18,6 +18,17 @@ export const iconImages =[
     "https://tmetric.com/media/cajpa4uy/icon-time-off-blue.svg",
 ]
 
+export const iconImagesGray =[
+    "https://tmetric.com/media/qojb5snq/icon-timer-gray.svg",
+    "https://tmetric.com/media/kqgpqtvh/icon-project-gray.svg",
+    "https://tmetric.com/media/isxcp2ip/icon-team-gray.svg",
+    "https://tmetric.com/media/5r1l1s4g/icon-invoice-gray.svg",
+    "https://tmetric.com/media/g3jc0dsg/icon-reports-gray.svg",
+    "https://tmetric.com/media/bxylkc2s/icon-time-off-gray.svg",
+]
+
+
+
 export const innerText =[
     "Capture every task you work on. Take control over time intervals by simple time tracking",
     "Create projects, set rates and budgets. Keep tracking of hours spent on tasks and see the project progress at a glance, collaborate easily, keep deadlines and prevent over budgeting",

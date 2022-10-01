@@ -16,6 +16,13 @@ export const BusinessCompanion = () => {
 
     const [imageS,setImage] = useState("https://tmetric.com/media/e5enfaae/img-advantages.png")
 
+    // const [timeTracking,setTimeTracking] = useState(false)
+    // const [projectManagement,setProjectManagement] = useState(false)
+    // const [teamManagement,setTeamManagement] = useState(false)
+    // const [billing_Invoicing,setBilling_Invoicing] = useState(false)
+    // const [reporting,setReporting] = useState(false)
+    // const [timeOff,setTimeOff] = useState(false)
+
   return (
     //parent
     <Box 
@@ -27,7 +34,6 @@ export const BusinessCompanion = () => {
             xl: "50px",
             '2xl': '50px'
         }} 
-        // h={'900px'} 
     >
         {/* //first child */}
         <Box 
@@ -86,8 +92,8 @@ export const BusinessCompanion = () => {
                     xl: "60%",
                     '2xl': '60%'
                 }} 
-
             >
+                {/* this hook contain the valueof the clicked image */}
                 <img src={imageS} alt="" srcset="" />
             </Box>
 
@@ -103,9 +109,8 @@ export const BusinessCompanion = () => {
                 }}
             >
                 <Box
-
-                overflow={'scroll'}
-                className='scrollbarRemover'
+                    overflow={'scroll'}
+                    className='scrollbarRemover'
                     display={"flex"}
                     flexDirection={{
                         base:"row",
@@ -117,16 +122,17 @@ export const BusinessCompanion = () => {
                     }}
                     gap={"20px"}
                 >
+                    {/* // looping on icon images to create a list of tabs on the left side which will display image */}
                     {data.iconImages.map((e,i) => {
                         return <Box 
                                     border={'0.5px solid gray'}
                                     value={e} 
                                     key={e} 
                                     borderRadius={'10px'} 
+                    // onclicking it will set the image on the right & on every click hook will set the image to display & changing with dispalyImages array 
                                     onClick={() => {setImage(data.dispalyImages[i])}}  
                                 > 
-                        
-                                    <Accordion allowMultiple>
+                                    <Accordion  allowMultiple>
                                         <AccordionItem>
                                             <h2>
                                             <AccordionButton>
@@ -163,7 +169,7 @@ export const BusinessCompanion = () => {
                                                 {data.innerText[i]}
                                                 <Spacer/>
 
-                                                <Text color={"blue"}>
+                                                <Text color={"rgb(48,112,240)"}>
                                                 Learn More <ArrowForwardIcon/>
                                                 </Text>
 

@@ -2,8 +2,9 @@ import { Box, Flex } from '@chakra-ui/react'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import SideBar from '../../component/SideBar'
+import Time from '../Time/Time';
 
-function Time() {
+function SlideTime() {
 
     const sideSize = useSelector((state) => state.auth.sideSize);
 
@@ -15,13 +16,15 @@ function Time() {
                 <SideBar />
             </Box>
 
-            <Box transition={' 0.5s ease-in-out'} ml={sideSize == 'large' ? '180px' : "310px"} border='1px solid red' w='50%' h='2000px'>
+            <Box transition={' 0.5s ease-in-out'}
+                ml={sideSize == 'large' ? '180px' : "300px"}
+                w='78%' mt='20px' h='auto'>
 
-                <h1>Time</h1>
+                <Time />
             </Box>
 
         </Flex>
     )
 }
 
-export default Time
+export default SlideTime
