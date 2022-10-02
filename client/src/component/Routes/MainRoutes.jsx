@@ -32,6 +32,7 @@ import RequiredAuth from '../RequiredAuth/RequiredAuth';
 import PageNotfound from '../../Pages/PageNotfound';
 
 import NewProject from '../../Pages/Projects/NewProject';
+import SlideNewProject from '../../Pages/TMETRIC_Pages/Manage/SlideNewProject';
 
 
 
@@ -74,7 +75,7 @@ function MainRoutes() {
                     <Route path='invoice' element={<RequiredAuth><SlideInvoice /></RequiredAuth>} />
 
                     <Route path='project' element={<SlideProject />} />
-                    <Route path='project/new' element={<NewProject/>}/>
+                    <Route path='project/new' element={<SlideNewProject/>}/>
                     <Route path='client' element={<SlideClient />} />
                     <Route path='client/new' element={<NewSideClient />} />
                     <Route path='invoice' element={<SlideInvoice />} />

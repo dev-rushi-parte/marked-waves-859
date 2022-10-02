@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FormControl, Input, Select, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, Input, Select, Text, useToast,  } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import styles from "../Client/NewClient.module.css"
 import { IoMdArrowRoundBack  } from "react-icons/io";
@@ -6,6 +6,8 @@ import { FcInfo } from "react-icons/fc";
 import { BsEnvelopeFill } from "react-icons/bs";
 import { IoAddOutline } from "react-icons/io5";
 import { useEffect } from 'react';
+import {Link} from "react-router-dom"
+import { useSelector } from 'react-redux';
 
 
 const AkayNewClient = () => {
@@ -13,6 +15,8 @@ const AkayNewClient = () => {
   const[address,setaddress] = useState("")
   const[amount,setamount] = useState()
   const[currency,setcurrency] = useState("")
+  const toast = useToast()
+  const token = useSelector((state) => state.auth.token);
   // const[btn,setBtn] = useState(false)
   // console.log(btn)
 
@@ -24,12 +28,21 @@ const AkayNewClient = () => {
     fetch("http://localhost:8080/clients/new" ,{
         method:"POST",
         headers:{
-            "Content-Type":"application/json"
+            "Content-Type":"application/json",
+            'Authorization': `Bearer ${token}`
         },
         body:JSON.stringify(payload)
     })
     .then((res)=>res.json())
-    .then((res)=>console.log(res))
+    // .then((res)=>console.log(res))
+    toast({
+      position: 'top',
+      marginTop: '150px',
+      description: "New Client Added Successfully",
+      status: 'success',
+      duration: 2000,
+      isClosable: true,
+  })
     .catch((err)=>console.log(err))
 }
 
@@ -42,7 +55,7 @@ const AkayNewClient = () => {
    {/* UpperArrowBox */}
    <Box className={styles.NewClientarrowBox}>
    
-   <IoMdArrowRoundBack size={24} className={styles.arrow}/>
+  <Link to="/sidebar/client"> <IoMdArrowRoundBack size={24} className={styles.arrow}/> </Link>
 
    <Text fontSize="26px" fontWeight="semibold">
    New Client
@@ -145,7 +158,7 @@ const AkayNewClient = () => {
 
      {/* LAST BOX END */}
 
-     <Button onClick={handleSubmit}>SAVE</Button>
+   <Link to="/sidebar/client"> <Button onClick={handleSubmit}>SAVE</Button> </Link> 
 
    {/* {btn?
    <Box width="200px" height="80px" border="1px solid red" bg="lightred" >

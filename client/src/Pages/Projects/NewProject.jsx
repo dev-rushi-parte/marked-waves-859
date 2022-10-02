@@ -1,4 +1,4 @@
-import { Box, Button, Text } from '@chakra-ui/react'
+import { Box, Button, Text,  useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import styles from "../Projects/NewProject.module.css"
 import { IoMdArrowRoundBack  } from "react-icons/io";
@@ -7,7 +7,9 @@ import Billing from './Billing';
 import Budget from './Budget';
 import WorkType from './Worktype';
 import Team from './Team';
-import {Link} from "react-scroll"
+import {Link} from "react-router-dom"
+import { useSelector } from 'react-redux';
+
 
 
 
@@ -19,22 +21,33 @@ const NewProject = () => {
   const[hourly,sethourly] = useState()
   const[freetype,setfreetype] = useState()
   const[freeRecurr,setfreeRecurr] = useState()
+  const toast = useToast()
 
   const[client,setClient] = useState()
-
+  const token = useSelector((state) => state.auth.token);
 
   const handleSubmit=()=>{
     const payload ={project,code,amount,currency,hourly,freetype,freeRecurr ,client}
     fetch("http://localhost:8080/project/new" ,{
         method:"POST",
         headers:{
-            "Content-Type":"application/json"
+            "Content-Type":"application/json",
+            'Authorization': `Bearer ${token}`
         },
         body:JSON.stringify(payload)
     })
     .then((res)=>res.json())
-    alert("DONE")
-    .then((res)=>console.log(res))
+ 
+    .then((res)=>{console.log(res)
+      toast({
+        position: 'top',
+        marginTop: '150px',
+        description: "Project Added Successfully",
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+    })
+    })
     .catch((err)=>console.log(err))
 }
 
@@ -47,7 +60,7 @@ const NewProject = () => {
    {/* Back Button Box */}
     <Box className={styles.NewClientarrowBox}>
    
-   <IoMdArrowRoundBack size={24} className={styles.arrow}/>
+  <Link to="/sidebar/project"> <IoMdArrowRoundBack size={24} className={styles.arrow}/></Link>
 
    <Text fontSize="26px" fontWeight="semibold">
    New Project
@@ -85,7 +98,7 @@ const NewProject = () => {
    </Box>
    </Box>
 
-   <Button onClick={handleSubmit}>SAVE</Button>
+  <Link to="/sidebar/project"> <Button onClick={handleSubmit}>SAVE</Button> </Link>
     </Box>
 
 
@@ -94,9 +107,8 @@ const NewProject = () => {
 
 
 
-
-
     </Box>
+   
   )
 }
 

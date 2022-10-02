@@ -25,6 +25,18 @@ ClientRouter.post("/new" ,async(req,res)=>{
 })
 
 
+ClientRouter.get("/sortasc", async(req,res)=>{
+    const notes = await clientModel.find().sort({client:1})
+    res.send(notes)
+})
+
+
+ClientRouter.get("/sortdec", async(req,res)=>{
+    const notes = await clientModel.find().sort({client:-1})
+    res.send(notes)
+})
+
+
 ClientRouter.delete("/:_id" ,async(req,res)=>{
     console.log(req.params)
     await clientModel.findOneAndDelete(req.params)

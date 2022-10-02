@@ -29,13 +29,16 @@ app.use(morgan("common"));
 app.use("/time", timeController)
 // Login Singup routes
 app.use("/user", AuthRouter)
-app.use("/clients" , ClientRouter)
-app.use("/project" , ProjectRouter)
+
+app.use("/" ,taskRoutes);
+
+
 
 // login user authentication middleware
 app.use(userAuthentication)
 
-
+app.use("/clients" , ClientRouter)
+app.use("/project" , ProjectRouter)
 
 app.use("/member", MemberRouter);
 app.use("/task" ,taskRoutes);
