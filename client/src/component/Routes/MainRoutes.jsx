@@ -3,20 +3,12 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-
 import Login from '../../Pages/Account/Login'
 import Singup from '../../Pages/Account/Singup'
-
 import { Homepage } from '../../Pages/HomePage/Homepage';
 import SlideTask from '../../Pages/TMETRIC_Pages/SlideTask';
-// import Team from '../Pages/TMETRIC_Pages/Team';
-// import Project from '../Pages/TMETRIC_Pages/Manage/Project';
-// import Client from '../Pages/TMETRIC_Pages/Manage/Client';
-// import FullTask from '../Pages/Task/FullTask';
-// import TaskHeading from '../Pages/Task/TaskHeading';
 import SlideTime from '../../Pages/TMETRIC_Pages/SlideTime';
 import SlideMyWork from '../../Pages/TMETRIC_Pages/SlideMyWork';
-
 import SlideTeam from '../../Pages/TMETRIC_Pages/SlideTeam';
 import SlideProject from '../../Pages/TMETRIC_Pages/SlideManage/SlideProject';
 import SlideClient from '../../Pages/TMETRIC_Pages/SlideManage/SlideClient';
@@ -27,11 +19,15 @@ import SlideMember from '../../Pages/TMETRIC_Pages/SlideWorkSpace/SlideMember';
 import Price from '../../Pages/Price/Price';
 import SlideInvoice from '../../Pages/TMETRIC_Pages/SlideManage/SlideInvoice';
 import SideBar from '../SideBar';
-
 import RequiredAuth from '../RequiredAuth/RequiredAuth';
-
 import NewProject from '../../Pages/Projects/NewProject';
 import PageNotfound from '../../Pages/PageNotfound';
+import NewProject from '../../Pages/Projects/NewProject';
+import PageNotfound from '../../Pages/PageNotfound';
+import { PayForm } from '../SubscribtionProtected/PayFormBtn';
+import SubscribtionLogic from '../SubscribtionProtected/SubscribtionLogic';
+import SlideNewProject from '../../Pages/TMETRIC_Pages/Manage/SlideNewProject';
+
 
 
 
@@ -48,7 +44,7 @@ function MainRoutes() {
 
                 <Route path='/' element={<Homepage />} />
                 <Route path='/Price' element={<Price />} />
-
+                <Route path='/payment' element={<PayForm />} />
                 {/* <Route path='/team' element={<Team />} /> */}
 
                 <Route path='sidebar' element={<RequiredAuth><SideBar /></RequiredAuth>} >
@@ -71,10 +67,9 @@ function MainRoutes() {
                     <Route path='project' element={<RequiredAuth><SlideProject /> </RequiredAuth>} />
                     <Route path='client' element={<RequiredAuth><SlideClient /> </RequiredAuth>} />
                     <Route path='client/new' element={<RequiredAuth><NewSideClient /></RequiredAuth>} />
-                    <Route path='invoice' element={<RequiredAuth><SlideInvoice /></RequiredAuth>} />
-
-                    <Route path='project' element={<SlideProject />} />
-                    <Route path='project/new' element={<NewProject/>}/>
+                    <Route path='invoice' element={<SubscribtionLogic><SlideInvoice /></SubscribtionLogic>} />
+                     <Route path='project' element={<SlideProject />} />
+                    <Route path='project/new' element={<SlideNewProject/>}/>
                     <Route path='client' element={<SlideClient />} />
                     <Route path='client/new' element={<NewSideClient />} />
                     <Route path='invoice' element={<SlideInvoice />} />

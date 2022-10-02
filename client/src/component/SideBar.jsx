@@ -133,7 +133,7 @@ function SideBar() {
 
                 >
                     {/* TMRTIC LOGO */}
-                    {navSize === 'large' ? load ? "" : <Img p="5%" w='150px' ml='55px' mt='15px' src='/Imges/tmetric_logo_and_text.svg' alt='side bar tmrtric' /> : ""}
+                    <Link to='/sidebar/time'>{navSize === 'large' ? load ? "" : <Img p="5%" w='150px' ml='55px' mt='15px' src='/Imges/tmetric_logo_and_text.svg' alt='side bar tmrtric' /> : ""}</Link>
 
                     {/* Time */}
                     {navSize === 'large' ? <NavLink to='time'>

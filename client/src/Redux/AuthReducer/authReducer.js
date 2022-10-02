@@ -8,7 +8,8 @@ const inState = {
     isLoading: false,
     isError: false,
     sideSize: '',
-    LoginUser: []
+    LoginUser: [],
+    SubToken: getLocalData("subthe") || ''
 
 }
 
@@ -80,6 +81,15 @@ export const authReducer = (state = inState, action) => {
             return {
                 ...state,
                 LoginUser: payload
+            }
+        }
+        case types.SUBSCRIPTION_TOKEN: {
+            console.log(payload, "reducer Payload")
+            
+            SaveTheToken("subthe", payload)
+            return {
+                ...state,
+                SubToken: payload
             }
         }
         default:
