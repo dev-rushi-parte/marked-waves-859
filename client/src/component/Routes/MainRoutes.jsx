@@ -3,7 +3,6 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-
 import Login from '../../Pages/Account/Login'
 import Singup from '../../Pages/Account/Singup'
 import { Homepage } from '../../Pages/HomePage/Homepage';
@@ -21,6 +20,8 @@ import Price from '../../Pages/Price/Price';
 import SlideInvoice from '../../Pages/TMETRIC_Pages/SlideManage/SlideInvoice';
 import SideBar from '../SideBar';
 import RequiredAuth from '../RequiredAuth/RequiredAuth';
+import NewProject from '../../Pages/Projects/NewProject';
+import PageNotfound from '../../Pages/PageNotfound';
 import NewProject from '../../Pages/Projects/NewProject';
 import PageNotfound from '../../Pages/PageNotfound';
 import { PayForm } from '../SubscribtionProtected/PayFormBtn';
