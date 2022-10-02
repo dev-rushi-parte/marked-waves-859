@@ -27,8 +27,13 @@ import SlideMember from '../../Pages/TMETRIC_Pages/SlideWorkSpace/SlideMember';
 import Price from '../../Pages/Price/Price';
 import SlideInvoice from '../../Pages/TMETRIC_Pages/SlideManage/SlideInvoice';
 import SideBar from '../SideBar';
+
+import RequiredAuth from '../RequiredAuth/RequiredAuth';
+import PageNotfound from '../../Pages/PageNotfound';
+
 import NewProject from '../../Pages/Projects/NewProject';
 import SlideNewProject from '../../Pages/TMETRIC_Pages/Manage/SlideNewProject';
+
 
 
 
@@ -47,40 +52,47 @@ function MainRoutes() {
 
                 {/* <Route path='/team' element={<Team />} /> */}
 
-                <Route path='sidebar' element={<SideBar />} >
+                <Route path='sidebar' element={<RequiredAuth><SideBar /></RequiredAuth>} >
 
                     {/* Top routes */}
-                    <Route path='time' element={<SlideTime />} />
-                    <Route path='mywork' element={<SlideMyWork />} />
-                    <Route path='team' element={<SlideTeam />} />
-                    <Route path='task' element={<SlideTask />} />
+                    <Route path='time' element={<RequiredAuth><SlideTime /> </RequiredAuth>} />
+                    <Route path='mywork' element={<RequiredAuth><SlideMyWork /> </RequiredAuth>} />
+                    <Route path='team' element={<RequiredAuth><SlideTeam /> </RequiredAuth>} />
+                    <Route path='task' element={<RequiredAuth><SlideTask /> </RequiredAuth>} />
 
 
                     {/* analyze roues */}
 
-                    <Route path='reports' element={<SlideReports />} />
+                    <Route path='reports' element={<RequiredAuth><SlideReports /></RequiredAuth>} />
 
 
 
                     {/* manage Routes */}
+
+                    <Route path='project' element={<RequiredAuth><SlideProject /> </RequiredAuth>} />
+                    <Route path='client' element={<RequiredAuth><SlideClient /> </RequiredAuth>} />
+                    <Route path='client/new' element={<RequiredAuth><NewSideClient /></RequiredAuth>} />
+                    <Route path='invoice' element={<RequiredAuth><SlideInvoice /></RequiredAuth>} />
+
                     <Route path='project' element={<SlideProject />} />
                     <Route path='project/new' element={<SlideNewProject/>}/>
                     <Route path='client' element={<SlideClient />} />
                     <Route path='client/new' element={<NewSideClient />} />
                     <Route path='invoice' element={<SlideInvoice />} />
 
+
                     {/* WorkSpace routes */}
 
-                    <Route path='member' element={<SlideMember />} />
-                    <Route path='subscribtion' element={<SlideSubscription />} />
 
+                    <Route path='subscribtion' element={<RequiredAuth><SlideSubscription /></RequiredAuth>} />
 
-                    <Route path='*' element={"Page Not Found"} />
+                    <Route path='member' element={<RequiredAuth> <SlideMember />  </RequiredAuth>} />
+
+                    <Route path='*' element={<PageNotfound />} />
                 </Route>
 
-                {/* <Route path='/member' element={<RequiredAuth> <SlideMember />  </RequiredAuth>} /> */}
 
-                <Route path='*' element={"Page Not Found"} />
+                <Route path='*' element={<PageNotfound />} />
 
             </Routes>
         </>

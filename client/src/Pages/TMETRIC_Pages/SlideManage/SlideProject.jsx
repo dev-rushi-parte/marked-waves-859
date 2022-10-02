@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import Project from '../../Projects/Project';
 
+
 function SlideProject() {
     const sideSize = useSelector((state) => state.auth.sideSize);
 

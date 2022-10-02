@@ -24,12 +24,11 @@ import FullTask from './FullTask';
 import { useSelector } from 'react-redux';
 
 
-const Task = ({ state, setState, taskD }) => {
+const Task = ({ state, setState, taskD, projects }) => {
 
     {  /* Store Client and project data  */ }
 
     const [clients, setClients] = useState([]);
-    const [projects, setProjects] = useState([]);
 
 
     const token = useSelector((state) => state.auth.token)
@@ -42,13 +41,15 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
 
     const [taskData, setTaskData] = useState({
         taskName: taskD,
-        projectName: "",
-        assigneName: "",
+        projectName: '',
+        assigneName: '',
         dueDate: "",
         taskDescription: "",
         estimateTime: "",
         tag: ""
     })
+
+    console.log(taskData,"task data")
 
     const addData = (e) => {
         setTaskData({ ...taskData, [e.target.name]: e.target.value })
@@ -57,7 +58,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
     const addData11 = async (e) => {
         if (e.key == "Enter") {
             const { taskName, projectName, assigneName, dueDate, taskDescription, estimateTime, tag } = taskData;
-            console.log(taskName);
+            console.log(taskData, "rushi");
             fetch('http://localhost:8080/task', {
                 method: 'POST',
                 headers: {
@@ -75,7 +76,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
         }
     }
 
-    console.log(taskData);
+    
 
     const getClientData = () => {
         fetch('http://localhost:8080/clients', {
@@ -97,27 +98,6 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
         getClientData();
     }, []);
     console.log(clients);
-
-    const getProjects = () => {
-        fetch('http://localhost:8080/projects', {
-            method: 'GET',
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                console.log(res);
-                setProjects(res);
-            })
-            .catch((err) => console.log(err))
-    }
-
-    useEffect(() => {
-        getProjects();
-    }, []);
-    console.log(projects)
 
     return (
 
@@ -160,7 +140,8 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
 
                     { /* Map Project Data */}
                     <form className={styles.form}>
-                        <div><input placeholder='Write Task Here' type='text' name='taskName' onChange={addData} /></div>
+                        <div className={styles.projectRightDiv} >
+                            <input placeholder='Write Task Here' type='text' name='taskName' onChange={addData} /></div>
                         <div className={styles.projectRightDiv}>
                             <div><p>Project</p></div>
                             <div className={styles.projectRightDivBelow}>
@@ -170,8 +151,8 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
                                     <Select onChange={addData} name="projectName">
 
                                         {
-                                            projects.map((val) => {
-                                                return <option value={val} >{val.project}</option>
+                                            projects?.map((val) => {
+                                                return <option value={val.project} >{val.project}</option>
                                             })
                                         }
 
@@ -193,8 +174,8 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
                                     <Select name='assigneName' onChange={addData}>
 
                                         {
-                                            clients.map((val) => {
-                                                return <option value={val}>{val.client}</option>
+                                            clients?.map((val) => {
+                                                return <option value={val.client}>{val.client}</option>
                                             })
                                         }
 
@@ -213,7 +194,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
                             </div>
                         </div>
 
-                        <div>
+                        <div className={styles.projectRightDiv}>
                             <input placeholder='Enter task description' name='taskDescription' onChange={addData} />
                         </div>
 
@@ -240,13 +221,11 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
                                 </div>
                             </div>
                         </div>
+
+                        
                     </form>
 
-                    <div>
-                        <div className={styles.projectRightDivBelow}>
-                            <div><AiFillSignal className={styles.projectRightDivIcon} /></div>
-                        </div>
-                    </div>
+
 
                 </div>
             </div>

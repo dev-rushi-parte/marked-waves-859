@@ -76,6 +76,7 @@ export const authReducer = (state = inState, action) => {
         }
         case types.GET_LOGIN_USER: {
             console.log(payload, "reducer Payload")
+            // console.log("reducer with login user")
             return {
                 ...state,
                 LoginUser: payload

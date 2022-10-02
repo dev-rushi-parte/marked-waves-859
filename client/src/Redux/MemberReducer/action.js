@@ -128,3 +128,38 @@ export const UpdateMember = (payload) => async (dispatch) => {
 
 
 }
+
+
+
+
+const DeleteMember = (payload) => {
+    return {
+        type: types.DELETE_MEMBER,
+        payload
+    }
+}
+
+
+export const DeleteMemberFun = (payload) => async (dispatch) => {
+
+
+    // console.log(getLocalData("token"))
+    return await axios.delete(`http://localhost:8080/member/${payload.userId}`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${payload.token}`
+        }
+    })
+        .then((res) => {
+
+            return dispatch(DeleteMember(res));
+            // console.log(res)
+
+        })
+        .catch((err) => {
+            console.log(err, "errrrr2222222")
+            // return dispatch(postMemberError(err))
+        });
+
+
+}
