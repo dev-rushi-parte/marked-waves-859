@@ -30,13 +30,13 @@ app.use("/time", timeController)
 // Login Singup routes
 app.use("/user", AuthRouter)
 app.use("/" ,taskRoutes);
-app.use("/clients" , ClientRouter)
-app.use("/project" , ProjectRouter)
+
 
 // login user authentication middleware
 app.use(userAuthentication)
 
-
+app.use("/clients" , ClientRouter)
+app.use("/project" , ProjectRouter)
 
 app.use("/member", MemberRouter);
 //  User Routes

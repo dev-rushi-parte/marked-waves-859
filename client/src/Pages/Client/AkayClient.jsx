@@ -5,6 +5,8 @@ import { AiOutlineArrowDown, AiOutlineArrowUp } from "react-icons/ai";
 import { useEffect } from 'react';
 import { IoMdAdd } from "react-icons/io";
 import { BsThreeDots } from 'react-icons/bs';
+import {Link} from "react-router-dom"
+import { useSelector } from 'react-redux';
 
 
 
@@ -15,11 +17,15 @@ const AkayClient = () => {
   const[total,settotal]=useState(true)
 
   const [data,setData] = useState([])
+  const token = useSelector((state) => state.auth.token);
 
   const getdata=()=>{
-    fetch("http://localhost:8080/clients/",{
-      method:"GET"
-    })
+    fetch("http://localhost:8080/clients/", {
+      method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+  })
     .then((res)=>res.json())
     .then((res)=>setData(res))
     .catch((err)=>console.log(err))
@@ -29,12 +35,47 @@ const AkayClient = () => {
     getdata()
   },[])
 
-  console.log(data)
+  const sortascdata=()=>{
+    fetch("http://localhost:8080/clients/sortasc",{
+      method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+    })
+    .then((res)=>res.json())
+    .then((res)=>setData(res))
+    .catch((err)=>console.log(err))
+  }
+
+  useEffect(()=>{
+    sortascdata()
+  },[])
+
+
+  const sortdecdata=()=>{
+    fetch("http://localhost:8080/clients/sortdec",{
+      method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+    })
+    .then((res)=>res.json())
+    .then((res)=>setData(res))
+    .catch((err)=>console.log(err))
+  }
+
+  useEffect(()=>{
+    sortdecdata()
+  },[])
+
 
 
   const handleDelete=(id)=>{
     fetch(`http://localhost:8080/clients/${id}`,{
-     method:"DELETE",
+      method:"DELETE",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
     })
     .then((res)=>res.json())
     .then(()=>getdata())
@@ -46,9 +87,11 @@ const AkayClient = () => {
   const handleClientSort=()=>{
   if(change==true)
   {
+    sortdecdata()
     setChange(false)
   }
   else{
+    sortascdata()
     setChange(true)
   }
   }
@@ -85,7 +128,7 @@ const AkayClient = () => {
 
        <Box className={styles.ClientBtnBox}>
         
-        <Button className={styles.ClientBtn} bg="#3070f0"><IoMdAdd size={24}/>New Client</Button>
+      <Link to="/sidebar/client/new">  <Button className={styles.ClientBtn} bg="#3070f0"><IoMdAdd size={24}/>New Client</Button> </Link>
        </Box>
       
 

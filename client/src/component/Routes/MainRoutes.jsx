@@ -28,6 +28,7 @@ import Price from '../../Pages/Price/Price';
 import SlideInvoice from '../../Pages/TMETRIC_Pages/SlideManage/SlideInvoice';
 import SideBar from '../SideBar';
 import NewProject from '../../Pages/Projects/NewProject';
+import SlideNewProject from '../../Pages/TMETRIC_Pages/Manage/SlideNewProject';
 
 
 
@@ -63,7 +64,7 @@ function MainRoutes() {
 
                     {/* manage Routes */}
                     <Route path='project' element={<SlideProject />} />
-                    <Route path='project/new' element={<NewProject/>}/>
+                    <Route path='project/new' element={<SlideNewProject/>}/>
                     <Route path='client' element={<SlideClient />} />
                     <Route path='client/new' element={<NewSideClient />} />
                     <Route path='invoice' element={<SlideInvoice />} />

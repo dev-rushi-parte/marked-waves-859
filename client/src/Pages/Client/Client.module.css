@@ -1,5 +1,5 @@
 .ClientMainBox{
-   border: 1px solid black;
+   /* border: 1px solid black; */
    width: 95%;
    height: 700px;
    margin: auto;
@@ -41,7 +41,7 @@
 
 
 .filterLeftBox{
-   border: 1px solid black;
+   /* border: 1px solid black; */
    height: 100%;
    width: 75%;
    display: flex;
@@ -52,7 +52,7 @@
 
 
 .filterRightBox{
-   border: 1px solid black;
+   /* border: 1px solid black; */
    height: 100%;
    width: 25%;
    display: flex;
@@ -60,7 +60,7 @@
 
 
 .filterRightLeftBox{
-   border: 1px solid red;
+   /* border: 1px solid red; */
    height: 100%;
    width: 50%;
    display: flex;
@@ -78,7 +78,7 @@
 
 
 .MapleftBox{
-   border: 1px solid black;
+   /* border: 1px solid black; */
    height: 100%;
    width: 75%;
    display: flex;
@@ -88,11 +88,11 @@
 
 
 .MapRightBox{
-   border: 1px solid black;
+   /* border: 1px solid black; */
    height: 100%;
    width: 25%;
    display: flex;
-   
+   justify-content: right;
 }
 
 

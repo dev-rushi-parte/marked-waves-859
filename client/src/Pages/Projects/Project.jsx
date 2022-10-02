@@ -1,16 +1,29 @@
-import { Box, Button, Flex, Input, Select, Text , Menu, MenuButton, MenuList, MenuItem, Link} from '@chakra-ui/react'
+import { Box, Button, Flex, Input, Select, Text , Menu, MenuButton, MenuList, MenuItem} from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import { IoMdAdd } from 'react-icons/io'
 import styles from "../Projects/Project.module.css"
 // import {HiOutlineSearch} from "react-icons/hi"
 import { BsThreeDots } from 'react-icons/bs';
+import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai';
+import {Link} from "react-router-dom"
+import { useSelector } from 'react-redux';
 
 const Project = () => {
+  const[project,setproject]=useState(true)
+  const[code,setcode]=useState(true)
+  const[client,setclient]=useState(true)
+  const[amount,setamount]=useState(true)
     const [data,setData] = useState([])
+    const token = useSelector((state) => state.auth.token);
+
+    
 
     const getdata=()=>{
       fetch("http://localhost:8080/project/",{
-        method:"GET"
+        method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
       })
       .then((res)=>res.json())
       .then((res)=>setData(res))
@@ -23,6 +36,143 @@ const Project = () => {
     console.log(data)
 
 
+
+    const sortproascdata=()=>{
+      fetch("http://localhost:8080/project/sortproasc",{
+        method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+      })
+      .then((res)=>res.json())
+      .then((res)=>setData(res))
+      .catch((err)=>console.log(err))
+    }
+  
+    useEffect(()=>{
+      sortproascdata()
+    },[])
+  
+  
+    const sortprodecdata=()=>{
+      fetch("http://localhost:8080/project/sortprodec",{
+        method:"GET",
+        headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
+      })
+      .then((res)=>res.json())
+      .then((res)=>setData(res))
+      .catch((err)=>console.log(err))
+    }
+  
+    useEffect(()=>{
+      sortprodecdata()
+    },[])
+
+
+    const sortcodeascdata=()=>{
+      fetch("http://localhost:8080/project/sortcodeasc",{
+        method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+      })
+      .then((res)=>res.json())
+      .then((res)=>setData(res))
+      .catch((err)=>console.log(err))
+    }
+  
+    useEffect(()=>{
+      sortproascdata()
+    },[])
+  
+  
+    const sortcodedecdata=()=>{
+      fetch("http://localhost:8080/project/sortcodedec",{
+        method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+      })
+      .then((res)=>res.json())
+      .then((res)=>setData(res))
+      .catch((err)=>console.log(err))
+    }
+  
+    useEffect(()=>{
+      sortprodecdata()
+    },[])
+
+
+    const sortamoascdata=()=>{
+      fetch("http://localhost:8080/project/sortamoasc",{
+        method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+      })
+      .then((res)=>res.json())
+      .then((res)=>setData(res))
+      .catch((err)=>console.log(err))
+    }
+  
+    useEffect(()=>{
+      sortproascdata()
+    },[])
+  
+  
+    const sortamodecdata=()=>{
+      fetch("http://localhost:8080/project/sortamodec",{
+        method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+      })
+      .then((res)=>res.json())
+      .then((res)=>setData(res))
+      .catch((err)=>console.log(err))
+    }
+  
+    useEffect(()=>{
+      sortprodecdata()
+    },[])
+
+
+    const sortcliascdata=()=>{
+      fetch("http://localhost:8080/project/sortcliasc",{
+        method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+      })
+      .then((res)=>res.json())
+      .then((res)=>setData(res))
+      .catch((err)=>console.log(err))
+    }
+  
+    useEffect(()=>{
+      sortproascdata()
+    },[])
+  
+  
+    const sortclidecdata=()=>{
+      fetch("http://localhost:8080/project/sortclidec",{
+        method:"GET",
+      headers:{
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`}
+      })
+      .then((res)=>res.json())
+      .then((res)=>setData(res))
+      .catch((err)=>console.log(err))
+    }
+  
+    useEffect(()=>{
+      sortprodecdata()
+    },[])
+
+
     const handleDelete=(id)=>{
         fetch(`http://localhost:8080/project//${id}`,{
          method:"DELETE",
@@ -32,6 +182,56 @@ const Project = () => {
         .catch((err)=>{
          console.log(err)
         })
+       }
+
+
+       const handleProject=()=>{
+        if(project==true)
+        {
+          sortprodecdata()
+          setproject(false)
+        }
+        else{
+          sortproascdata()
+          setproject(true)
+        }
+       }
+
+       const handleCode=()=>{
+        if(code==true)
+        {
+          sortcodedecdata()
+          setcode(false)
+        }
+        else{
+          sortcodeascdata()
+          setcode(true)
+        }
+       }
+
+       const handleclient=()=>{
+        if(client==true)
+        {
+          sortclidecdata()
+          setclient(false)
+        }
+        else{
+          sortcliascdata()
+          setclient(true)
+        }
+       }
+
+       const handleAmount=()=>{
+        if(amount==true)
+        {
+          sortamodecdata()
+          setamount(false)
+        }
+        else{
+
+          sortamoascdata()
+          setamount(true)
+        }
        }
   return (
    
@@ -61,7 +261,7 @@ const Project = () => {
    </Select>
 
 
-   <Select placeholder="Budget : Any" w="12%" h="38%">
+   <Select placeholder="Budget : Any" w="13%" h="38%">
     <option value="Option 1" >Option 1</option>
    </Select>
 
@@ -78,7 +278,7 @@ const Project = () => {
    <Box className={styles.ClientBtnBox}>
 
     <Box>
-  <Link to="project/new"><Button className={styles.ClientBtn} bg="#3070f0" color="white" h="33px"><IoMdAdd size={24}/>New Project</Button></Link>
+  <Link to="/sidebar/project/new"><Button className={styles.ClientBtn} bg="#3070f0" color="white" h="33px"><IoMdAdd size={24}/>New Project</Button></Link>
    </Box>
 
    <Box>
@@ -99,17 +299,17 @@ const Project = () => {
    
 
 
-   <Box className={styles.sortingFirstBox}>
-    <Text color='gray' fontWeight={500} fontSize="14px">PROJECT</Text>
+   <Box className={styles.sortingFirstBox} onClick={handleProject}>
+   {project?<AiOutlineArrowUp color='gray' fontWeight={900}/>:<AiOutlineArrowDown color='gray' fontWeight={900}/>} <Text color='gray' fontWeight={500} fontSize="14px">PROJECT</Text>
    </Box>
-   <Box className={styles.sortingSecBox}>
-    <Text color='gray' fontWeight={500} fontSize="14px">CODE</Text>
+   <Box className={styles.sortingSecBox} onClick={handleCode}>
+   {code?<AiOutlineArrowUp color='gray' fontWeight={900}/>:<AiOutlineArrowDown color='gray' fontWeight={900}/>}<Text color='gray' fontWeight={500} fontSize="14px">CODE</Text>
    </Box>
-   <Box className={styles.sortingThirBox}>
-    <Text color='gray' fontWeight={500} fontSize="14px">CLIENT</Text>
+   <Box className={styles.sortingThirBox} onClick={handleclient}>
+   {client?<AiOutlineArrowUp color='gray' fontWeight={900}/>:<AiOutlineArrowDown color='gray' fontWeight={900}/>} <Text color='gray' fontWeight={500} fontSize="14px">CLIENT</Text>
    </Box>
-   <Box className={styles.sortingForthBox}>
-    <Text color='gray' fontWeight={500} fontSize="14px">BILLABLE AMOUNT</Text>
+   <Box className={styles.sortingForthBox} onClick={handleAmount}>
+   {amount?<AiOutlineArrowUp color='gray' fontWeight={900}/>:<AiOutlineArrowDown color='gray' fontWeight={900}/>}<Text color='gray' fontWeight={500} fontSize="14px">BILLABLE AMOUNT</Text>
    </Box>
    <Box className={styles.sortingFirftBox}>
     <Text color='gray' fontWeight={500} fontSize="14px">TEAM</Text>
