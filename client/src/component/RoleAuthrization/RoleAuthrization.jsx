@@ -18,11 +18,15 @@ function RoleAuthrization({ children }) {
             })
     }, [])
 
-    if (userName?.role == 'owner') {
+    if (userName?.role == 'TeamMember') {
         return null
 
     }
+    // else if (userName?.role == 'admin') {
+
+    // }
     else {
+        console.log(children, "children")
         return children
     }
 }

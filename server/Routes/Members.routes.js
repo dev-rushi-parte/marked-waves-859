@@ -90,7 +90,7 @@ MemberRouter.patch("/:id", async (req, res) => {
 
     const { role } = req.body;
 
-    
+
     console.log(id, role)
     const member = await MemberSchema.findOneAndUpdate({ userId: id }, { $set: { role: role } }, { new: true })
     const user = await UserModle.findOneAndUpdate({ userId: id }, { $set: { role: role } }, { new: true })
@@ -98,6 +98,19 @@ MemberRouter.patch("/:id", async (req, res) => {
 
 })
 
+
+MemberRouter.delete("/:id", async (req, res) => {
+
+    const { id } = req.params;
+
+
+
+
+    const member = await MemberSchema.findOneAndDelete({ userId: id })
+    const user = await UserModle.findOneAndDelete({ userId: id })
+    res.status(200).send("User Deleted")
+
+})
 
 // get the login in user
 MemberRouter.get("/loginuser", async (req, res) => {
