@@ -18,12 +18,17 @@ import { useSelector } from 'react-redux';
 
 
 
-const FullTask = ({ setTaskD, projects }) => {
+const FullTask = ({ setTaskD }) => {
 
   const [taskss, setTaskss] = useState([]);
   const token = useSelector((state) => state.auth.token)
+
  
  const pro = ["p1", "p2", "p3", "p4", "p5"]; 
+
+  const [projects, setProjects] = useState([]);
+
+
   
 
     const getTasks = () => {
@@ -47,6 +52,28 @@ const FullTask = ({ setTaskD, projects }) => {
     getTasks();
   },[])
   console.log(taskss);
+
+
+  const getProjects = () => {
+    fetch('http://localhost:8080/project', {
+        method: 'GET',
+        headers: {
+            "Authorization": `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res, "projectdata");
+            setProjects(res);
+        })
+        .catch((err) => console.log(err))
+}
+
+useEffect(() => {
+    getProjects();
+}, []);
+console.log(projects);
 
 
 

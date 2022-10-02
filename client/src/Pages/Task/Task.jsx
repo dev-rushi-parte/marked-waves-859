@@ -24,12 +24,13 @@ import FullTask from './FullTask';
 import { useSelector } from 'react-redux';
 
 
-const Task = ({ state, setState, taskD, projects }) => {
+const Task = ({ state, setState, taskD }) => {
 
     {  /* Store Client and project data  */ }
 
     const [clients, setClients] = useState([]);
 
+    const [projects, setProjects] = useState([]);
 
     const token = useSelector((state) => state.auth.token)
     console.log(token)
@@ -98,6 +99,28 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
         getClientData();
     }, []);
     console.log(clients);
+
+
+    const getProjects = () => {
+        fetch('http://localhost:8080/project', {
+            method: 'GET',
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res, "projectdata");
+                setProjects(res);
+            })
+            .catch((err) => console.log(err))
+    }
+    
+    useEffect(() => {
+        getProjects();
+    }, []);
+    console.log(projects);
 
     return (
 
@@ -210,7 +233,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
                         <div>
                             <div className={styles.projectRightDivBelow}>
                                 <div><AiFillTag className={styles.projectRightDivIcon} /></div>
-                                <div>
+                                <div >
                                     <select name='tag' onChange={addData}>
                                         <option value='Add-Tags'>Add-Tags</option>
                                         <option value='Design'>Design</option>
@@ -228,7 +251,11 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
 
 
                 </div>
+
+
+
             </div>
+
         </div>
 
     )
