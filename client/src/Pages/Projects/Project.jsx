@@ -19,7 +19,7 @@ const Project = () => {
     
 
     const getdata=()=>{
-      fetch("http://localhost:8080/project/",{
+      fetch("https://tmetric-41504.herokuapp.com/project/",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const Project = () => {
 
 
     const sortproascdata=()=>{
-      fetch("http://localhost:8080/project/sortproasc",{
+      fetch("https://tmetric-41504.herokuapp.com/project/sortproasc",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const Project = () => {
   
   
     const sortprodecdata=()=>{
-      fetch("http://localhost:8080/project/sortprodec",{
+      fetch("https://tmetric-41504.herokuapp.com/project/sortprodec",{
         method:"GET",
         headers:{
         'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const Project = () => {
 
 
     const sortcodeascdata=()=>{
-      fetch("http://localhost:8080/project/sortcodeasc",{
+      fetch("https://tmetric-41504.herokuapp.com/project/sortcodeasc",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const Project = () => {
   
   
     const sortcodedecdata=()=>{
-      fetch("http://localhost:8080/project/sortcodedec",{
+      fetch("https://tmetric-41504.herokuapp.com/project/sortcodedec",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ const Project = () => {
 
 
     const sortamoascdata=()=>{
-      fetch("http://localhost:8080/project/sortamoasc",{
+      fetch("https://tmetric-41504.herokuapp.com/project/sortamoasc",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ const Project = () => {
   
   
     const sortamodecdata=()=>{
-      fetch("http://localhost:8080/project/sortamodec",{
+      fetch("https://tmetric-41504.herokuapp.com/project/sortamodec",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ const Project = () => {
 
 
     const sortcliascdata=()=>{
-      fetch("http://localhost:8080/project/sortcliasc",{
+      fetch("https://tmetric-41504.herokuapp.com/project/sortcliasc",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -157,7 +157,7 @@ const Project = () => {
   
   
     const sortclidecdata=()=>{
-      fetch("http://localhost:8080/project/sortclidec",{
+      fetch("https://tmetric-41504.herokuapp.com/project/sortclidec",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -174,7 +174,7 @@ const Project = () => {
 
 
     const handleDelete=(id)=>{
-        fetch(`http://localhost:8080/project//${id}`,{
+        fetch(`https://tmetric-41504.herokuapp.com/project//${id}`,{
          method:"DELETE",
         })
         .then((res)=>res.json())

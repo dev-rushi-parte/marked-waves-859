@@ -30,7 +30,7 @@ export const SingupUser = (payload) => async (dispatch) => {
     dispatch(singupRequest());
 
 
-    return axios.post("http://localhost:8080/user/singup", payload)
+    return axios.post("https://tmetric-41504.herokuapp.com/user/singup", payload)
         .then((res) => {
             console.log(res)
             return dispatch(singupSuccess(res))
@@ -65,7 +65,7 @@ export const UserLogin = (payload) => async (dispatch) => {
     const headers = {
         "Content-Type": "application/json",
     };
-    return await axios.post("http://localhost:8080/user/login", payload, {
+    return await axios.post("https://tmetric-41504.herokuapp.com/user/login", payload, {
         headers: headers,
     })
         .then((res) => {
@@ -105,7 +105,7 @@ export const loginUser = (payload) => {
 
 export const LoginUserData = (token) => async (dispatch) => {
 
-    return await axios.get("http://localhost:8080/member/loginuser", {
+    return await axios.get("https://tmetric-41504.herokuapp.com/member/loginuser", {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`

@@ -10,7 +10,7 @@ const General = ({setproject,setcode ,setClient}) => {
   const token = useSelector((state) => state.auth.token);
 
   const getdata=()=>{
-    fetch("http://localhost:8080/clients/",{
+    fetch("https://tmetric-41504.herokuapp.com/clients/",{
       method:"GET",
       headers:{
         'Content-Type': 'application/json',
