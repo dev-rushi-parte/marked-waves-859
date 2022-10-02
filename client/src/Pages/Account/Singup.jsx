@@ -2,7 +2,7 @@ import { Box, Button, Flex, Image, Input, InputGroup, InputRightElement, Text, u
 import React, { useState } from 'react'
 import style from './Account.module.css'
 import Helmet from 'react-helmet';
-import { Link,useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { SingupUser } from '../../Redux/AuthReducer/action';
 
@@ -190,7 +190,7 @@ function Singup() {
 
               <div className={style.checkboxCondition}>
 
-                <input required type='checkbox' />
+                <div>  <input required type='checkbox' /></div>
                 <label>i accepts term and conditons</label>
               </div>
 

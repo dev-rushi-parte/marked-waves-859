@@ -98,7 +98,7 @@ const NewProject = () => {
 
             <Budget />
             <WorkType />
-            <Team />
+            {/* <Team /> */}
 
           </Box>
         </Box>
