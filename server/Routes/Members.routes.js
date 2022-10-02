@@ -1,13 +1,14 @@
 const MemberRouter = require("express").Router();
 
 
+const authorisation = require("../Controller/authrisation.middleware");
 const MemberSchema = require("../Model/Members.model");
 const UserModle = require("../Model/User.model");
 
 
 // get all the users from user collection
 
-MemberRouter.get("/user", async (req, res) => {
+MemberRouter.get("/user",authorisation(["owner", "admin"]), async (req, res) => {
     try {
 
         const user = await UserModle.find();
@@ -22,7 +23,7 @@ MemberRouter.get("/user", async (req, res) => {
 
 //  post the user in member collection and change the role in user collection as well as member collction
 
-MemberRouter.post("/", async (req, res) => {
+MemberRouter.post("/", authorisation(["owner", "admin"]), async (req, res) => {
     const { id, userId } = req.body;
 
     const check = await UserModle.findById(id).exec();
@@ -84,7 +85,7 @@ MemberRouter.get("/", async (req, res) => {
 
 // edit or update the member role in member collection as well as user collection
 
-MemberRouter.patch("/:id", async (req, res) => {
+MemberRouter.patch("/:id", authorisation(["owner", "admin"]), async (req, res) => {
 
     const { id } = req.params;
 
@@ -99,7 +100,7 @@ MemberRouter.patch("/:id", async (req, res) => {
 })
 
 
-MemberRouter.delete("/:id", async (req, res) => {
+MemberRouter.delete("/:id",authorisation(["owner", "admin"]), async (req, res) => {
 
     const { id } = req.params;
 
