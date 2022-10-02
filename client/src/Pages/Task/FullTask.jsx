@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState , useEffect } from 'react';
 import {
   Accordion,
   AccordionItem,
@@ -12,15 +12,45 @@ import styles from "./FullTask.module.css";
 import { BsCheckCircle } from "react-icons/bs";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { BsCaretRight } from "react-icons/bs";
+import { useSelector } from 'react-redux';
 
 
 
 
 
-const FullTask = ({setTaskD}) => {
+const FullTask = ({ setTaskD, projects }) => {
 
-  const arr = ["Project1", "Project2", "Project3", "Project4", "Project5", "Project6", "Project7", "Project8"];
-  const pro = ["p1", "p2", "p3", "p4", "p5"];
+  const [taskss, setTaskss] = useState([]);
+  const token = useSelector((state) => state.auth.token)
+  { /* const arr = ["Project1", "Project2", "Project3", "Project4", "Project5", "Project6", "Project7", "Project8"]; */ }
+ const pro = ["p1", "p2", "p3", "p4", "p5"]; 
+  
+
+    const getTasks = () => {
+      fetch('http://localhost:8080/task', {
+        method: 'GET',
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res);
+          setTaskss(res);
+        })
+        .catch((err) => console.log(err))
+    }
+  
+
+  useEffect(() => {
+    getTasks();
+  },[])
+  console.log(taskss);
+
+
+
+
   return (
 
 
@@ -29,24 +59,24 @@ const FullTask = ({setTaskD}) => {
       <div>
         <Accordion className={styles.accordonDiv}>
           {
-            pro.map((val) => {
+            projects?.map((val) => {
               return <AccordionItem>
                 <h2 >
                   <AccordionButton>
                     <AccordionIcon />
                     <div><SiHeadspace className={styles.fulltaskIcon} /></div>
                     <Box flex='1' textAlign='left'>
-                      Section 1 title
+                      {val.project}
                     </Box>
                   </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4} >
                   {
-                    arr.map((val, index) => (
+                    taskss?.map((val, index) => (
                       <div className={styles.fulltaskAccordondiv}>
                         <div className={styles.fulltaskAccordonpanel}>
                           <div><BsCheckCircle className={styles.fulltaskicon} /></div>
-                          <div >{val}</div>
+                          <div >{val.taskName}</div>
                         </div>
                         <div className={styles.fulltaskAccordonpanel}>
                           <div><BsFillPersonPlusFill className={styles.fulltaskicon} /></div>
@@ -59,12 +89,12 @@ const FullTask = ({setTaskD}) => {
               </AccordionItem>
             })
           }
-          <div className={styles.accordonBottomDiv}> 
-          <input type='text'  placeholder='You can add anything' 
-          onChange={(e) => setTaskD(e.target.value)}/> 
+          <div className={styles.accordonBottomDiv}>
+            <input type='text' placeholder='You can add anything'
+              onChange={(e) => setTaskD(e.target.value)} />
           </div>
         </Accordion>
-        
+
       </div>
     </div>
   )
