@@ -133,7 +133,6 @@ const TaskHeading = ({setState , state}) => {
 
                 </div>
                 <div className={styles.taskInput}>
-                    <div><BiSearchAlt2 className={styles.filterDivIcon} /></div>
                     <div>
                         <input type="text" placeholder='Search' />
                     </div>
