@@ -22,13 +22,17 @@ const FullTask = ({ setTaskD }) => {
 
   const [taskss, setTaskss] = useState([]);
   const token = useSelector((state) => state.auth.token)
+
+ 
+ const pro = ["p1", "p2", "p3", "p4", "p5"]; 
+
   const [projects, setProjects] = useState([]);
 
-  { /* const arr = ["Project1", "Project2", "Project3", "Project4", "Project5", "Project6", "Project7", "Project8"]; */ }
+
   
 
     const getTasks = () => {
-      fetch('http://localhost:8080/task', {
+      fetch('https://tmetric-41504.herokuapp.com/task', {
         method: 'GET',
         headers: {
           "Authorization": `Bearer ${token}`,

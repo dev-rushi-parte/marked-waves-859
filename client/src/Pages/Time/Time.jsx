@@ -61,7 +61,7 @@ const Time = () => {
       set();
       onClose();
 
-      axios.post('http://localhost:8080/time/addTime', {
+      axios.post('https://tmetric-41504.herokuapp.com/time/addTime', {
         description :form.description,
         project : form.project,
         startTime: value,

@@ -14,7 +14,7 @@ export const getMemeberUserData = (payload) => {
 
 export const GetMemberUserData = (token) => async (dispatch) => {
 
-    return await axios.get("http://localhost:8080/member/user", {
+    return await axios.get("https://tmetric-41504.herokuapp.com/member/user", {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -49,7 +49,7 @@ export const PostMemberSignup = (payload) => async (dispatch) => {
 
     console.log("patload", payload.id)
     console.log(getLocalData("token"))
-    return await axios.post(`http://localhost:8080/member/`, payload, {
+    return await axios.post(`https://tmetric-41504.herokuapp.com/member/`, payload, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${payload.token}`
@@ -80,7 +80,7 @@ const getMemberData = (payload) => {
 
 export const GetMemberData = (token) => async (dispatch) => {
 
-    return await axios.get("http://localhost:8080/member/", {
+    return await axios.get("https://tmetric-41504.herokuapp.com/member/", {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -109,7 +109,7 @@ export const UpdateMember = (payload) => async (dispatch) => {
 
     console.log("payload", payload.role)
     // console.log(getLocalData("token"))
-    return await axios.patch(`http://localhost:8080/member/${payload.userId}`, payload, {
+    return await axios.patch(`https://tmetric-41504.herokuapp.com/member/${payload.userId}`, payload, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${payload.token}`
@@ -144,7 +144,7 @@ export const DeleteMemberFun = (payload) => async (dispatch) => {
 
 
     // console.log(getLocalData("token"))
-    return await axios.delete(`http://localhost:8080/member/${payload.userId}`, {
+    return await axios.delete(`https://tmetric-41504.herokuapp.com/member/${payload.userId}`, {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${payload.token}`

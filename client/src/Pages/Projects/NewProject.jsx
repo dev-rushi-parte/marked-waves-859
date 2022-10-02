@@ -28,7 +28,7 @@ const NewProject = () => {
 
   const handleSubmit = () => {
     const payload = { project, code, amount, currency, hourly, freetype, freeRecurr, client }
-    fetch("http://localhost:8080/project/new", {
+    fetch("https://tmetric-41504.herokuapp.com/project/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

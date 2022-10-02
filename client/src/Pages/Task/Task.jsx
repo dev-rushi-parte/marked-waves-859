@@ -60,7 +60,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
         if (e.key == "Enter") {
             const { taskName, projectName, assigneName, dueDate, taskDescription, estimateTime, tag } = taskData;
             console.log(taskData, "rushi");
-            fetch('http://localhost:8080/task', {
+            fetch('https://tmetric-41504.herokuapp.com/task', {
                 method: 'POST',
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -80,7 +80,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
     
 
     const getClientData = () => {
-        fetch('http://localhost:8080/clients', {
+        fetch('https://tmetric-41504.herokuapp.com/clients', {
             method: 'GET',
             headers: {
                 "Authorization": `Bearer ${token}`,

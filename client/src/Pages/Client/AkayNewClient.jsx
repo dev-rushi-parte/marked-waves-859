@@ -25,7 +25,7 @@ const AkayNewClient = () => {
   const handleSubmit=()=>{
     // setBtn(false)
     const payload ={client,address,amount ,currency}
-    fetch("http://localhost:8080/clients/new" ,{
+    fetch("https://tmetric-41504.herokuapp.com/clients/new" ,{
         method:"POST",
         headers:{
             "Content-Type":"application/json",
