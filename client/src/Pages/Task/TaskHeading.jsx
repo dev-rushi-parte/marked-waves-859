@@ -4,6 +4,8 @@ import { BiX } from "react-icons/bi";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { Button } from '@chakra-ui/react';
 import { BiChevronDown } from "react-icons/bi";
+import { BsPlusLg } from "react-icons/bs";
+import {FiPlus } from "react-icons/fi"
 
 
 const TaskHeading = ({setState , state}) => {
@@ -111,15 +113,15 @@ const TaskHeading = ({setState , state}) => {
                 <div className={styles.newTaskInside}>
 
                     <div className={styles.headerDiv}>
+                    <div><BsPlusLg className={styles.filterDivIcon} /></div>
                         <div className={styles.taskDivButton}  onClick={changeState}>New Task</div>
-                        <div><BiChevronDown className={styles.filterDivIcon} /></div>
                     </div>
 
                     <div className={styles.taskDiv}>
                         <select className={styles.taskDiv}>
                             <option>
                                 <div>Sort: Project</div>
-                                <div><BiChevronDown className={styles.filterDivIcon} /></div>
+                                <div><FiPlus className={styles.filterDivIcon} /></div>
                             </option>
                             <option>Estimate</option>
                             <option>Due Date</option>

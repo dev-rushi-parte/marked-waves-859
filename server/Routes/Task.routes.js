@@ -2,12 +2,12 @@ const {Router} = require('express');
 const { TaskModel } = require('../Model/Task.model');
 const taskController = Router();
 
-taskController.get("/task" , async(req,res) => {
+taskController.get("/" , async(req,res) => {
     const tasks = await TaskModel.find()
     res.send(tasks)
 })
 
-taskController.post('/task' , async (req,res) => {
+taskController.post('/' , async (req,res) => {
     const { taskName ,
         projectName ,
         assigneName ,

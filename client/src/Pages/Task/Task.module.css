@@ -50,12 +50,12 @@
 
 }
 .filterDivIcon{
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 .newTask{
     display: flex;
     justify-content: space-between;
-    border: 1px solid rgb(194, 190, 190);
+    border: 1px solid rgb(180, 178, 178);
     padding: 10px;
     margin-top: 13px;
 }
@@ -92,12 +92,11 @@
     width: 100%;
 }
 .taskProject{
-    /* border: 1px solid black; */
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
 .taskProject > div{
-    border: 1px solid rgb(61, 61, 61);
+    /* border: 1px solid rgb(61, 61, 61); */
 }
 
 .taskUp{
@@ -123,7 +122,7 @@
     margin-top: -2px;
     padding: 1px;
     padding: 5px;
-    background-color: #17c22e;
+    background-color: #16db30;
     color: white;
 }
 .taskMarkComplete > div{
@@ -137,7 +136,7 @@
    padding: 10px;
 }
 .taskProjectRight > div{
-    border-bottom: 1px solid rgb(77, 76, 76);
+    border-bottom: 1px solid rgb(190, 189, 189);
     padding: 5px;
 }
 .projectRightDiv{
@@ -168,9 +167,17 @@
     display: flex;
     justify-content: space-between;
     padding: 7px;
-    background-color: #3070f0;
+    gap: 7px;
+    color: white;
+    background-color: rgb(8, 70, 194);
 }
 
 .taskDiv{
-    background-color: #ebedf0;
+    background-color: #dddfe0;
+}
+
+input{
+    /* border: 1px solid rgb(163, 162, 162); */
+    width: 100%;
+    
 }
