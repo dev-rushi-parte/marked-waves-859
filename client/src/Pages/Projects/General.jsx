@@ -2,14 +2,19 @@ import { Box, Flex, Input, Select, Text } from '@chakra-ui/react'
 import React, { useEffect, useState } from 'react'
 import styles from "../Projects/General.module.css"
 import {HiOutlineQuestionMarkCircle} from "react-icons/hi"
+import { useSelector } from 'react-redux';
 
 const General = ({setproject,setcode ,setClient}) => {
   // const[project,setproject] = useState("")
   const [data,setData] = useState([])
+  const token = useSelector((state) => state.auth.token);
 
   const getdata=()=>{
     fetch("http://localhost:8080/clients/",{
-      method:"GET"
+      method:"GET",
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
     })
     .then((res)=>res.json())
     .then((res)=>setData(res))
@@ -57,7 +62,7 @@ const General = ({setproject,setcode ,setClient}) => {
     <Text fontSize={12} color="gray" fontWeight={500}>Client</Text>
     
     <Select placeholder='Select option' marginTop={1} h="33px" onChange={(e)=>setClient(e.target.value)}>
-   {data.map((el,i)=>(
+   {data?.map((el,i)=>(
     <option value={el.client}>{el.client}</option>
    ))}
    </Select>

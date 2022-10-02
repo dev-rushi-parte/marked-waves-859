@@ -1,4 +1,5 @@
 import React,  { useEffect, useState } from "react";
+import { useSelector } from 'react-redux'
 import {  Box, Button, Checkbox, Divider, Fade, Flex, Input, Progress, Text, useDisclosure } from '@chakra-ui/react';
 import { FaPlay, FaStop } from "react-icons/fa";
 import { TiMediaRecord } from "react-icons/ti";
@@ -16,7 +17,7 @@ const Time = () => {
     const [shour,setshour]=useState([])
     const [ehour,setehour]=useState([])
  
-
+    const token = useSelector((state) => state.auth.token);
     // console.log(clock2)
     // console.log(value)
     const[data ,setData]=useState([])
@@ -66,7 +67,14 @@ const Time = () => {
         startTime: value,
         endTime: value1,
         duration: `${ehour[0]-shour[0]}:${ehour[1]-shour[1]}`
-        })
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+        }
+        )
       .then(function (res) {
         console.log(res);
       })
