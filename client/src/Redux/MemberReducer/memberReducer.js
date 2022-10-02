@@ -38,6 +38,12 @@ export const memberReducer = (state = inState, action) => {
                 memberData: payload
             }
         }
+        case types.DELETE_MEMBER: {
+            return {
+                ...state,
+                payload
+            }
+        }
 
         default:
             return state

@@ -58,11 +58,11 @@ function SideBar() {
     const [navSize, changeNavSize] = useState("large");
     const [load, setLoad] = useState(false);
     const [value, setValue] = useState();
-    const [userName, setUserName] = useState();
 
     const token = useSelector((state) => state.auth.token)
+    const UserLogin = useSelector((state) => state.auth.LoginUser)
 
-    console.log(userName?.name)
+    console.log(UserLogin, "sidebar page user get")
     const dispatch = useDispatch()
 
     const naviagte = useNavigate();
@@ -73,13 +73,10 @@ function SideBar() {
         naviagte("/")
     }
 
-    useEffect(() => {
-        dispatch(LoginUserData(token))
-            .then((res) => {
-                // console.log(res.payload.name, "page")
-                setUserName(res.payload)
-            })
-    }, [])
+    // useEffect(() => {
+    // dispatch(LoginUserData(token))
+
+    // }, [])
 
     const IconBtn = () => {
         if (navSize === "small") {
@@ -146,7 +143,6 @@ function SideBar() {
                     </NavLink> : ""}
 
 
-                    {/* <RoleAuthrization> */}
                     {/* My Work */}
                     {navSize === 'large' ? <NavLink to='mywork'>
                         <Flex pl="5%" > {load ? "" : <Flex alignItems='center' justifyContent='center' gap='10px' h='40px'><MdOutlineWorkOutline /> My Work</Flex>} </Flex>
@@ -204,7 +200,8 @@ function SideBar() {
                             </AccordionPanel>
                         </AccordionItem>}
 
-                        {load ? "" : <AccordionItem onClick={console.log("No2")}>
+
+                        <RoleAuthrization>   {load ? "" : <AccordionItem onClick={console.log("No2")}>
                             <h2>
                                 <AccordionButton onClick={AcCheck2}>
                                     <Box flex='1' textAlign='left'>
@@ -221,9 +218,11 @@ function SideBar() {
                         </AccordionItem>}
 
 
+                        </RoleAuthrization>
                         {/* Work Space */}
 
-                        {load ? "" : <AccordionItem>
+
+                        <RoleAuthrization>   {load ? "" : <AccordionItem>
                             <h2>
                                 <AccordionButton onClick={AcCheck3}>
                                     <Box flex='1' textAlign='left'>
@@ -237,6 +236,8 @@ function SideBar() {
                                 <NavLink to='subscribtion'> <Flex alignItems='center' gap='10px' h='40px'><BsJournalBookmarkFill /> Subcription</Flex></NavLink>
                             </AccordionPanel>
                         </AccordionItem>}
+                        </RoleAuthrization>
+
                     </Accordion> : ""}
 
 
@@ -261,8 +262,8 @@ function SideBar() {
                         <Avatar size="sm" src="avatar-1.jpg" />
                         <Flex flexDir="column" ml={4}>
 
-                            <Text color="gray" fontSize={12}>{userName?.role}</Text>
-                            <Box>   <Heading as="h3" size="sm">{userName?.name}</Heading></Box>
+                            <Text color="gray" fontSize={12}>{UserLogin?.role}</Text>
+                            <Box>   <Heading as="h3" size="sm">{UserLogin?.name}</Heading></Box>
                         </Flex>
                         <Box mt='15px' ml='22px'> <AiOutlineRight /></Box>
                     </Flex>
