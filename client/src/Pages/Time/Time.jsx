@@ -16,7 +16,7 @@ const Time = () => {
     const [shour,setshour]=useState([])
     const [ehour,setehour]=useState([])
  
-
+    // const token = useSelector((state) => state.auth.token);
     // console.log(clock2)
     // console.log(value)
     const[data ,setData]=useState([])
@@ -66,7 +66,14 @@ const Time = () => {
         startTime: value,
         endTime: value1,
         duration: `${ehour[0]-shour[0]}:${ehour[1]-shour[1]}`
-        })
+        }
+        // {
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //     'Authorization': `Bearer ${payload.token}`
+        // }
+        // }
+        )
       .then(function (res) {
         console.log(res);
       })
