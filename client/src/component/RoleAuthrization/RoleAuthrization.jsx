@@ -8,7 +8,7 @@ function RoleAuthrization({ children }) {
     const [userName, setUserName] = useState();
     const token = useSelector((state) => state.auth.token)
 
-    console.log(userName?.name)
+    // console.log(userName?.name)
 
     useEffect(() => {
         dispatch(LoginUserData(token))
