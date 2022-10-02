@@ -4,8 +4,9 @@ import { FiPlus } from "react-icons/fi";
 import { BsThreeDots } from "react-icons/bs";
 import { Input, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay, useDisclosure, useToast } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetMemberData, GetMemberUserData, PostMemberSignup, UpdateMember } from '../../Redux/MemberReducer/action';
+import { DeleteMemberFun, GetMemberData, GetMemberUserData, PostMemberSignup, UpdateMember } from '../../Redux/MemberReducer/action';
 import { useNavigate } from 'react-router-dom';
+import { LoginUserData } from '../../Redux/AuthReducer/action';
 
 
 function Member() {
@@ -15,6 +16,7 @@ function Member() {
     const [suggestion, setSuggestion] = useState(false);
     const [memeber, setMember] = useState()
     const [editMember, setEditMember] = useState();
+    const [roleChnage, setRolechange] = useState();
     const autoComepeleteRef = useRef();
     const dispatch = useDispatch();
     const toast = useToast()
@@ -29,13 +31,37 @@ function Member() {
 
 
 
+
+
+
+
+
+    // get owner data
+
+    const getOwnerData = () => {
+        dispatch(LoginUserData(token))
+            .then((res) => {
+                console.log(res.payload.name, "page")
+            })
+    }
+
+
+    useEffect(() => {
+        getOwnerData();
+    }, [])
+
+
+
+
     // post the data to member schema
 
     const showMemberData = () => {
         dispatch(GetMemberData(token))
             .then((res) => {
+
                 // console.log(res.payload, "datattatat")
                 setMember(res.payload)
+                getOwnerData();
 
             })
             .catch((err) => console.log(err))
@@ -73,6 +99,8 @@ function Member() {
                 else if (res.type == 'POST_MEMBER_DATA') {
                     console.log(res.payload)
                     showMemberData();
+                    getOwnerData();
+
                     toast({
                         position: 'top',
                         marginTop: '150px',
@@ -137,7 +165,7 @@ function Member() {
     // Update the memeber
 
     const handelEdit = (item) => {
-
+        getOwnerData()
         setEditMember(item)
 
     }
@@ -145,6 +173,7 @@ function Member() {
     // teamMember event
     const TeamMemberclick = () => {
         const { userId } = editMember
+
         const payload = {
             userId,
             token,
@@ -153,7 +182,10 @@ function Member() {
         dispatch(UpdateMember(payload))
             .then((res) => {
 
+                getOwnerData()
                 showMemberData();
+
+                setRolechange(1)
             })
 
     }
@@ -169,6 +201,7 @@ function Member() {
         dispatch(UpdateMember(payload))
             .then((res) => {
 
+                getOwnerData()
                 showMemberData();
             })
 
@@ -185,10 +218,31 @@ function Member() {
         dispatch(UpdateMember(payload))
             .then((res) => {
 
+                getOwnerData()
                 showMemberData();
             })
     }
+    // DELETE MEMEBR
+    console.log(editMember, "edit member")
 
+    const Deleteclick = () => {
+        const { userId } = editMember
+        const payload = {
+            userId,
+            token
+        }
+        dispatch(DeleteMemberFun(payload))
+            .then((res) => {
+                console.log(res)
+                getOwnerData()
+                showMemberData();
+
+            })
+    }
+
+    // useEffect(() => {
+    // Deleteclick();
+    // }, [])
 
     return (
         <>
@@ -245,6 +299,9 @@ function Member() {
 
                                         <MenuItem onClick={Ownerclick}>
                                             Owner
+                                        </MenuItem>
+                                        <MenuItem onClick={Deleteclick}>
+                                            Delete Member
                                         </MenuItem>
                                     </MenuList>
                                 </Menu>

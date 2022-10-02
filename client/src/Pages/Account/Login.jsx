@@ -2,7 +2,7 @@ import { Box, Button, Flex, Image, Input, InputGroup, InputRightElement, Text, u
 import React, { useState } from 'react'
 import style from './Account.module.css'
 import Helmet from 'react-helmet';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { UserLogin } from '../../Redux/AuthReducer/action';
 
@@ -51,7 +51,7 @@ function Login() {
                             duration: 2000,
                             isClosable: true,
                         })
-                        navigate("/time")
+                        navigate("/sidebar/time")
 
                     }
 
@@ -225,6 +225,7 @@ function Login() {
 
                 </Box>
             </Box>
+            <Outlet />
 
         </>
     )
