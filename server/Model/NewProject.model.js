@@ -4,13 +4,12 @@ const ProjectSchema = new mongoose.Schema(
     {
        project:{type:String ,require:true},
        code:{type:String},
-       timeamount:{type:Number},
-       timecurrency:{type:String},
+       amount:{type:Number},
+       currency:{type:String},
        hourly:{type:String},
-       freecurrency:{type:String},
        freetype:{type:String},
        freeRecurr:{type:String},
-       freeamount:{type:Number}
+       client:{type:Array , default:[]}
     }
 )
 

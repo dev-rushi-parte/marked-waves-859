@@ -2,8 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
-import SideBar from '../../../component/SideBar';
-import NewProject from '../../Projects/NewProject';
+import Project from '../../Projects/Project';
 
 function SlideProject() {
     const sideSize = useSelector((state) => state.auth.sideSize);
@@ -19,7 +18,7 @@ function SlideProject() {
                 border='1px solid red' w='100%' mr='50px' mt='20px' h='auto'>
 
 
-                <NewProject />
+                <Project/>
 
                 <Outlet />
             </Box>

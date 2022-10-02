@@ -27,8 +27,12 @@ import SlideMember from '../../Pages/TMETRIC_Pages/SlideWorkSpace/SlideMember';
 import Price from '../../Pages/Price/Price';
 import SlideInvoice from '../../Pages/TMETRIC_Pages/SlideManage/SlideInvoice';
 import SideBar from '../SideBar';
+
 import RequiredAuth from '../RequiredAuth/RequiredAuth';
 import PageNotfound from '../../Pages/PageNotfound';
+
+import NewProject from '../../Pages/Projects/NewProject';
+
 
 
 
@@ -63,10 +67,18 @@ function MainRoutes() {
 
 
                     {/* manage Routes */}
+
                     <Route path='project' element={<RequiredAuth><SlideProject /> </RequiredAuth>} />
                     <Route path='client' element={<RequiredAuth><SlideClient /> </RequiredAuth>} />
                     <Route path='client/new' element={<RequiredAuth><NewSideClient /></RequiredAuth>} />
                     <Route path='invoice' element={<RequiredAuth><SlideInvoice /></RequiredAuth>} />
+
+                    <Route path='project' element={<SlideProject />} />
+                    <Route path='project/new' element={<NewProject/>}/>
+                    <Route path='client' element={<SlideClient />} />
+                    <Route path='client/new' element={<NewSideClient />} />
+                    <Route path='invoice' element={<SlideInvoice />} />
+
 
                     {/* WorkSpace routes */}
 

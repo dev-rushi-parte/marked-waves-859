@@ -1,10 +1,24 @@
-import { Box, Flex, Input, Text } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Flex, Input, Select, Text } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
 import styles from "../Projects/General.module.css"
 import {HiOutlineQuestionMarkCircle} from "react-icons/hi"
 
-const General = () => {
+const General = ({setproject,setcode ,setClient}) => {
   // const[project,setproject] = useState("")
+  const [data,setData] = useState([])
+
+  const getdata=()=>{
+    fetch("http://localhost:8080/clients/",{
+      method:"GET"
+    })
+    .then((res)=>res.json())
+    .then((res)=>setData(res))
+    .catch((err)=>console.log(err))
+  }
+
+  useEffect(()=>{
+    getdata()
+  },[])
   return (
     
     <Box id="general">
@@ -22,7 +36,7 @@ const General = () => {
 
             <Box className={styles.prMianLeft}>
            <Text fontSize={12} color="gray" fontWeight={500}>Project name</Text>
-           <Input placeholder='Enter Project name' border="1px solid gray"  fontSize="14px" fontWeight={500} h="33px"/>
+           <Input placeholder='Enter Project name' border="1px solid gray"  fontSize="14px" fontWeight={500} h="33px" onChange={(e)=>setproject(e.target.value)}/>
            </Box> 
 
            <Box className={styles.prMianRight}>
@@ -30,7 +44,7 @@ const General = () => {
            <Text fontSize={12} color="gray" fontWeight={500}>Project code</Text>
            <HiOutlineQuestionMarkCircle size={14} color="gray"/>
            </Flex>
-           <Input placeholder='PR-01' border="1px solid gray"  fontSize="14px" fontWeight={500} h="33px"/>
+           <Input placeholder='PR-01' border="1px solid gray"  fontSize="14px" fontWeight={500} h="33px" onChange={(e)=>setcode(e.target.value)}/>
            </Box> 
            </Box>
            {/* Project Name Input Box End*/}
@@ -42,7 +56,11 @@ const General = () => {
    <Box className={styles.ImageFlexLeftBox}>
     <Text fontSize={12} color="gray" fontWeight={500}>Client</Text>
     
-    <Input placeholder='My Corp.' border="1px solid gray" marginTop={1}    h="33px"/>
+    <Select placeholder='Select option' marginTop={1} h="33px" onChange={(e)=>setClient(e.target.value)}>
+   {data.map((el,i)=>(
+    <option value={el.client}>{el.client}</option>
+   ))}
+   </Select>
     
    </Box>
 

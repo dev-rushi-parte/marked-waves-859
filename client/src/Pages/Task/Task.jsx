@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from "./Task.module.css";
 import {
     Menu,
     MenuButton,
     MenuList,
     MenuItem,
-    
+
     Select,
 } from '@chakra-ui/react';
 
@@ -26,13 +26,19 @@ import { useSelector } from 'react-redux';
 
 const Task = ({ state, setState, taskD }) => {
 
-    const token=useSelector((state)=>state.auth.token)
+    {  /* Store Client and project data  */ }
+
+    const [clients, setClients] = useState([]);
+    const [projects, setProjects] = useState([]);
+
+
+    const token = useSelector((state) => state.auth.token)
     console.log(token)
     const taskChangeState = () => {
         setState(!state);
     }
-    const assigne = ['Ravi', "Shakti", "Akshay", "Aadil"];
-    const project = ["project1", "project2", "project3", "project4", "project5"];
+    { /* const assigne = ['Ravi', "Shakti", "Akshay", "Aadil"];
+const project = ["project1", "project2", "project3", "project4", "project5"];  */ }
 
     const [taskData, setTaskData] = useState({
         taskName: taskD,
@@ -49,27 +55,69 @@ const Task = ({ state, setState, taskD }) => {
     }
 
     const addData11 = async (e) => {
-        if(e.key=="Enter"){
-            const {taskName , projectName , assigneName , dueDate , taskDescription , estimateTime , tag} = taskData;
+        if (e.key == "Enter") {
+            const { taskName, projectName, assigneName, dueDate, taskDescription, estimateTime, tag } = taskData;
             console.log(taskName);
-            fetch('http://localhost:8080/task' , {
-                method: 'POST' , 
+            fetch('http://localhost:8080/task', {
+                method: 'POST',
                 headers: {
-                    "Authorization" : `Bearer ${token}`,
-                    'Content-Type' : 'application/json'
+                    "Authorization": `Bearer ${token}`,
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(
-                    {taskName , projectName , assigneName , dueDate , taskDescription , estimateTime , tag}
+                    { taskName, projectName, assigneName, dueDate, taskDescription, estimateTime, tag }
                 )
-                
+
             })
-            .then((res) => res.json())
+                .then((res) => res.json())
                 .then((res) => console.log(res))
                 .catch((err) => console.log(err))
         }
     }
-    
+
     console.log(taskData);
+
+    const getClientData = () => {
+        fetch('http://localhost:8080/clients', {
+            method: 'GET',
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res);
+                setClients(res);
+            })
+            .catch((err) => console.log(err))
+    }
+
+    useEffect(() => {
+        getClientData();
+    }, []);
+    console.log(clients);
+
+    const getProjects = () => {
+        fetch('http://localhost:8080/projects', {
+            method: 'GET',
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res);
+                setProjects(res);
+            })
+            .catch((err) => console.log(err))
+    }
+
+    useEffect(() => {
+        getProjects();
+    }, []);
+    console.log(projects)
 
     return (
 
@@ -111,7 +159,7 @@ const Task = ({ state, setState, taskD }) => {
 
 
                     { /* Map Project Data */}
-                    <form  >
+                    <form className={styles.form}>
                         <div><input placeholder='Write Task Here' type='text' name='taskName' onChange={addData} /></div>
                         <div className={styles.projectRightDiv}>
                             <div><p>Project</p></div>
@@ -122,8 +170,8 @@ const Task = ({ state, setState, taskD }) => {
                                     <Select onChange={addData} name="projectName">
 
                                         {
-                                            project.map((val) => {
-                                                return <option value={val} >{val}</option>
+                                            projects.map((val) => {
+                                                return <option value={val} >{val.project}</option>
                                             })
                                         }
 
@@ -142,11 +190,11 @@ const Task = ({ state, setState, taskD }) => {
 
                                 </div>
                                 <div>
-                                    <Select  name='assigneName' onChange={addData}>
+                                    <Select name='assigneName' onChange={addData}>
 
                                         {
-                                            assigne.map((val) => {
-                                                return <option value={val}>{val}</option>
+                                            clients.map((val) => {
+                                                return <option value={val}>{val.client}</option>
                                             })
                                         }
 
