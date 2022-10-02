@@ -120,3 +120,21 @@ export const LoginUserData = (token) => async (dispatch) => {
             console.log(err)
         })
 }
+
+
+export const subToken = (payload) => {
+    return {
+        type: types.SUBSCRIPTION_TOKEN,
+        payload
+    }
+}
+
+export const SubToken = (payload) => async (dispatch) => {
+
+
+
+    return (dispatch(subToken(payload)))
+
+    // console.log(res, "sub action")
+
+}
