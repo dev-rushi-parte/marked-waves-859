@@ -236,6 +236,8 @@
 }
 
 .checkboxCondition {
+    display: flex;
+    font-size: 14px;
     margin-left: 100px;
     margin-top: 20px;
     margin-bottom: 20px;
