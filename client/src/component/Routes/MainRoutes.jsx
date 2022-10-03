@@ -22,8 +22,6 @@ import SideBar from '../SideBar';
 import RequiredAuth from '../RequiredAuth/RequiredAuth';
 import NewProject from '../../Pages/Projects/NewProject';
 import PageNotfound from '../../Pages/PageNotfound';
-import NewProject from '../../Pages/Projects/NewProject';
-import PageNotfound from '../../Pages/PageNotfound';
 import { PayForm } from '../SubscribtionProtected/PayFormBtn';
 import SubscribtionLogic from '../SubscribtionProtected/SubscribtionLogic';
 import SlideNewProject from '../../Pages/TMETRIC_Pages/Manage/SlideNewProject';
@@ -68,11 +66,8 @@ function MainRoutes() {
                     <Route path='client' element={<RequiredAuth><SlideClient /> </RequiredAuth>} />
                     <Route path='client/new' element={<RequiredAuth><NewSideClient /></RequiredAuth>} />
                     <Route path='invoice' element={<SubscribtionLogic><SlideInvoice /></SubscribtionLogic>} />
-                     <Route path='project' element={<SlideProject />} />
-                    <Route path='project/new' element={<SlideNewProject/>}/>
-                    <Route path='client' element={<SlideClient />} />
-                    <Route path='client/new' element={<NewSideClient />} />
-                    <Route path='invoice' element={<SlideInvoice />} />
+                    <Route path='project' element={<SlideProject />} />
+               
 
 
                     {/* WorkSpace routes */}

@@ -15,7 +15,7 @@ function SlideSubscription() {
 
                 <Box transition={' 0.5s ease-in-out'}
                     ml={sideSize == 'large' ? '180px' : "300px"}
-                    border='1px solid red' w='100%' mr='50px' mt='20px' h='auto'>
+                w='100%' mr='50px' mt='20px' h='auto'>
 
 
                     <SubscriptionCurrent />
