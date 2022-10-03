@@ -46,7 +46,7 @@
 ## About The Project
 
 This is a Team Project made in 5 days by 5 Team Members.
-We tried to clone the TMERICT  website.With all the Concepts we learned in Masai School till Unit-6.Checkout our TMETRICT Website Clone by clicking on the
+We tried to clone the TMERICT  website with all the Concepts we learned in Masai School till Unit-6. Checkout our TMETRICT Website Clone by clicking on the
 link below and find the Source Code in the Main Branch.
 ## Glimpse and screenshots of our cloned website:
 **Landing Page**
