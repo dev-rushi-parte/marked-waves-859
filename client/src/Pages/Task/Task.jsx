@@ -50,7 +50,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
         tag: ""
     })
 
-    console.log(taskData,"task data")
+    console.log(taskData, "task data")
 
     const addData = (e) => {
         setTaskData({ ...taskData, [e.target.name]: e.target.value })
@@ -77,7 +77,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
         }
     }
 
-    
+
 
     const getClientData = () => {
         fetch('https://tmetric-41504.herokuapp.com/clients', {
@@ -102,7 +102,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
 
 
     const getProjects = () => {
-        fetch('http://localhost:8080/project', {
+        fetch('https://tmetric-41504.herokuapp.com/project', {
             method: 'GET',
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -116,7 +116,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
             })
             .catch((err) => console.log(err))
     }
-    
+
     useEffect(() => {
         getProjects();
     }, []);
@@ -245,7 +245,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
                             </div>
                         </div>
 
-                        
+
                     </form>
 
 

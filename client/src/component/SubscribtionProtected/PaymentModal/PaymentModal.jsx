@@ -90,7 +90,7 @@ const PaymentModal = ({ exDate, cvvS, card }) => {
 
       if (otp == otpCheck) {
         onClose()
-        navigate("/sidebar/team");
+        navigate("/sidebar/invoice");
       }
       else {
         toast({

@@ -55,7 +55,7 @@ const FullTask = ({ setTaskD }) => {
 
 
   const getProjects = () => {
-    fetch('http://localhost:8080/project', {
+    fetch('https://tmetric-41504.herokuapp.com/project', {
         method: 'GET',
         headers: {
             "Authorization": `Bearer ${token}`,
