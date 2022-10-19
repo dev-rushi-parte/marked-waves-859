@@ -20,7 +20,6 @@ import Price from '../../Pages/Price/Price';
 import SlideInvoice from '../../Pages/TMETRIC_Pages/SlideManage/SlideInvoice';
 import SideBar from '../SideBar';
 import RequiredAuth from '../RequiredAuth/RequiredAuth';
-import NewProject from '../../Pages/Projects/NewProject';
 import PageNotfound from '../../Pages/PageNotfound';
 import { PayForm } from '../SubscribtionProtected/PayFormBtn';
 import SubscribtionLogic from '../SubscribtionProtected/SubscribtionLogic';
@@ -66,7 +65,7 @@ function MainRoutes() {
                     <Route path='client' element={<RequiredAuth><SlideClient /> </RequiredAuth>} />
                     <Route path='client/new' element={<RequiredAuth><NewSideClient /></RequiredAuth>} />
                     <Route path='invoice' element={<SubscribtionLogic><SlideInvoice /></SubscribtionLogic>} />
-                    <Route path='project' element={<SlideProject />} />
+                    <Route path='project/new' element={<SlideNewProject />} />
                
 
 
