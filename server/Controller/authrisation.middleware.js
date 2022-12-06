@@ -1,6 +1,4 @@
 
-
-
 const AuthenticationModel = require("../Model/User.model");
 const authorisation = (permittedRoles) => {
 
