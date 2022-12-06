@@ -43,6 +43,7 @@ export const authReducer = (state = inState, action) => {
             }
         }
         case types.LOGIN_REQUEST: {
+
             return {
                 ...state,
                 isLoading: true
@@ -85,7 +86,7 @@ export const authReducer = (state = inState, action) => {
         }
         case types.SUBSCRIPTION_TOKEN: {
             console.log(payload, "reducer Payload")
-            
+
             SaveTheToken("subthe", payload)
             return {
                 ...state,
