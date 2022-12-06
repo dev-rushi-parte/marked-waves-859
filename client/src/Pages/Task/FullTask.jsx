@@ -32,7 +32,7 @@ const FullTask = ({ setTaskD }) => {
   
 
     const getTasks = () => {
-      fetch('https://tmetric-41504.herokuapp.com/task', {
+      fetch('https://tmetric-backend.vercel.app/task', {
         method: 'GET',
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -55,7 +55,7 @@ const FullTask = ({ setTaskD }) => {
 
 
   const getProjects = () => {
-    fetch('https://tmetric-41504.herokuapp.com/project', {
+    fetch('https://tmetric-backend.vercel.app/project', {
         method: 'GET',
         headers: {
             "Authorization": `Bearer ${token}`,

@@ -60,7 +60,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
         if (e.key == "Enter") {
             const { taskName, projectName, assigneName, dueDate, taskDescription, estimateTime, tag } = taskData;
             console.log(taskData, "rushi");
-            fetch('https://tmetric-41504.herokuapp.com/task', {
+            fetch('https://tmetric-backend.vercel.app/task', {
                 method: 'POST',
                 headers: {
                     "Authorization": `Bearer ${token}`,
@@ -80,7 +80,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
 
 
     const getClientData = () => {
-        fetch('https://tmetric-41504.herokuapp.com/clients', {
+        fetch('https://tmetric-backend.vercel.app/clients', {
             method: 'GET',
             headers: {
                 "Authorization": `Bearer ${token}`,
@@ -102,7 +102,7 @@ const project = ["project1", "project2", "project3", "project4", "project5"];  *
 
 
     const getProjects = () => {
-        fetch('https://tmetric-41504.herokuapp.com/project', {
+        fetch('https://tmetric-backend.vercel.app/project', {
             method: 'GET',
             headers: {
                 "Authorization": `Bearer ${token}`,

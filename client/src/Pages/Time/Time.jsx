@@ -61,7 +61,7 @@ const Time = () => {
       set();
       onClose();
 
-      axios.post('https://tmetric-41504.herokuapp.com/time/addTime', {
+      axios.post('https://tmetric-backend.vercel.app/time/addTime', {
         description :form.description,
         project : form.project,
         startTime: value,

@@ -25,7 +25,7 @@ const AkayNewClient = () => {
   const handleSubmit=()=>{
     // setBtn(false)
     const payload ={client,address,amount ,currency}
-    fetch("https://tmetric-41504.herokuapp.com/clients/new" ,{
+    fetch("https://tmetric-backend.vercel.app/clients/new" ,{
         method:"POST",
         headers:{
             "Content-Type":"application/json",

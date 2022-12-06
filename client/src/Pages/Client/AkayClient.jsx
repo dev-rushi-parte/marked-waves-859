@@ -20,7 +20,7 @@ const AkayClient = () => {
   const token = useSelector((state) => state.auth.token);
 
   const getdata=()=>{
-    fetch("https://tmetric-41504.herokuapp.com/clients/", {
+    fetch("https://tmetric-backend.vercel.app/clients/", {
       method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const AkayClient = () => {
   },[])
 
   const sortascdata=()=>{
-    fetch("https://tmetric-41504.herokuapp.com/clients/sortasc",{
+    fetch("https://tmetric-backend.vercel.app/clients/sortasc",{
       method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const AkayClient = () => {
 
 
   const sortdecdata=()=>{
-    fetch("https://tmetric-41504.herokuapp.com/clients/sortdec",{
+    fetch("https://tmetric-backend.vercel.app/clients/sortdec",{
       method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const AkayClient = () => {
 
 
   const handleDelete=(id)=>{
-    fetch(`https://tmetric-41504.herokuapp.com/clients/${id}`,{
+    fetch(`https://tmetric-backend.vercel.app/clients/${id}`,{
       method:"DELETE",
       headers:{
       'Content-Type': 'application/json',

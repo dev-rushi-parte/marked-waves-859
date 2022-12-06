@@ -19,7 +19,7 @@ const Project = () => {
     
 
     const getdata=()=>{
-      fetch("https://tmetric-41504.herokuapp.com/project/",{
+      fetch("https://tmetric-backend.vercel.app/project/",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ const Project = () => {
 
 
     const sortproascdata=()=>{
-      fetch("https://tmetric-41504.herokuapp.com/project/sortproasc",{
+      fetch("https://tmetric-backend.vercel.app/project/sortproasc",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const Project = () => {
   
   
     const sortprodecdata=()=>{
-      fetch("https://tmetric-41504.herokuapp.com/project/sortprodec",{
+      fetch("https://tmetric-backend.vercel.app/project/sortprodec",{
         method:"GET",
         headers:{
         'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const Project = () => {
 
 
     const sortcodeascdata=()=>{
-      fetch("https://tmetric-41504.herokuapp.com/project/sortcodeasc",{
+      fetch("https://tmetric-backend.vercel.app/project/sortcodeasc",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const Project = () => {
   
   
     const sortcodedecdata=()=>{
-      fetch("https://tmetric-41504.herokuapp.com/project/sortcodedec",{
+      fetch("https://tmetric-backend.vercel.app/project/sortcodedec",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ const Project = () => {
 
 
     const sortamoascdata=()=>{
-      fetch("https://tmetric-41504.herokuapp.com/project/sortamoasc",{
+      fetch("https://tmetric-backend.vercel.app/project/sortamoasc",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ const Project = () => {
   
   
     const sortamodecdata=()=>{
-      fetch("https://tmetric-41504.herokuapp.com/project/sortamodec",{
+      fetch("https://tmetric-backend.vercel.app/project/sortamodec",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ const Project = () => {
 
 
     const sortcliascdata=()=>{
-      fetch("https://tmetric-41504.herokuapp.com/project/sortcliasc",{
+      fetch("https://tmetric-backend.vercel.app/project/sortcliasc",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -157,7 +157,7 @@ const Project = () => {
   
   
     const sortclidecdata=()=>{
-      fetch("https://tmetric-41504.herokuapp.com/project/sortclidec",{
+      fetch("https://tmetric-backend.vercel.app/project/sortclidec",{
         method:"GET",
       headers:{
       'Content-Type': 'application/json',
@@ -174,7 +174,7 @@ const Project = () => {
 
 
     const handleDelete=(id)=>{
-        fetch(`https://tmetric-41504.herokuapp.com/project//${id}`,{
+        fetch(`https://tmetric-backend.vercel.app/project//${id}`,{
          method:"DELETE",
         })
         .then((res)=>res.json())
